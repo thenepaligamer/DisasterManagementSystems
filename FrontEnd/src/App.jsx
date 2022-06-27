@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
 
 function App() {
@@ -7,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-     <div className="bg-black">Hi</div>
+     <div className="bg-black  text-3xl text-green-800">Hi</div>
     </div>
   )
 }
