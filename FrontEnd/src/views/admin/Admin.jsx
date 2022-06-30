@@ -1,3 +1,7 @@
+import NavBar from "../../components/admin/NavBar";
+
 export default function Admin() {
-    return (<><div>Hi This page is for logged in Admin only</div></>)
+    return (<>
+        <div><NavBar /></div>
+    </>)
 }
