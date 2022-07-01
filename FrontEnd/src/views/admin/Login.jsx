@@ -1,5 +1,13 @@
+import {useState, useEffect} from 'react';
+import { Navigate } from "react-router";
+
+
 export default function Login (){
-    const submit = (e) => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userInfo, setUserInfo] = useState({});
+
+    const submit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
       
@@ -9,17 +17,27 @@ export default function Login (){
         formData.append('email', email);
         formData.append('password', password);
 
-        fetch("http://localhost:8000/api/login", {
+        const res = await fetch("http://localhost:8000/api/login", {
             method: 'POST',
             body: formData,
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            localStorage.setItem('userInfo', JSON.stringify(data));
-
-        })
+        const credentials = await res.json()
+        if(credentials.access_token) {
+            setIsLoggedIn(true);
+            setUserInfo(credentials);
+        }
     }
+
+    useEffect(() => {
+        if(isLoggedIn) {
+            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        }
+    },[isLoggedIn])
+
+if(isLoggedIn) {
+    return <Navigate to="/admin" replace={true}/>
+}
+else{
  return (<div>
         <div className="flex flex-col justify-center items-center align-middle mt-[150px]">
         <div className="text-3xl">DMS Admin Login</div>
@@ -37,4 +55,5 @@ export default function Login (){
         </form>
         </div>
  </div> ) 
+}
 }
