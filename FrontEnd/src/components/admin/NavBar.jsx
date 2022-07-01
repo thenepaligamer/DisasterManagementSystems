@@ -1,10 +1,14 @@
 import {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 export default function NavBar(){
 const [isOpen, setIsOpen] = useState(false);
     function dropdown(){
         console.log("dropdown");
         setIsOpen(!isOpen);
+    }
+    function ok() {
+        console.log("ok");
     }
     return(
         <>
@@ -32,13 +36,18 @@ const [isOpen, setIsOpen] = useState(false);
                             </div>
                             <div className="hidden sm:block sm:ml-6">
                                 <div className="flex space-x-4">
-                                    <a href="#" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
-
-                                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Add Event</a>
-
-                                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">View Event</a>
-
-                                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pending Events</a>
+                                    <NavLink to="dashboard" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <span className="" aria-current="page">Dashboard</span>
+                                    </NavLink>
+                                    <NavLink to="add-event" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <span>Add Event</span>
+                                    </NavLink>
+                                    <NavLink to="view-events" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <span >View Events</span>
+                                    </NavLink>
+                                    <NavLink to="pending-event" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    <span>Pending Events</span>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
@@ -59,11 +68,9 @@ const [isOpen, setIsOpen] = useState(false);
                                         <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                     </button>
                                 </div>
-
-
                                 {isOpen && <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
                                     <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1">Settings</a>
+                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1" onClick={ok}>Settings</a>
                                     <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
                                 </div>}
                             </div>
