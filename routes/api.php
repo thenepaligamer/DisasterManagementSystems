@@ -29,3 +29,4 @@ Route::group(['middleware' => ['auth:sanctum']],function () {
 });
 
 Route::get('view', [ViewController::class, 'show']);
+Route::post('addEvent', [ViewController::class, 'store']);

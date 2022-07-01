@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Events;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ViewController extends Controller
 {
@@ -34,7 +38,24 @@ class ViewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $eventDetails = [
+            'title' => $data['title'],
+            'location' => $data['location'],
+            'type' => $data['type'],
+            'description' => $data['description'],
+            'estloss' => $data['estloss'],
+            'death' => $data['death'],
+            'missing' => $data['missing'],
+            'injured' => $data['injured']
+        ];
+        
+        $events = Events::create($eventDetails);
+
+        return response()->json([
+            'message' => 'Added event'
+        ], 201);
     }
 
     /**
@@ -45,7 +66,12 @@ class ViewController extends Controller
      */
     public function show()
     {
-        echo "Hello";
+        $events = DB::select('select * from events');
+
+        foreach ($events as $event) {
+            echo $event->title;
+            
+        }
     }
 
     /**
