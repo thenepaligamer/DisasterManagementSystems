@@ -7,7 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Rules\ValidHCaptcha;
 
+
+/*
+$rules = [
+            'h-captcha-response' => ['required', new ValidHCaptcha()]
+        ];
+        */
 class ViewController extends Controller
 {
     /**
