@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->integer('death');
             $table->integer('missing');
             $table->integer('injured');
+            $table->boolean('is_verified');
             $table->timestamps();
         });
     }

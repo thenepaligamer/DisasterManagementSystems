@@ -8,7 +8,7 @@ use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Rules\ValidHCaptcha;
-
+use Laravel\Sanctum\HasApiTokens;
 
 /*
 $rules = [
@@ -45,7 +45,25 @@ class ViewController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        if(Auth::check()){
+            return response()->json([ 'user'=> $request->user() ]);
+        }else{
+            echo "fu";
+        }
+
+
+        /*
+        $data = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'estloss' => 'numeric',
+            'death' => 'numeric',
+            'missing' => 'numeric',
+            'injured' => 'numeric',
+            'is_verified' => 'boolean'
+        ]);
 
         $eventDetails = [
             'title' => $data['title'],
@@ -55,14 +73,15 @@ class ViewController extends Controller
             'estloss' => $data['estloss'],
             'death' => $data['death'],
             'missing' => $data['missing'],
-            'injured' => $data['injured']
+            'injured' => $data['injured'],
+            'is_verified' => $data['is_verified']
         ];
         
         $events = Events::create($eventDetails);
 
         return response()->json([
             'message' => 'Added event'
-        ], 201);
+        ], 201);*/
     }
 
     /**
@@ -73,12 +92,7 @@ class ViewController extends Controller
      */
     public function show()
     {
-        $events = DB::select('select * from events');
-
-        foreach ($events as $event) {
-            echo $event->title;
-            
-        }
+       echo "Si senor";
     }
 
     /**

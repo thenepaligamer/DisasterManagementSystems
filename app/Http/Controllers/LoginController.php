@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use Validator;
 use App\Models\User;
-
+use Laravel\Sanctum\HasApiTokens;
 
 class LoginController extends Controller
 {
@@ -19,8 +19,6 @@ class LoginController extends Controller
             'password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
             ]);
 
-        
-
         $userDetails = [
             'name'=>$data['name'],
             'email' => $data['email'],
@@ -30,8 +28,6 @@ class LoginController extends Controller
         $user = User::create($userDetails);
 
         $token = $user-> createToken('auth_token')->plainTextToken;
-
-        
 
         return response()->json([
             'user' => $user,

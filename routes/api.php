@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\AdminDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::group(['middleware' => ['auth:sanctum']],function () {
 
 Route::get('view', [ViewController::class, 'show']);
 Route::post('addEvent', [ViewController::class, 'store']);
+
+Route::get('admin', [AdminDashboard::class, 'index']);//->middleware('admin');
