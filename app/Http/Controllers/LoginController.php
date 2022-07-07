@@ -9,6 +9,7 @@ use Auth;
 use Validator;
 use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -58,5 +59,12 @@ class LoginController extends Controller
         return response()->json([
             'message' => 'Successfully logged out'
         ], Response::HTTP_OK);
+    }
+
+    function doSomething(){
+        $user = DB::select('select * from users');
+        
+        #$user = auth()->user();
+        print_r($user);
     }
 }

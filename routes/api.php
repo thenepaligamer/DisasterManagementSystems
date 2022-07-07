@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('viewplz', [LoginController::class, 'doSomething']);
 
 Route::group(['middleware' => ['auth:sanctum']],function () {
     Route::post('logout', [LoginController::class, 'logout']);
@@ -31,5 +32,6 @@ Route::group(['middleware' => ['auth:sanctum']],function () {
 
 Route::get('view', [ViewController::class, 'show']);
 Route::post('addEvent', [ViewController::class, 'store']);
+Route::post('update', [ViewController::class, 'update']);
 
 Route::get('admin', [AdminDashboard::class, 'index']);//->middleware('admin');

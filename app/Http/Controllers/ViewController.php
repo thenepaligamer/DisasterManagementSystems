@@ -113,9 +113,14 @@ class ViewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    /*public function update(Request $request, $id)
     {
         //
+    }*/
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+        print_r($user);
     }
 
     /**
