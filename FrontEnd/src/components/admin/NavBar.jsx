@@ -61,7 +61,7 @@ const [isOpen, setIsOpen] = useState(false);
                             </button>
 
 
-                            <div className="ml-3 relative" onClick={dropdown}>
+                            <div className="ml-3 relative z-10" onClick={dropdown}>
                                 <div>
                                     <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                         <span className="sr-only">Open user menu</span>
