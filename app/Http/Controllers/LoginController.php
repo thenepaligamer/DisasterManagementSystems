@@ -10,6 +10,7 @@ use Validator;
 use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class LoginController extends Controller
 {
@@ -46,10 +47,15 @@ class LoginController extends Controller
 
         $user = User::where('email', $request['email'])->firstOrFail();
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token');
+
+        Auth::login($user);
 
         return response()->json([
-            'message' => 'Successfully logged in'
+            'message' => 'Successfully logged in',
+            'access_token' => $token->plainTextToken,
+            'token_type' => 'Bearer',
+            'user' => $user->id
         ],200);
     }
 
@@ -61,10 +67,10 @@ class LoginController extends Controller
         ], Response::HTTP_OK);
     }
 
-    function doSomething(){
-        $user = DB::select('select * from users');
-        
-        #$user = auth()->user();
-        print_r($user);
+    function doSomething(Request $request){
+        #$user = DB::select('select * from users');
+        #echo $user = User::all();
+        $print = Auth::user();
+        print($print->id);
     }
 }

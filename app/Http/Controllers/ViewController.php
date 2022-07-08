@@ -24,7 +24,13 @@ class ViewController extends Controller
      */
     public function index()
     {
-        //
+        $showAllDetails = Events::all();
+        return response()->json($showAllDetails);
+    }
+
+    public function indexUser(){
+        $showVerifiedDetails = Events::where('is_verified',1)->get();
+        return response()->json($showVerifiedDetails);
     }
 
     /**
@@ -45,14 +51,6 @@ class ViewController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::check()){
-            return response()->json([ 'user'=> $request->user() ]);
-        }else{
-            echo "fu";
-        }
-
-
-        /*
         $data = $request->validate([
             'title' => 'required',
             'location' => 'required',
@@ -80,8 +78,9 @@ class ViewController extends Controller
         $events = Events::create($eventDetails);
 
         return response()->json([
-            'message' => 'Added event'
-        ], 201);*/
+            'message' => 'Added event',
+            'event details' => $events
+        ], 201);
     }
 
     /**
@@ -90,9 +89,10 @@ class ViewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-       echo "Si senor";
+        $eventdetail =  Events::find($id);
+        return response()->json($eventdetail);
     }
 
     /**
@@ -103,7 +103,7 @@ class ViewController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -113,14 +113,36 @@ class ViewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        //
-    }*/
-    public function update(Request $request)
-    {
-        $user = auth()->user();
-        print_r($user);
+        $data = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'estloss' => 'numeric',
+            'death' => 'numeric',
+            'missing' => 'numeric',
+            'injured' => 'numeric',
+        ]);
+
+        $editedData = Events::find($id);
+
+        $editedData->title = $request->input('title');
+        $editedData->location = $request->input('location');
+        $editedData->type = $request->input('type');
+        $editedData->description = $request->input('description');
+        $editedData->estloss = $request->input('estloss');
+        $editedData->death = $request->input('death');
+        $editedData->missing = $request->input('missing');
+        $editedData->injured = $request->input('injured');
+
+        $editedData->save();
+
+        return response()->json([
+            'message' => 'Event edited',
+            'edited Details' => $editedData
+        ],201);
     }
 
     /**
@@ -131,6 +153,12 @@ class ViewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $findEventToDelete = Events::find($id);
+        $findEventToDelete->delete();
+
+        return response()->json([
+            "message" => "Event deleted",
+        ],201);
     }
+
 }
