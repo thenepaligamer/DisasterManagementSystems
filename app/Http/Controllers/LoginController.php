@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use Validator;
 use App\Models\User;
-
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class LoginController extends Controller
 {
@@ -19,8 +21,6 @@ class LoginController extends Controller
             'password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
             ]);
 
-
-
         $userDetails = [
             'name'=>$data['name'],
             'email' => $data['email'],
@@ -30,8 +30,6 @@ class LoginController extends Controller
         $user = User::create($userDetails);
 
         $token = $user-> createToken('auth_token')->plainTextToken;
-
-
 
         return response()->json([
             'user' => $user,
@@ -49,13 +47,15 @@ class LoginController extends Controller
 
         $user = User::where('email', $request['email'])->firstOrFail();
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token');
+
+        Auth::login($user);
 
         return response()->json([
-            'message' => 'success',
-            'user' => $user,
-            'access_token' => $token,
+            'message' => 'Successfully logged in',
+            'access_token' => $token->plainTextToken,
             'token_type' => 'Bearer',
+            'user' => $user->id
         ],200);
     }
 
@@ -65,5 +65,12 @@ class LoginController extends Controller
         return response()->json([
             'message' => 'Successfully logged out'
         ], Response::HTTP_OK);
+    }
+
+    function doSomething(Request $request){
+        #$user = DB::select('select * from users');
+        #echo $user = User::all();
+        $print = Auth::user();
+        print($print->id);
     }
 }

@@ -16,6 +16,7 @@ class Events extends Model
         'estloss',
         'death',
         'missing',
-        'injured'
+        'injured',
+        'is_verified'
     ];
 }

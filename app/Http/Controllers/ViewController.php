@@ -8,7 +8,7 @@ use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Rules\ValidHCaptcha;
-
+use Laravel\Sanctum\HasApiTokens;
 
 /*
 $rules = [
@@ -24,7 +24,13 @@ class ViewController extends Controller
      */
     public function index()
     {
-        //
+        $showAllDetails = Events::all();
+        return response()->json($showAllDetails);
+    }
+
+    public function indexUser(){
+        $showVerifiedDetails = Events::where('is_verified',1)->get();
+        return response()->json($showVerifiedDetails);
     }
 
     /**
@@ -45,7 +51,17 @@ class ViewController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'estloss' => 'numeric',
+            'death' => 'numeric',
+            'missing' => 'numeric',
+            'injured' => 'numeric',
+            'is_verified' => 'boolean'
+        ]);
 
         $eventDetails = [
             'title' => $data['title'],
@@ -55,13 +71,15 @@ class ViewController extends Controller
             'estloss' => $data['estloss'],
             'death' => $data['death'],
             'missing' => $data['missing'],
-            'injured' => $data['injured']
+            'injured' => $data['injured'],
+            'is_verified' => $data['is_verified']
         ];
         
         $events = Events::create($eventDetails);
 
         return response()->json([
-            'message' => 'Added event'
+            'message' => 'Added event',
+            'event details' => $events
         ], 201);
     }
 
@@ -71,14 +89,10 @@ class ViewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $events = DB::select('select * from events');
-
-        foreach ($events as $event) {
-            echo $event->title;
-            
-        }
+        $eventdetail =  Events::find($id);
+        return response()->json($eventdetail);
     }
 
     /**
@@ -89,7 +103,7 @@ class ViewController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -101,7 +115,34 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'estloss' => 'numeric',
+            'death' => 'numeric',
+            'missing' => 'numeric',
+            'injured' => 'numeric',
+        ]);
+
+        $editedData = Events::find($id);
+
+        $editedData->title = $request->input('title');
+        $editedData->location = $request->input('location');
+        $editedData->type = $request->input('type');
+        $editedData->description = $request->input('description');
+        $editedData->estloss = $request->input('estloss');
+        $editedData->death = $request->input('death');
+        $editedData->missing = $request->input('missing');
+        $editedData->injured = $request->input('injured');
+
+        $editedData->save();
+
+        return response()->json([
+            'message' => 'Event edited',
+            'edited Details' => $editedData
+        ],201);
     }
 
     /**
@@ -112,6 +153,12 @@ class ViewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $findEventToDelete = Events::find($id);
+        $findEventToDelete->delete();
+
+        return response()->json([
+            "message" => "Event deleted",
+        ],201);
     }
+
 }
