@@ -19,7 +19,7 @@ class LoginController extends Controller
             'password'=>'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/'
             ]);
 
-        
+
 
         $userDetails = [
             'name'=>$data['name'],
@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         $token = $user-> createToken('auth_token')->plainTextToken;
 
-        
+
 
         return response()->json([
             'user' => $user,
@@ -52,7 +52,10 @@ class LoginController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Successfully logged in'
+            'message' => 'success',
+            'user' => $user,
+            'access_token' => $token,
+            'token_type' => 'Bearer',
         ],200);
     }
 

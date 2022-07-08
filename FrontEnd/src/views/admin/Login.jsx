@@ -1,10 +1,13 @@
 import {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
 
+import {login, setToken} from "../../store/admin/adminAuthSlice";
 
 export default function Login (){
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const {isLoggedIn} = useSelector( store => store.adminAuth);
+    const dispatch = useDispatch();
     const [userInfo, setUserInfo] = useState({});
 
     const navigate = useNavigate();
@@ -12,37 +15,38 @@ export default function Login (){
     const submit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
 
         formData.append('email', email);
         formData.append('password', password);
         try{
-        const res = await fetch("http://localhost:8000/api/login", {
-            method: 'POST',
-            body: formData,
-        })
-        const credentials = await res.json()
-        console.log(credentials);
-        if(credentials.access_token) {
-            setIsLoggedIn(true);
-            setUserInfo(credentials);
-          }}
+            const res = await fetch("http://localhost:8000/api/login", {
+                method: 'POST',
+                body: formData,
+            });
+            const credentials = await res.json();
+
+            if(credentials.access_token) {
+                console.log(credentials.access_token);
+                localStorage.setItem("userInfo", JSON.stringify(credentials));
+                setUserInfo(credentials);
+                dispatch(setToken(credentials.access_token));
+                navigate('/admin', {replace: true});
+              }
+        }
         catch(err){
             console.log(err);
         }
     }
 
-    useEffect(() => {
-        if(isLoggedIn) {
-            console.log("logged in")
+
+    useEffect( () => {
+        if(isLoggedIn){
+            console.log("already logged in")
             navigate('/admin', {replace: true});
-            localStorage.setItem("userInfo", JSON.stringify(userInfo));
-
         }
-    },[isLoggedIn])
-
+    }, [])
 
  return (<div>
         <div className="flex flex-col justify-center items-center align-middle mt-[150px]">
