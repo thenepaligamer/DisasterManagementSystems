@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Relief extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'district',
+        'local',
+        'date',
+        'rice',
+        'sugar',
+        'salt',
+        'readymade',
+        'water',
+        'otherfood',
+        'housing'
+    ];
 }
