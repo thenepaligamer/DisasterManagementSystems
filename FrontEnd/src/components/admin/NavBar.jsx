@@ -7,9 +7,7 @@ const [isOpen, setIsOpen] = useState(false);
         console.log("dropdown");
         setIsOpen(!isOpen);
     }
-    function ok() {
-        console.log("ok");
-    }
+
     return(
         <>
         <div>
