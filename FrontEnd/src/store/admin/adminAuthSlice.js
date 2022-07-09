@@ -1,12 +1,23 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 const initialState = {
     isLoggedIn : false,
+    token: null
 }
-
 const adminAuthSlice = createSlice({
     name: 'adminAuthSlice',
     initialState,
+    reducers: {
+        login: (state, {payload}) => {
+            state.isLoggedIn = true;
+
+        },
+        setToken: (state, {payload}) => {
+            console.log(payload);
+            state.token = payload
+        }
+    },
+
 });
-console.log(adminAuthSlice)
+export const {login, setToken} = adminAuthSlice.actions;
 export default adminAuthSlice.reducer;

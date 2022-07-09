@@ -3,7 +3,7 @@ import data from "../MOCK_DATA.json"
 export default function BasicTable() {
     console.log(data)
     const row = data.map(event => {
-       return ( <tr className="bg-white border-b  hover:bg-gray-50 ">
+       return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
             <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
                 {event.eventTitle}
             </th>
