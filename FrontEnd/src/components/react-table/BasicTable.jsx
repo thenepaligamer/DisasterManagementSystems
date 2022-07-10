@@ -36,12 +36,13 @@ export default function BasicTable() {
             <td className="px-6 py-4">
                 {event.missing}
             </td>
-           {!isUser && (<td className="px-6 py-4">
+           {!isUser && <td className="px-6 py-4">
                {event.is_verified}
-           </td> &&
+           </td> }
+           {!isUser &&
             <td className="px-6 py-4 text-right">
                 <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
-            </td>) }
+            </td> }
         </tr> )
     })
     return (
@@ -76,7 +77,8 @@ export default function BasicTable() {
                     </th>
                     {!isUser && <th scope="col" className="px-6 py-3">
                         is Verified?
-                    </th> &&
+                    </th> }
+                    {!isUser &&
                     <th scope="col" className="px-6 py-3">
                         <span className="sr-only">Edit</span>
                     </th> }
