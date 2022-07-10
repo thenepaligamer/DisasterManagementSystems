@@ -1,11 +1,14 @@
 import {useState} from "react";
+import {NavLink, useLocation,} from "react-router-dom";
 
 export default function NavBar() {
+
     const [isOpen, setIsOpen] = useState(false);
     const dropdown = () => {
         console.log("dropdown");
         setIsOpen(!isOpen);
     }
+
     return (
     <>
        <div>
@@ -34,9 +37,9 @@ export default function NavBar() {
                    <div className="hidden w-full  md:block md:w-auto" id="mobile-menu">
                        <ul className="flex flex-col  mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                            <li>
-                               <a href="#"
+                               <NavLink to="/"
                                   className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-xl"
-                                  aria-current="page">Home</a>
+                                  aria-current="page">Home</NavLink>
                            </li>
                            <li>
                                <button id="dropdownNavbarLink" onClick={dropdown} data-dropdown-toggle="dropdownNavbar"
@@ -52,28 +55,28 @@ export default function NavBar() {
                                    <ul className="py-1 text-sm text-black dark:text-gray-200"
                                        aria-labelledby="dropdownRightStartButton">
                                        <li>
-                                           <a href="#"
-                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Events</a>
+                                           <NavLink to="add-event"
+                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Events</NavLink>
                                        </li>
                                        <li>
-                                           <a href="#"
-                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">View Events</a>
+                                           <NavLink to="view-events"
+                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">View Events</NavLink>
                                        </li>
                                    </ul>
                                </div>
                                }
                            </li>
                            <li>
-                               <a href="#"
-                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Contacts</a>
+                               <NavLink to="contact"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Contacts</NavLink>
                            </li>
                            <li>
-                               <a href="#"
-                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Relief</a>
+                               <NavLink  to="relief"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Relief</NavLink>
                            </li>
                            <li>
-                               <a href="#"
-                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Weather</a>
+                               <NavLink to="Weather"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Weather</NavLink>
                            </li>
                        </ul>
                    </div>

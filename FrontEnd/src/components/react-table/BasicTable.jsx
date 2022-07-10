@@ -1,7 +1,15 @@
 import data from "../MOCK_DATA.json"
+import {useEffect, useState} from "react";
+import { matchPath, useLocation } from "react-router-dom";
 
 export default function BasicTable() {
-    console.log(data)
+    const [isUser, setIsUser] = useState(false);
+    const location = useLocation();
+    useEffect(() => {
+        if(location.pathname === "/view-events"){
+            setIsUser(true);
+        }
+    }, [location])
     const row = data.map(event => {
        return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
             <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
@@ -28,9 +36,12 @@ export default function BasicTable() {
             <td className="px-6 py-4">
                 {event.missing}
             </td>
+           {!isUser && (<td className="px-6 py-4">
+               {event.is_verified}
+           </td> &&
             <td className="px-6 py-4 text-right">
                 <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
-            </td>
+            </td>) }
         </tr> )
     })
     return (
@@ -63,9 +74,12 @@ export default function BasicTable() {
                     <th scope="col" className="px-6 py-3">
                         Missing
                     </th>
+                    {!isUser && <th scope="col" className="px-6 py-3">
+                        is Verified?
+                    </th> &&
                     <th scope="col" className="px-6 py-3">
                         <span className="sr-only">Edit</span>
-                    </th>
+                    </th> }
                 </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as React from 'react';
-import {  Routes, Route, Link, Navigate } from 'react-router-dom';
+import {  Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 
 import {useDispatch, useSelector} from "react-redux";
@@ -18,9 +18,8 @@ const Register = React.lazy(() => import('./views/admin/Register'));
 function App() {
     const dispatch = useDispatch();
     const {isLoggedIn} = useSelector( store => store.adminAuth);
-
     useEffect(() => {
-        console.log(localStorage.getItem("userInfo"))
+
             if((localStorage.getItem("userInfo")))
             {
                 dispatch(login())
@@ -51,7 +50,10 @@ function App() {
             <Route path="add-event" element={<AddEvent />} />
             <Route path="view-events" element={<ViewEvents />} />
         </Route>
-          <Route path="/" element={<Home/>} />
+          <Route path="/*" element={<Home/>} >
+              <Route path="add-event" element={<span>Hi add</span>}/>
+              <Route path="view-events" element={<ViewEvents/>}/>
+          </Route>
       </Routes>
     </div>
   )

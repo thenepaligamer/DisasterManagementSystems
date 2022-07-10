@@ -13,7 +13,6 @@ const adminAuthSlice = createSlice({
 
         },
         setToken: (state, {payload}) => {
-            console.log(payload);
             state.token = payload
         }
     },
