@@ -1,0 +1,10 @@
+[{"id":1,"district":"Finland","local":"Rx","rice":1,"sugar":94,"salt":25,"readymade":50,"water":58,"otherfood":73,"housing":"Ziemann-Pfannerstill"},
+{"id":2,"district":"Philippines","local":"Myers-Briggs Certified","rice":73,"sugar":26,"salt":42,"readymade":21,"water":58,"otherfood":41,"housing":"Ruecker, Mann and Lang"},
+{"id":3,"district":"Japan","local":"Secretarial Skills","rice":95,"sugar":44,"salt":6,"readymade":32,"water":42,"otherfood":77,"housing":"Marvin LLC"},
+{"id":4,"district":"South Africa","local":"IVT","rice":56,"sugar":67,"salt":11,"readymade":42,"water":25,"otherfood":42,"housing":"Koelpin Group"},
+{"id":5,"district":"Mexico","local":"Data Guard","rice":51,"sugar":73,"salt":70,"readymade":32,"water":9,"otherfood":15,"housing":"Rodriguez-Morissette"},
+{"id":6,"district":"Indonesia","local":"SDL","rice":2,"sugar":15,"salt":20,"readymade":37,"water":77,"otherfood":52,"housing":"Greenholt and Sons"},
+{"id":7,"district":"China","local":"Sqoop","rice":28,"sugar":99,"salt":53,"readymade":38,"water":4,"otherfood":96,"housing":"Kihn and Sons"},
+{"id":8,"district":"China","local":"WPF","rice":13,"sugar":83,"salt":46,"readymade":59,"water":100,"otherfood":92,"housing":"Halvorson-Smitham"},
+{"id":9,"district":"Russia","local":"Mobile Applications","rice":77,"sugar":47,"salt":98,"readymade":26,"water":95,"otherfood":62,"housing":"Bergstrom LLC"},
+{"id":10,"district":"China","local":"iWork","rice":20,"sugar":34,"salt":50,"readymade":80,"water":43,"otherfood":17,"housing":"Shields, Kris and Beer"}]

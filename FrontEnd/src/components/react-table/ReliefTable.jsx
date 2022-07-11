@@ -1,50 +1,51 @@
-import data from "../MOCK_DATA.json"
+import relief from "./Relief.json"
 import {useEffect, useState} from "react";
-import { matchPath, useLocation } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
-export default function BasicTable() {
+export default function ReliefTable(){
     const [isUser, setIsUser] = useState(false);
     const location = useLocation();
     useEffect(() => {
-        if(location.pathname === "/view-events"){
+        if(location.pathname === "/relief"){
             setIsUser(true);
         }
-    }, [location])
-    const row = data.map(event => {
-       return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
+    })
+    const row = relief.map(event => {
+        return (<tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
             <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
-                {event.eventTitle}
+                {event.district}
             </th>
             <td className="px-6 py-4">
-                {event.location}
+                {event.local}
             </td>
             <td className="px-6 py-4">
-                {event.type}
+                {event.rice}
             </td>
             <td className="px-6 py-4">
-                {event.description}
+                {event.sugar}
             </td>
             <td className="px-6 py-4">
-                {event.estimatedLoss}
+                {event.salt}
             </td>
             <td className="px-6 py-4">
-                {event.death}
+                {event.readymade}
             </td>
             <td className="px-6 py-4">
-                {event.injured}
+                {event.water}
             </td>
             <td className="px-6 py-4">
-                {event.missing}
+                {event.otherfood}
             </td>
-           {!isUser && <td className="px-6 py-4">
-               {event.is_verified}
-           </td> }
-           {!isUser &&
-            <td className="px-6 py-4 text-right">
-                <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
-            </td> }
-        </tr> )
-    })
+            <td className="px-6 py-4">
+                {event.housing}
+            </td>
+            { !isUser &&
+                <td className="px-6 py-4 text-right">
+                    <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
+                </td>}
+        </tr>)
+
+    });
     return (
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -52,44 +53,42 @@ export default function BasicTable() {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
                     <th scope="col" className="px-6 py-3">
-                        Event Title
+                        District
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Location
+                        Local
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Type
+                        Rice
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Description
+                        Sugar
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Estimated loss
+                       Salt
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Death
+                        Readymade
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Injured
+                        Water
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Missing
+                        Otherfood
                     </th>
-                    {!isUser && <th scope="col" className="px-6 py-3">
-                        is Verified?
+                    { <th scope="col" className="px-6 py-3">
+                        Housing
                     </th> }
-                    {!isUser &&
-                    <th scope="col" className="px-6 py-3">
-                        <span className="sr-only">Edit</span>
-                    </th> }
+                    { !isUser &&
+                        <th scope="col" className="px-6 py-3">
+                            <span className="sr-only">Edit</span>
+                        </th> }
                 </tr>
                 </thead>
                 <tbody>
                 {row}
-
                 </tbody>
             </table>
         </div>
-
     )
 }
