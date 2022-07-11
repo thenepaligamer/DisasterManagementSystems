@@ -1,11 +1,11 @@
-import  BasicTable  from "./react-table/BasicTable";
+import  EventTable  from "./react-table/EventTable";
 
 import React from "react";
 export default function ViewEvents() {
     return(
         <>
             <div className="mt-2">
-                <BasicTable />
+                <EventTable />
             </div>
         </>
     )

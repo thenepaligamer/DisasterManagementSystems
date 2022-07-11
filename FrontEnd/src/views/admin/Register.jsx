@@ -1,4 +1,7 @@
+import {useState} from "react";
+
 export default function Register() {
+    const [isPwdErr, setIsPwdErr] = useState(false)
     const submit = (e) => {
         e.preventDefault();
 
@@ -9,7 +12,10 @@ export default function Register() {
         formData.append('name', name);
         formData.append('email', email);
         formData.append('password', password);
-
+        if( !/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/.test(password)){
+            return setIsPwdErr(true)
+        }
+        setIsPwdErr(false)
         fetch("http://localhost:8000/api/register", {
             method: 'POST',
             body: formData,
@@ -47,6 +53,7 @@ export default function Register() {
                  className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6
                   scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
                    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                {isPwdErr && <span className="text-red-600 text-[10px] animate-pulse">* password must be at least 6 character long with special character, uppercase, number </span>}
             </div>
 
             <button type="submit"

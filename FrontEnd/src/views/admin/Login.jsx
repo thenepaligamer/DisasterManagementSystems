@@ -31,6 +31,7 @@ export default function Login (){
                 console.log(credentials.access_token);
                 localStorage.setItem("userInfo", JSON.stringify(credentials));
                 setUserInfo(credentials);
+                dispatch(login())
                 dispatch(setToken(credentials.access_token));
                 navigate('/admin', {replace: true});
               }

@@ -2,12 +2,15 @@ import {useState} from "react";
 import {NavLink} from "react-router-dom";
 
 export default function NavBar(){
-const [isOpen, setIsOpen] = useState(false);
-    function dropdown(){
-        console.log("dropdown");
-        setIsOpen(!isOpen);
+const [isProfileOpen, setIsProfileOpen] = useState(false);
+const [isEventOpen, setIsEventOpen] = useState(false);
+    function dropdownProfile(){
+        console.log("dropdownProfile");
+        setIsProfileOpen(!isProfileOpen);
     }
-
+    function dropdownEvents(){
+        setIsEventOpen(!isEventOpen);
+    }
     return(
         <>
         <div>
@@ -34,17 +37,43 @@ const [isOpen, setIsOpen] = useState(false);
                             </div>
                             <div className="hidden sm:block sm:ml-6">
                                 <div className="flex space-x-4">
-                                    <NavLink to="dashboard" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    <NavLink to="dashboard" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                         <span className="" aria-current="page">Dashboard</span>
                                     </NavLink>
-                                    <NavLink to="add-event" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                        <span>Add Event</span>
+                                    <div  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <button id="dropdownNavbarLink" onClick={dropdownEvents} data-dropdownProfile-toggle="dropdownNavbar"
+                                                className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium   border-b border-gray-100  md:hover:bg-transparent md:border-0  md:p-0 md:w-auto">Events <svg
+                                            className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd"
+                                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                  clipRule="evenodd"></path>
+                                        </svg></button>
+                                        { isEventOpen && <div id="dropdownRightStart"
+                                                         className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 ">
+                                            <ul className="py-1 text-sm text-black dark:text-gray-200"
+                                                aria-labelledby="dropdownRightStartButton">
+                                                <li>
+                                                    <NavLink to="add-event"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Events</NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="view-events"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">View Events</NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="pending-events"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Pending Events</NavLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        }
+                                    </div>
+                                    <NavLink to="contact" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <span >Contact</span>
                                     </NavLink>
-                                    <NavLink to="view-events" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                        <span >View Events</span>
-                                    </NavLink>
-                                    <NavLink to="pending-event" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                    <span>Pending Events</span>
+                                    <NavLink to="relief" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    <span>Relief</span>
                                     </NavLink>
                                 </div>
                             </div>
@@ -59,16 +88,16 @@ const [isOpen, setIsOpen] = useState(false);
                             </button>
 
 
-                            <div className="ml-3 relative z-10" onClick={dropdown}>
+                            <div className="ml-3 relative z-10" onClick={dropdownProfile}>
                                 <div>
                                     <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                         <span className="sr-only">Open user menu</span>
                                         <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                     </button>
                                 </div>
-                                {isOpen && <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
+                                {isProfileOpen && <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
                                     <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1" onClick={ok}>Settings</a>
+                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1" >Settings</a>
                                     <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
                                 </div>}
                             </div>

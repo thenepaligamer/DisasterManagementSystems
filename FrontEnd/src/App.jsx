@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import AddEvent from "./components/AddEvent";
 import ViewEvents from "./components/ViewEvents";
+import Relief from "./components/Relief";
 import Home from "./views/user/Home";
 
 import {login, setToken} from "./store/admin/adminAuthSlice"
@@ -49,9 +50,10 @@ function App() {
             } />
             <Route path="add-event" element={<AddEvent />} />
             <Route path="view-events" element={<ViewEvents />} />
+            <Route path="relief" element={<Relief />} />
         </Route>
           <Route path="/*" element={<Home/>} >
-              <Route path="add-event" element={<span>Hi add</span>}/>
+              <Route path="add-event" element={<AddEvent />}/>
               <Route path="view-events" element={<ViewEvents/>}/>
           </Route>
       </Routes>
