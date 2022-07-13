@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ReliefController;
-
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\VolunteerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,7 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
-#Route::get('viewplz', [ViewController::class, 'me']);
 
 Route::group(['middleware' => ['auth:sanctum']],function () {
     Route::post('logout', [LoginController::class, 'logout']);
@@ -32,8 +32,14 @@ Route::group(['middleware' => ['auth:sanctum']],function () {
 
 Route::get('viewUser', [ViewController::class, 'indexUser']);
 Route::post('addEvent', [ViewController::class, 'store']);
-
+/*
+Need to update the routes to xyz/view instead of viewXYZ
+*/
 Route::get('viewRelief', [ReliefController::class, 'index']);
+
+Route::get('viewContact', [ContactController::class, 'index']);
+
+Route::get('viewVolunteer', [VolunteerController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('view', [ViewController::class, 'index']);
@@ -47,4 +53,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/updateRelief/{id}', [ReliefController::class, 'update']);
     Route::delete('/deleteRelief/{id}', [ReliefController::class, 'destroy']);
 
+
+    Route::post('addContact', [ContactController::class, 'store']);
+    Route::get('/updateContact/{id}', [ContactController::class, 'show']);
+    Route::put('/updateContact/{id}', [ContactController::class, 'update']);
+    Route::delete('/deleteContact/{id}', [ContactController::class, 'destroy']);
+
+
+    Route::post('addVolunteer', [VolunteerController::class, 'store']);
+    Route::get('/updateVolunteer/{id}', [VolunteerController::class, 'show']);
+    Route::put('/updateVolunteer/{id}', [VolunteerController::class, 'update']);
+    Route::delete('/deleteVolunteer/{id}', [VolunteerController::class, 'destroy']);
 });
