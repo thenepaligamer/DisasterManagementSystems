@@ -11,6 +11,7 @@ import Relief from "./components/Relief";
 import Home from "./views/user/Home";
 
 import {login, setToken} from "./store/admin/adminAuthSlice"
+import Volunteer from "./components/user/Volunteer";
 
 const Admin = React.lazy(() => import('./views/admin/Admin'));
 const Login = React.lazy(() => import('./views/admin/Login'));
@@ -55,6 +56,8 @@ function App() {
           <Route path="/*" element={<Home/>} >
               <Route path="add-event" element={<AddEvent />}/>
               <Route path="view-events" element={<ViewEvents/>}/>
+              <Route path="relief" element={<Relief/>}/>
+              <Route path="volunteer" element={<Volunteer/>}/>
           </Route>
       </Routes>
     </div>

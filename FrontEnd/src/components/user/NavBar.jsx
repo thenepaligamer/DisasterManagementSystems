@@ -8,11 +8,16 @@ export default function NavBar() {
         console.log("dropdown");
         setIsOpen(!isOpen);
     }
+    function isDropped(){
+        if(isOpen){
+            setIsOpen(false)
+        }
+    }
 
     return (
     <>
        <div>
-           <nav className="px-2 bg-white border-gray-200 mt-5">
+           <nav className="px-2 bg-white border-gray-200 mt-5" onClick={isDropped}>
                <div className="container flex  items-center justify-between mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
                    <a href="#" className="flex items-center">
                         <span
@@ -43,7 +48,8 @@ export default function NavBar() {
                            </li>
                            <li>
                                <button id="dropdownNavbarLink" onClick={dropdown} data-dropdown-toggle="dropdownNavbar"
-                                       className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 text-xl border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Events <svg
+                                       className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 text-xl border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">
+                                        Incidents <svg
                                    className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                    xmlns="http://www.w3.org/2000/svg">
                                    <path fillRule="evenodd"
@@ -56,11 +62,11 @@ export default function NavBar() {
                                        aria-labelledby="dropdownRightStartButton">
                                        <li>
                                            <NavLink to="add-event"
-                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Events</NavLink>
+                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Incidents</NavLink>
                                        </li>
                                        <li>
                                            <NavLink to="view-events"
-                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">View Events</NavLink>
+                                              className="block px-4 py-2 text-black hover:bg-gray-100 ">View Incidents</NavLink>
                                        </li>
                                    </ul>
                                </div>
@@ -77,6 +83,10 @@ export default function NavBar() {
                            <li>
                                <NavLink to="Weather"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Weather</NavLink>
+                           </li>
+                           <li>
+                               <NavLink to="volunteer"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Volunteer</NavLink>
                            </li>
                        </ul>
                    </div>
