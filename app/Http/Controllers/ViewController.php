@@ -53,7 +53,9 @@ class ViewController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
-            'location' => 'required',
+            'province' => 'required',
+            'district' => 'required',
+            'local' => 'required',
             'type' => 'required',
             'description' => 'required',
             'estloss' => 'numeric',
@@ -65,7 +67,9 @@ class ViewController extends Controller
 
         $eventDetails = [
             'title' => $data['title'],
-            'location' => $data['location'],
+            'province' => $data['province'],
+            'district' => $data['district'],
+            'local' => $data['local'],
             'type' => $data['type'],
             'description' => $data['description'],
             'estloss' => $data['estloss'],
@@ -117,7 +121,9 @@ class ViewController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
-            'location' => 'required',
+            'province' => 'required',
+            'district' => 'required',
+            'local' => 'required',
             'type' => 'required',
             'description' => 'required',
             'estloss' => 'numeric',
@@ -129,7 +135,9 @@ class ViewController extends Controller
         $editedData = Events::find($id);
 
         $editedData->title = $request->input('title');
-        $editedData->location = $request->input('location');
+        $editedData->province = $request->input('province');
+        $editedData->district = $request->input('district');
+        $editedData->local = $request->input('local');
         $editedData->type = $request->input('type');
         $editedData->description = $request->input('description');
         $editedData->estloss = $request->input('estloss');
