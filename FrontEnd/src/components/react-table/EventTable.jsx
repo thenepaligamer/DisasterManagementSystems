@@ -1,22 +1,44 @@
-import data from "../MOCK_DATA.json"
 import {useEffect, useState} from "react";
 import { matchPath, useLocation } from "react-router-dom";
 
 export default function EventTable() {
     const [isUser, setIsUser] = useState(false);
+    const [eventData, setEventData] = useState([]);
     const location = useLocation();
     useEffect(() => {
         if(location.pathname === "/view-events"){
+            getData();
             setIsUser(true);
         }
-    }, [location])
-    const row = data.map(event => {
+    }, [location]);
+
+
+
+    async  function getData(){
+        try {
+            const events =  await fetch("http://localhost:8000/api/event/viewUser");
+            const eventsJson = await events.json();
+            setEventData(eventsJson);
+            console.log(eventsJson);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    const row = eventData.map(event => {
        return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
             <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
-                {event.eventTitle}
+                {event.title}
             </th>
             <td className="px-6 py-4">
-                {event.location}
+                {event.province}
+            </td>
+           <td className="px-6 py-4">
+                {event.district}
+            </td>
+           <td className="px-6 py-4">
+                {event.local}
             </td>
             <td className="px-6 py-4">
                 {event.type}
@@ -25,7 +47,7 @@ export default function EventTable() {
                 {event.description}
             </td>
             <td className="px-6 py-4">
-                {event.estimatedLoss}
+                {event.estloss}
             </td>
             <td className="px-6 py-4">
                 {event.death}
@@ -55,7 +77,13 @@ export default function EventTable() {
                         Event Title
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Location
+                        Province
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        District
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                        Local
                     </th>
                     <th scope="col" className="px-6 py-3">
                         Type

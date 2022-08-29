@@ -1,4 +1,4 @@
-import  EventTable  from "./react-table/EventTable";
+import  EventTable  from "../react-table/EventTable";
 
 import React from "react";
 export default function ViewEvents() {
