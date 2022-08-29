@@ -1,4 +1,5 @@
 export default function FireIcon({height, color, width}) {
+
     return (
         <>
             <span>

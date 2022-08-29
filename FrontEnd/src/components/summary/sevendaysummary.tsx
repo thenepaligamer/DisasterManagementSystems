@@ -17,7 +17,7 @@ export default function SevenDaysSummary() {
 
                 </div>
                     <div>
-                        <span className="text-xl pt-">
+                        <span className="text-xl pt-2">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
                             <Icon path={mdiFire} size={3} color="red" /> (Fire) : 20 Incidents
                         </span>
