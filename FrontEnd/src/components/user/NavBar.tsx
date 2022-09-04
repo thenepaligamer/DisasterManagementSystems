@@ -1,11 +1,12 @@
 import {useState} from "react";
 import {NavLink, useLocation,} from "react-router-dom";
 
-export default function NavBar() {
+import './navbar.module.css'
+
+const NavBar:React.FC = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const dropdown = () => {
-        console.log("dropdown");
         setIsOpen(!isOpen);
     }
     function isDropped(){
@@ -14,6 +15,8 @@ export default function NavBar() {
         }
     }
 
+
+
     return (
     <>
        <div>
@@ -21,7 +24,7 @@ export default function NavBar() {
                <div className="container flex  items-center justify-between mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
                    <a href="/" className="flex items-center">
                         <span
-                            className="self-center text-5xl font-semibold whitespace-nowrap">DMS</span>
+                            className=" self-center text-5xl font-semibold whitespace-nowrap">DMS</span>
                    </a>
                    <button data-collapse-toggle="mobile-menu" type="button"
                            className="inline-flex items-center justify-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 "
@@ -42,8 +45,8 @@ export default function NavBar() {
                    <div className="hidden w-full  md:block md:w-auto" id="mobile-menu">
                        <ul className="flex flex-col  mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                            <li>
-                               <NavLink to="/"
-                                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-xl"
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="/"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                                   aria-current="page">Home</NavLink>
                            </li>
                            <li>
@@ -61,11 +64,11 @@ export default function NavBar() {
                                    <ul className="py-1 text-sm text-black dark:text-gray-200"
                                        aria-labelledby="dropdownRightStartButton">
                                        <li>
-                                           <NavLink to="add-event"
+                                           <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="add-event"
                                               className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Incidents</NavLink>
                                        </li>
                                        <li>
-                                           <NavLink to="view-events"
+                                           <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="view-events"
                                               className="block px-4 py-2 text-black hover:bg-gray-100 ">View Incidents</NavLink>
                                        </li>
                                    </ul>
@@ -73,19 +76,19 @@ export default function NavBar() {
                                }
                            </li>
                            <li>
-                               <NavLink to="contact"
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="contact"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Contacts</NavLink>
                            </li>
                            <li>
-                               <NavLink  to="relief"
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})}  to="relief"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Relief</NavLink>
                            </li>
                            <li>
-                               <NavLink to="Weather"
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="Weather"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Weather</NavLink>
                            </li>
                            <li>
-                               <NavLink to="volunteer"
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="volunteer"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Volunteer</NavLink>
                            </li>
                        </ul>
@@ -96,3 +99,5 @@ export default function NavBar() {
     </>
 )
 }
+
+export default NavBar;

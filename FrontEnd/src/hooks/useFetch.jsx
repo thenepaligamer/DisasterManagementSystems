@@ -14,7 +14,7 @@ const useFetch = ({url}) => {
         const dataJson = await data.json();
         setData(dataJson);
     };
-    return
+    return {data, isLoading, error}
 };
 
 export default useFetch;

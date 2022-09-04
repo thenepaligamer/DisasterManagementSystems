@@ -1,6 +1,9 @@
 import {useRef, useState} from "react";
 import useFetch from "../../hooks/useFetch";
+
 import useDistrictComponent from "../../hooks/districtComponent";
+
+import DisasterImage from "../../assets/disaster.png";
 
 export default function AddEvent() {
     const districtComponent = useDistrictComponent();
@@ -38,7 +41,7 @@ export default function AddEvent() {
     return (<>
 
         <div className="flex space-x-2 flex-row gap-4 align-middle mt-[50px]">
-                <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX13093698.jpg" alt="disaster" className="w-1/3 ml-10" />
+                <img src={DisasterImage} alt="disaster" className="w-1/3 ml-10" />
             <div>
                 <div className="text-2xl my-2">Add an Incident</div>
                 <form onSubmit={submitted} className="space-y-3 my-3 rounded">

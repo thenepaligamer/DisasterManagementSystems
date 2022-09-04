@@ -1,5 +1,7 @@
 import useDistrictComponent from "../../hooks/districtComponent";
 
+import VolunteerImg from "../../assets/volunteer.png";
+
 export default function Volunteer() {
 
     const districtComponent = useDistrictComponent()
@@ -8,7 +10,7 @@ export default function Volunteer() {
     <>
         <div className="flex gap-20  mt-[50px]">
             <img
-                src="https://static.vecteezy.com/system/resources/previews/000/402/754/original/volunteers-with-charity-icons-illustration-vector.jpg"
+                src={VolunteerImg}
                 alt="Volunteer Picture"
                 className="w-1/3 ml-10"/>
             <div className="w-1/4">

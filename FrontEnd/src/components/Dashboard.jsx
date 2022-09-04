@@ -15,6 +15,7 @@ export default function Dashboard (){
                 </div>
                 <div className="col-span-4">
                     <SevenDaysSummary />
+                    <button className="text-xl mt-4 p-1 rounded button text-blue-600 border-2 border-blue-600 hover:bg-blue-100 ">More Summary </button>
                 </div>
 
             </div>
