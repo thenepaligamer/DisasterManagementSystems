@@ -46,7 +46,7 @@ export default function AddEvent() {
                 <div className="text-2xl my-2">Add an Incident</div>
                 <form onSubmit={submitted} className="space-y-3 my-3 rounded">
                     <div className="flex ">
-                        <label htmlFor="name"
+                        <label htmlFor="title"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Event Title</label>
                         <input type="text" id="title" name="title"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"

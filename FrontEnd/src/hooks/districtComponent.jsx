@@ -41,10 +41,10 @@ const useDistrictComponent = () => {
         <label htmlFor="districts"
                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">District</label>
 
-        <select id="districts" onChange={changeDistrict} name="district"
+        <select id="districts" onChange={changeDistrict} name="district" defaultValue={'default'}
                 ref={districtSelected}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-            <option selected>Choose a District</option>
+            <option value="default">Choose a District</option>
             {district}
         </select>
     </div>
@@ -52,10 +52,10 @@ const useDistrictComponent = () => {
         <label htmlFor="local"
                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Local</label>
 
-        <select id="local" name="local"
+        <select id="local" name="local" defaultValue={'default'}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-            <option selected>Choose a LocalBody</option>
-            {localBodyAvailable && localBodyAvailable.map( localBody => <option value={localBody}>{localBody}</option>)}
+            <option value="default">Choose a LocalBody</option>
+            {localBodyAvailable && localBodyAvailable.map( localBody => <option value={localBody} key={localBody}>{localBody}</option>)}
         </select>
     </div>
    </>);

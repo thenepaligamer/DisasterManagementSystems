@@ -12,26 +12,26 @@ const SevenDaysSummary = () => {
                 <div className="text-center py-2 border-2 border-black">
                     <span className="text-md ">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                        <Icon path={mdiFire} size={2} color="red" /> (Fire) : 20 Incidents
+                        <Icon path={mdiFire} size={2} color="red" /> Fire : 20 Incidents
                     </span>
 
                 </div>
                     <div className="grid grid-cols-2 p-0">
                         <span className="text-md pt-2">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                            <Icon path={mdiFire} size={2} color="red" /> (Fire) : 20 Incidents
+                            <Icon path={mdiFire} size={2} color="red" /> Fire : 20 Incidents
                         </span>
                         <span className="text-md text-nowrap">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                            <Icon path={mdiLightningBolt} size={2} color="red" /> (ThunderBolt) : 20 Incidents
+                            <Icon path={mdiLightningBolt} size={2} color="red" /> ThunderBolt : 20 Incidents
                         </span>
                         <span className="text-md ">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                            <Icon path={mdiLandslide} size={2} color="green" /> (LandSlide) : 20 Incidents
+                            <Icon path={mdiLandslide} size={2} color="green" /> LandSlide : 20 Incidents
                         </span>
                         <span className="text-md ">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                            <Icon path={mdiHomeFlood} size={2} color="red" /> (Flood) : 20 Incidents
+                            <Icon path={mdiHomeFlood} size={2} color="red" /> Flood : 20 Incidents
                         </span>
                     </div>
 
