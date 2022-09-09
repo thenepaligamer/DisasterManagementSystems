@@ -41,7 +41,9 @@ const [isEventOpen, setIsEventOpen] = useState(false);
                         </div>
                         <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex-shrink-0 flex items-center">
+                                <a href="/admin">
                                 <h2 className="text-white text-3xl">Admin</h2>
+                                </a>
                             </div>
                             <div className="hidden sm:block sm:ml-6">
                                 <div className="flex space-x-4">
@@ -50,7 +52,7 @@ const [isEventOpen, setIsEventOpen] = useState(false);
                                     </NavLink>
                                     <div  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                         <button id="dropdownNavbarLink" onClick={dropdownEvents} data-dropdownProfile-toggle="dropdownNavbar"
-                                                className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium   border-b border-gray-100  md:hover:bg-transparent md:border-0  md:p-0 md:w-auto">Events <svg
+                                                className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium   border-b border-gray-100  md:hover:bg-transparent md:border-0  md:p-0 md:w-auto">Incidents <svg
                                             className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd"
@@ -63,15 +65,15 @@ const [isEventOpen, setIsEventOpen] = useState(false);
                                                 aria-labelledby="dropdownRightStartButton">
                                                 <li>
                                                     <NavLink to="add-event"
-                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Events</NavLink>
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Incident</NavLink>
                                                 </li>
                                                 <li>
                                                     <NavLink to="view-events"
-                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">View Events</NavLink>
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">View Incidents</NavLink>
                                                 </li>
                                                 <li>
                                                     <NavLink to="pending-events"
-                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Pending Events</NavLink>
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Pending Incidents</NavLink>
                                                 </li>
                                             </ul>
                                         </div>

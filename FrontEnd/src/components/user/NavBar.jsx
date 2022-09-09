@@ -19,7 +19,7 @@ export default function NavBar() {
        <div>
            <nav className="px-2 bg-white border-gray-200 mt-5" onClick={isDropped}>
                <div className="container flex  items-center justify-between mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
-                   <a href="#" className="flex items-center">
+                   <a href="/" className="flex items-center">
                         <span
                             className="self-center text-5xl font-semibold whitespace-nowrap">DMS</span>
                    </a>

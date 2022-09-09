@@ -1,5 +1,9 @@
+import useDistrictComponent from "../../hooks/districtComponent";
 
 export default function Volunteer() {
+
+    const districtComponent = useDistrictComponent()
+
     return (
     <>
         <div className="flex gap-20  mt-[50px]">
@@ -10,22 +14,23 @@ export default function Volunteer() {
             <div className="w-1/4">
                 <div className="text-2xl my-2">Volunteer Form</div>
                 <form  className="space-y-3 my-3 rounded flex flex-col ">
+                    <div className="flex">
+                        <label className="flex align-middle mr-3  text-sm font-medium text-gray-900 " htmlFor="firstName">Type</label>
+                        <select name="type" id="" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <option value="Individual">Individual</option>
+                            <option value="Organization">Organization</option>
+                        </select>
+                    </div>
                     <div className="flex ">
-                        <label htmlFor="first_name"
+                        <label htmlFor="full_name"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Full
                             name:</label>
-                        <input type="text" id="first_name"
-                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                        <input type="text" id="full_name"
+                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-3/4 p-2.5"
                                placeholder="Ram Bahadhur Thapa" required />
                     </div>
 
-                    <div className="flex ">
-                        <label htmlFor="first_name"
-                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Location:</label>
-                        <input type="text" id="first_name"
-                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
-                               placeholder="District" required />
-                    </div>
+                    {districtComponent}
                     <div className="flex ">
                         <label htmlFor="first_name"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Phone:</label>

@@ -5,10 +5,11 @@ import './App.css';
 
 import {useDispatch, useSelector} from "react-redux";
 
-import AddEvent from "./components/AddEvent";
-import ViewEvents from "./components/ViewEvents";
+import AddEvent from "./components/events/AddEvent";
+import ViewEvents from "./components/events/ViewEvents";
 import Relief from "./components/Relief";
 import Home from "./views/user/Home";
+import Dashboard from "./components/Dashboard";
 
 import {login, setToken} from "./store/admin/adminAuthSlice"
 import Volunteer from "./components/user/Volunteer";
@@ -39,6 +40,7 @@ function App() {
                 <Admin />
             </React.Suspense>
         } >
+            <Route path="" element={<Dashboard/>}/>
             <Route path="login" element={
                 <React.Suspense fallback={<><span>oops</span></>}>
                     <Login />
@@ -54,6 +56,8 @@ function App() {
             <Route path="relief" element={<Relief />} />
         </Route>
           <Route path="/*" element={<Home/>} >
+
+              <Route path="" element={<Dashboard />}/>
               <Route path="add-event" element={<AddEvent />}/>
               <Route path="view-events" element={<ViewEvents/>}/>
               <Route path="relief" element={<Relief/>}/>
