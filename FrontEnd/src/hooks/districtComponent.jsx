@@ -30,11 +30,12 @@ const useDistrictComponent = () => {
                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                <option selected>Choose a Province</option>
                <option value="Province 1">Province 1</option>
-               <option value="Janakpur">Janakpur</option>
-               <option value="Bagmati">Bagmat</option>
+               <option value="Madhesh_Pradesh">Madesh Pradesh</option>
+               <option value="Bagmati">Bagmati</option>
                <option value="Gnadaki">Gandaki</option>
                <option value="Lumbini">Lumbini</option>
-               <option value="Sudur">SudurPaschim</option>
+               <option value="Karnali">Karnali</option>
+               <option value="Sudurpaschim">SudurPaschim</option>
            </select>
        </div>
        <div className="flex ">
