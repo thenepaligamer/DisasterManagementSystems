@@ -4,7 +4,6 @@ export default function Register() {
     const [isPwdErr, setIsPwdErr] = useState(false)
     const submit = (e) => {
         e.preventDefault();
-
         const formData = new FormData();
         const name = e.target.elements.name.value;
         const email = e.target.elements.email.value;

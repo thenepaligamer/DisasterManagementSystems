@@ -5,6 +5,7 @@ import './App.css';
 
 import {useDispatch, useSelector} from "react-redux";
 
+import UpdateEvents from "./components/admin/UpdateEvents";
 import AddEvent from "./components/events/AddEvent";
 import ViewEvents from "./components/events/ViewEvents";
 import Relief from "./components/Relief";
@@ -54,6 +55,7 @@ function App() {
             <Route path="add-event" element={<AddEvent />} />
             <Route path="view-events" element={<ViewEvents />} />
             <Route path="relief" element={<Relief />} />
+            <Route path='event/update/:id' element={<UpdateEvents />} />
         </Route>
           <Route path="/*" element={<Home/>} >
 

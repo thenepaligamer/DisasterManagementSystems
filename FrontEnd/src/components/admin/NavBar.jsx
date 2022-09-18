@@ -51,7 +51,7 @@ const [isEventOpen, setIsEventOpen] = useState(false);
                                         <span className="" aria-current="page">Dashboard</span>
                                     </NavLink>
                                     <div  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                        <button id="dropdownNavbarLink" onClick={dropdownEvents} data-dropdownProfile-toggle="dropdownNavbar"
+                                        <button id="dropdownNavbarLink" onClick={dropdownEvents}
                                                 className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium   border-b border-gray-100  md:hover:bg-transparent md:border-0  md:p-0 md:w-auto">Incidents <svg
                                             className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
