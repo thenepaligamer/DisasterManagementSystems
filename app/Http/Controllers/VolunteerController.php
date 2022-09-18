@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Rules\ValidHCaptcha;
 use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\WelcomeEmailNotification;
+use Notification;
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
 
 class VolunteerController extends Controller
 {
@@ -46,7 +51,7 @@ class VolunteerController extends Controller
             'district' => 'required',
             'local'=> 'required',
             'ward_no' => 'required|numeric',
-            'phone' => 'required|numeric',
+            'phone' => 'required|decimal',
             'email' => 'required',
             'interested_area' => 'required',
             'manpower' => 'alpha_num'
@@ -65,10 +70,20 @@ class VolunteerController extends Controller
 
         $volunteer = Volunteers::create($volunteerDetails);
 
-        return response()->json([
+        $email = 'admin@dms.com';
+   
+        $mailInfo = [
+            'title' => 'Welcome new volunteer',
+            'url' => 'localhost'
+        ];
+  
+        Mail::to($email)->send(new WelcomeMail($mailInfo));
+
+        /*return response()->json([
             'message' => 'Added volunteer data',
             'relief details' => $volunteer
-        ],201);
+        ],201);*/
+
     }
 
     /**

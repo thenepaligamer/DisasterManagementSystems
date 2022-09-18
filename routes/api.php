@@ -8,6 +8,8 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ReliefController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\WelcomeController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,9 +34,6 @@ Route::group(['middleware' => ['auth:sanctum']],function () {
 
 Route::get('event/viewUser', [ViewController::class, 'indexUser']);
 Route::post('/event/add', [ViewController::class, 'store']);
-/*
-Need to update the routes to xyz/view instead of viewXYZ
-*/
 
 Route::get('/relief/view', [ReliefController::class, 'index']);
 
