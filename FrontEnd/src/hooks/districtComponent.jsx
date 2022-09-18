@@ -3,8 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import allDistricts from "../utils/districts";
 import localBodies from "../utils/localBodies";
 
-const useDistrictComponent = (props) => {
-    console.log(props);
+const useDistrictComponent = (props = {province: null, district: null, local: null,}) => {
     const districtSelected = useRef();
     const [localBodyAvailable, setLocalBodyAvailable] = useState(null);
     const district = allDistricts.map( district => {

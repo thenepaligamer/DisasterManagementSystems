@@ -3,9 +3,13 @@ import {useEffect, useState} from "react";
 
 import useDistrictComponent from "../../hooks/districtComponent";
 
+import {useNavigate} from "react-router-dom";
+import * as Url from "url";
+
 export default function UpdateEvents() {
 
     const {id} = useParams();
+    const navigate = useNavigate();
     const [event, setEvent] = useState({});
     const districtComponent = useDistrictComponent({province: event.province, district: event.district, local: event.local});
     const [loading, setLoading] = useState(true);
@@ -31,7 +35,7 @@ export default function UpdateEvents() {
     async function submit(e){
         e.preventDefault();
         const {title, province, district, local, type, description, estloss, death, injured, missing} = e.target;
-        const formData = new FormData();
+        const formData = new URLSearchParams();
         formData.append('title', title.value);
         formData.append("province", province.value);
         formData.append("district", district.value);
@@ -43,13 +47,14 @@ export default function UpdateEvents() {
         formData.append("injured", injured.value);
         formData.append("missing", missing.value);
         formData.append("is_verified", 1);
-        const response = await fetch((`http://localhost:8000/api/event/update/${id}`), {
+        console.log(formData);
+        const response = await fetch((`http://localhost:8000/api/event/update/${id}?` + formData), {
             method: "PUT",
-            body: formData,
             headers: {
                 authorization: `Bearer ${token}`,
             }
         });
+        navigate('/admin/view-events', {replace: true});
     }
 
     return (<>
