@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 use App\Rules\ValidHCaptcha;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
+
 /*
 $rules = [
             'h-captcha-response' => ['required', new ValidHCaptcha()]
@@ -80,6 +84,17 @@ class ViewController extends Controller
         ];
         
         $events = Events::create($eventDetails);
+
+        $email = 'admin@dms.com';
+   
+        $mailInfo = [
+            'title' => $eventDetails['type'],
+            'url' => 'localhost'
+        ];
+
+        //.' has occurred in '.$eventDetails['local'].', '$eventDetails['district']
+  
+        Mail::to($email)->send(new WelcomeMail($mailInfo));
 
         return response()->json([
             'message' => 'Added event',
