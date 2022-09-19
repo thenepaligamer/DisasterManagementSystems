@@ -1,15 +1,22 @@
 import {useEffect, useState} from "react";
-import { matchPath, useLocation } from "react-router-dom";
+import { matchPath, useLocation, Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export default function EventTable() {
     const [isUser, setIsUser] = useState(false);
+    const {isLoggedIn} = useSelector( store => store.adminAuth);
     const [eventData, setEventData] = useState([]);
     const location = useLocation();
     useEffect(() => {
         if(location.pathname === "/view-events"){
             getData();
             setIsUser(true);
+            return
         }
+        if(isLoggedIn){
+            getData();
+        }
+
     }, [location]);
 
 
@@ -17,6 +24,7 @@ export default function EventTable() {
     async  function getData(){
         try {
             const events =  await fetch("http://localhost:8000/api/event/viewUser");
+            console.log(events)
             const eventsJson = await events.json();
             setEventData(eventsJson);
             console.log(eventsJson);
@@ -63,7 +71,7 @@ export default function EventTable() {
            </td> }
            {!isUser &&
             <td className="px-6 py-4 text-right">
-                <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
+                <Link to={"/admin/event/update/"+event.id} className="font-medium text-blue-600  hover:underline">Edit</Link>
             </td> }
         </tr> )
     })
@@ -114,7 +122,6 @@ export default function EventTable() {
                 </thead>
                 <tbody>
                 {row}
-3
                 </tbody>
             </table>
         </div>

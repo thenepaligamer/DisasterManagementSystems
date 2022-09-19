@@ -53,7 +53,11 @@ class VolunteerController extends Controller
             'district' => 'required',
             'local'=> 'required',
             'ward_no' => 'required|numeric',
+<<<<<<< HEAD
             'phone' => 'required|string',
+=======
+            'phone' => 'required|numeric',
+>>>>>>> 18901c166e8112ffe96d1da2afbe717473c4edac
             'email' => 'required',
             'interested_area' => 'required',
             'manpower' => 'alpha_num'
@@ -73,12 +77,12 @@ class VolunteerController extends Controller
         $volunteer = Volunteers::create($volunteerDetails);
 
         $email = 'admin@dms.com';
-   
+
         $mailInfo = [
             'title' => 'Welcome new volunteer',
             'url' => 'localhost'
         ];
-  
+
         Mail::to($email)->send(new WelcomeMail($mailInfo));
         $volunteer->notify(new SuccessfulRegistration());
         #$user->notify(new SuccessfulRegistration());
