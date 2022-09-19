@@ -9,6 +9,8 @@ use App\Http\Controllers\ReliefController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\DisController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,10 @@ Route::get('/relief/view', [ReliefController::class, 'index']);
 Route::get('/contact/view', [ContactController::class, 'index']);
 
 Route::get('/volunteer/view', [VolunteerController::class, 'index']);
+
+Route::get('/showPhoneNumber', [Discontroller::class,'show']);
+Route::post('/store/phonenumber', [Discontroller::class,'storePhoneNumber']);
+Route::post('/custom', [Discontroller::class,'sendCustomMessage']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event/view', [ViewController::class, 'index']);

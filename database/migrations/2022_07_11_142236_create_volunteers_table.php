@@ -19,7 +19,7 @@ class CreateVolunteersTable extends Migration
             $table->string('district');
             $table->string('local');
             $table->decimal('ward_no',$precision = 8, $scale = 3);
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('email');
             $table->string('interested_area');
             $table->string('manpower');

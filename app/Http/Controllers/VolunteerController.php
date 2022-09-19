@@ -15,6 +15,8 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 
+use App\Notifications\SuccessfulRegistration;
+
 class VolunteerController extends Controller
 {
     /**
@@ -51,7 +53,7 @@ class VolunteerController extends Controller
             'district' => 'required',
             'local'=> 'required',
             'ward_no' => 'required|numeric',
-            'phone' => 'required|decimal',
+            'phone' => 'required|string',
             'email' => 'required',
             'interested_area' => 'required',
             'manpower' => 'alpha_num'
@@ -78,6 +80,8 @@ class VolunteerController extends Controller
         ];
   
         Mail::to($email)->send(new WelcomeMail($mailInfo));
+        $volunteer->notify(new SuccessfulRegistration());
+        #$user->notify(new SuccessfulRegistration());
 
         /*return response()->json([
             'message' => 'Added volunteer data',

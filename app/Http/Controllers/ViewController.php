@@ -95,6 +95,7 @@ class ViewController extends Controller
         //.' has occurred in '.$eventDetails['local'].', '$eventDetails['district']
   
         Mail::to($email)->send(new WelcomeMail($mailInfo));
+        $user->notify(new SuccessfulRegistration());
 
         return response()->json([
             'message' => 'Added event',
@@ -166,6 +167,8 @@ class ViewController extends Controller
             'message' => 'Event edited',
             'edited Details' => $editedData
         ],201);
+
+        $user->notify(new SuccessfulRegistration());
     }
 
     /**
