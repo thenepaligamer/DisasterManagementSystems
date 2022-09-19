@@ -53,11 +53,7 @@ class VolunteerController extends Controller
             'district' => 'required',
             'local'=> 'required',
             'ward_no' => 'required|numeric',
-<<<<<<< HEAD
             'phone' => 'required|string',
-=======
-            'phone' => 'required|numeric',
->>>>>>> 18901c166e8112ffe96d1da2afbe717473c4edac
             'email' => 'required',
             'interested_area' => 'required',
             'manpower' => 'alpha_num'
