@@ -129,13 +129,13 @@ class ViewController extends Controller
 
         $getUnverifiedEvents = Events::find($id);
 
-        $verifiedData->is_verified = $request->input('is_verified');
+        /*$verifiedData->is_verified = $request->input('is_verified');
 
-        $verifiedData->save();
+        $verifiedData->save();*/
 
         return response()->json([
             'message' => 'Status updated',
-            'edited Details' => $verifiedData
+            'edited Details' => $getUnverifiedEvents
         ],201);
     }
 
