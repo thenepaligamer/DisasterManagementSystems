@@ -36,9 +36,8 @@ class DisController extends Controller
     */
     public function show()
     {
-        //$showAllPhoneNumbers = UsersPhoneNumber::all(); //query db with model
-        //return response()->json($showAllPhoneNumbers);
-        echo 'Hello';
+        $showAllPhoneNumbers = UsersPhoneNumber::all(); //query db with model
+        return response()->json($showAllPhoneNumbers);
     }
 
     /**
