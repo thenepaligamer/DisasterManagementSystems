@@ -42,6 +42,7 @@ class ReliefController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'province' => 'required',
             'district' => 'required',
             'local' => 'required',
             'date'=> 'required|date',
@@ -55,6 +56,7 @@ class ReliefController extends Controller
         ]);
 
         $reliefDetails = [
+            'province' => $data['province'],
             'district' => $data['district'],
             'local' => $data['local'],
             'date'=> $data['date'],
@@ -108,6 +110,7 @@ class ReliefController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
+            'province' => 'required',
             'district' => 'required',
             'local' => 'required',
             'date'=> 'required|date',
@@ -122,6 +125,7 @@ class ReliefController extends Controller
 
         $editedReliefData = Relief::find($id);
 
+        $editedReliefData->province = $request->input('province');
         $editedReliefData->district = $request->input('district');
         $editedReliefData->local = $request->input('local');
         $editedReliefData->date = $request->input('date');

@@ -43,6 +43,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'province' => 'required',
             'district' => 'required',
             'local' => 'required',
             'spokesman'=> 'required',
@@ -51,6 +52,7 @@ class ContactController extends Controller
         ]);
 
         $contactDetails = [
+            'province' => $data['province'],
             'district' => $data['district'],
             'local' => $data['local'],
             'spokesman'=> $data['spokesman'],
@@ -99,6 +101,7 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
+            'province' => 'required',
             'district' => 'required',
             'local' => 'required',
             'spokesman'=> 'required',
@@ -108,6 +111,7 @@ class ContactController extends Controller
 
         $editedContactData = Contact::find($id);
 
+        $editedContactData->province = $request->input('province');
         $editedContactData->district = $request->input('district');
         $editedContactData->local = $request->input('local');
         $editedContactData->spokesman = $request->input('spokesman');

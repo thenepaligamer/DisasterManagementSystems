@@ -15,6 +15,7 @@ class CreateReliefsTable extends Migration
     {
         Schema::create('reliefs', function (Blueprint $table) {
             $table->id();
+            $table->string('province');
             $table->string('district');
             $table->string('local');
             $table->date('date', $precision = 8, $scale = 3);

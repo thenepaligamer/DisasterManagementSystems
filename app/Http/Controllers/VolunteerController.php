@@ -50,9 +50,11 @@ class VolunteerController extends Controller
     {
         $data = $request->validate([
             'type' => 'required',
+            'province' => 'required',
             'district' => 'required',
             'local'=> 'required',
             'ward_no' => 'required|numeric',
+            'name' => 'required|string',
             'phone' => 'required|string',
             'email' => 'required',
             'interested_area' => 'required',
@@ -61,9 +63,11 @@ class VolunteerController extends Controller
 
         $volunteerDetails = [
             'type' => $data['type'],
+            'province' => $data['province'],
             'district' => $data['district'],
             'local'=> $data['local'],
             'ward_no' => $data['ward_no'],
+            'name' => $data['name'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'interested_area' => $data['interested_area'],
@@ -124,9 +128,11 @@ class VolunteerController extends Controller
     {
         $data = $request->validate([
             'type' => 'required',
+            'province' => 'required',
             'district' => 'required',
             'local'=> 'required',
             'ward_no' => 'required|numeric',
+            'name' => 'required',
             'phone' => 'required|numeric',
             'email' => 'required',
             'interested_area' => 'required',
@@ -136,9 +142,11 @@ class VolunteerController extends Controller
         $editedVolunteerData = Volunteers::find($id);
 
         $editedVolunteerData->type = $request->input('type');
+        $editedVolunteerData->province = $request->input('province');
         $editedVolunteerData->district = $request->input('district');
         $editedVolunteerData->local = $request->input('local');
         $editedVolunteerData->ward_no = $request->input('ward_no');
+        $editedVolunteerData->name = $request->input('name');
         $editedVolunteerData->phone = $request->input('phone');
         $editedVolunteerData->email = $request->input('email');
         $editedVolunteerData->interested_area = $request->input('interested_area');
