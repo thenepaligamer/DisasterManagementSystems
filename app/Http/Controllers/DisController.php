@@ -7,7 +7,6 @@ use Twilio\Rest\Client;
 use App\Models\UsersPhoneNumber;
 use Illuminate\Support\Facades\DB;
 
-
 class DisController extends Controller
 {
     /**

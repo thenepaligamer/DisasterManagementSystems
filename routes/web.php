@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/mail-send', [WelcomeController::class, 'mailSend']);
 
+Route::get('/showPhoneNumber', [Discontroller::class,'show']);

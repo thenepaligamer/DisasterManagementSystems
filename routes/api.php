@@ -43,7 +43,7 @@ Route::get('/contact/view', [ContactController::class, 'index']);
 
 Route::get('/volunteer/view', [VolunteerController::class, 'index']);
 
-Route::get('/showPhoneNumber', [DisController::class,'show']);
+//Route::get('/showPhoneNumber', [DisController::class,'show']);
 Route::post('/store/phonenumber', [DisController::class,'storePhoneNumber']);
 Route::post('/custom', [DisController::class,'sendCustomMessage']);
 
