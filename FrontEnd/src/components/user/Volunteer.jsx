@@ -9,16 +9,22 @@ export default function Volunteer() {
     async function submitted(e) {
         e.preventDefault();
         console.log(e.target);
-        const {type} = e.target;
-
-        const formData = new FormData();
+        const {type, full_name, phone,email, interested_area, district, local, manpower, ward_no} = e.target;
+        const formData = new URLSearchParams();
+        formData.append("type", type.value);
+        formData.append("full_name", full_name.value);
+        formData.append("phone", phone.value);
+        formData.append("email", email.value);
+        formData.append("interested_area", interested_area.value);
+        formData.append("district", district.value);
+        formData.append("local", local.value);
+        formData.append("manpower", manpower.value);
+        formData.append("ward_no", ward_no.value);
         console.log(formData);
         const url = "http://localhost:8000/api/volunteer/add";
-        const options = {};
         try {
-            const response = await fetch(url, {
+            const response = await fetch(url +'?'+ formData, {
                 method: 'POST',
-                body: formData,
             });
             const data = await response.json();
             console.log(data);
@@ -55,6 +61,13 @@ export default function Volunteer() {
 
                     {districtComponent}
                     <div className="flex ">
+                        <label htmlFor="ward"
+                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Ward No:</label>
+                        <input type="text" id="ward_no"
+                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
+                               placeholder="" required />
+                    </div>
+                    <div className="flex ">
                         <label htmlFor="phone"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Phone:</label>
                         <input type="text" id="phone"
@@ -76,9 +89,9 @@ export default function Volunteer() {
                                placeholder="Location" required />
                     </div>
                     <div className="flex ">
-                        <label htmlFor="duration"
-                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Duration:</label>
-                        <input type="text" id="duration"
+                        <label htmlFor="manpower"
+                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Manpower:</label>
+                        <input type="text" id="manpower"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
                                placeholder="Time to be commited" required />
                     </div>
