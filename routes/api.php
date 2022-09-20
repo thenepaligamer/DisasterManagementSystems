@@ -51,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event/view', [ViewController::class, 'index']);
     Route::get('/event/update/{id}', [ViewController::class, 'show']);
     Route::put('/event/update/{id}', [ViewController::class, 'update']);
+    Route::put('/event/update/status/{id}', [ViewController::class, 'edit']);
     Route::delete('/event/delete/{id}', [ViewController::class, 'destroy']);
     
     

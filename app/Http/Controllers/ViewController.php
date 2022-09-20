@@ -121,9 +121,22 @@ class ViewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        
+        $data = $request->validate([
+            'is_verified' => 'required'
+        ]);
+
+        $getUnverifiedEvents = Events::find($id);
+
+        $verifiedData->is_verified = $request->input('is_verified');
+
+        $verifiedData->save();
+
+        return response()->json([
+            'message' => 'Status updated',
+            'edited Details' => $verifiedData
+        ],201);
     }
 
     /**
