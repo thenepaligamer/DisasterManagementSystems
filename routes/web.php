@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
-
+use App\Http\Controllers\DisController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/mail-send', [WelcomeController::class, 'mailSend']);
+

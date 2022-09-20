@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use App\Models\UsersPhoneNumber;
+use Illuminate\Support\Facades\DB;
+
 
 class DisController extends Controller
 {
@@ -35,8 +37,9 @@ class DisController extends Controller
     */
     public function show()
     {
-        $users = UsersPhoneNumber::all(); //query db with model
-        return view('welcome', compact("users")); //return view with data
+        //$showAllPhoneNumbers = UsersPhoneNumber::all(); //query db with model
+        //return response()->json($showAllPhoneNumbers);
+        echo 'Hello';
     }
 
     /**
