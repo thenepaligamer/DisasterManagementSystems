@@ -16,9 +16,11 @@ class CreateVolunteersTable extends Migration
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+            $table->string('province');
             $table->string('district');
             $table->string('local');
             $table->decimal('ward_no',$precision = 8, $scale = 3);
+            $table->string('name');
             $table->string('phone');
             $table->string('email');
             $table->string('interested_area');
