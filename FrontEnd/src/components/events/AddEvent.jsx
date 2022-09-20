@@ -24,7 +24,7 @@ export default function AddEvent() {
         formData.append("missing", missing.value);
         formData.append("is_verified", 1);
         console.log(formData);
-        const url = "http://localhost:8000/api/event/add";
+        const url = "https://dms-json-hosting.herokuapp.com/api/event/add";
         const options = {};
         try{
         const response = await fetch(url, {method: 'POST',

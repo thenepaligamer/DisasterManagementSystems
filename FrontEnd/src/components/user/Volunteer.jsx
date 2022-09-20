@@ -21,7 +21,7 @@ export default function Volunteer() {
         formData.append("manpower", manpower.value);
         formData.append("ward_no", ward_no.value);
         console.log(formData);
-        const url = "http://localhost:8000/api/volunteer/add";
+        const url = "https://dms-json-hosting.herokuapp.com/api/volunteer/add";
         try {
             const response = await fetch(url +'?'+ formData, {
                 method: 'POST',

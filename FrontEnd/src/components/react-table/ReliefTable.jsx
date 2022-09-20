@@ -9,6 +9,11 @@ export default function ReliefTable(){
         if(location.pathname === "/relief"){
             setIsUser(true);
         }
+        (async () => {
+            const response = await fetch("https://dms-json-hosting.herokuapp.com/api/relief/view");
+            const data = await response.json();
+            console.log(data);
+        })()
     })
     const row = relief.map(event => {
         return (<tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>

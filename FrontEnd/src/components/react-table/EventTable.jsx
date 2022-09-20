@@ -14,7 +14,7 @@ export default function EventTable() {
             return
         }
         if(isLoggedIn){
-            getData();
+            getAdminData();
         }
 
     }, [location]);
@@ -23,13 +23,29 @@ export default function EventTable() {
 
     async  function getData(){
         try {
-            const events =  await fetch("http://localhost:8000/api/event/viewUser");
+            const events =  await fetch("https://dms-json-hosting.herokuapp.com/api/event/viewUser");
             console.log(events)
             const eventsJson = await events.json();
             setEventData(eventsJson);
             console.log(eventsJson);
         }
         catch(error){
+            console.log(error);
+        }
+    }
+    async function getAdminData(){
+        try{
+            const events = await fetch("https://dms-json-hosting.herokuapp.com/api/event/view", {
+                method: "GET",
+                headers: {
+                    authorization:  'Bearer ' + JSON.parse(localStorage.getItem('userInfo')).access_token
+                }
+            });
+            const eventsJson = await events.json();
+            console.log(eventsJson[0].is_verified);
+            setEventData(eventsJson);
+        }
+        catch (error){
             console.log(error);
         }
     }
@@ -67,7 +83,7 @@ export default function EventTable() {
                 {event.missing}
             </td>
            {!isUser && <td className="px-6 py-4">
-               {event.is_verified}
+               {event.is_verified ? <span className="text-green-500">Verified</span> : <span className="text-red-500">Not Verified</span>}
            </td> }
            {!isUser &&
             <td className="px-6 py-4 text-right">

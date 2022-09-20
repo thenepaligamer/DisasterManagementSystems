@@ -15,7 +15,7 @@ export default function Register() {
             return setIsPwdErr(true)
         }
         setIsPwdErr(false)
-        fetch("http://localhost:8000/api/register", {
+        fetch("https://dms-json-hosting.herokuapp.com/api/register", {
             method: 'POST',
             body: formData,
         })

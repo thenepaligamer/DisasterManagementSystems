@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard";
 
 import {login, setToken} from "./store/admin/adminAuthSlice"
 import Volunteer from "./components/user/Volunteer";
+import ContactTable from "./components/react-table/ContactTable";
 
 const Admin = React.lazy(() => import('./views/admin/Admin'));
 const Login = React.lazy(() => import('./views/admin/Login'));
@@ -64,6 +65,7 @@ function App() {
               <Route path="view-events" element={<ViewEvents/>}/>
               <Route path="relief" element={<Relief/>}/>
               <Route path="volunteer" element={<Volunteer/>}/>
+              <Route path="contact" element={<ContactTable />} />
           </Route>
       </Routes>
     </div>
