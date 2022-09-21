@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/mail-send', [WelcomeController::class, 'mailSend']);
+
+Route::get('/', [DisController::class,'show']);
+Route::post('/store/phonenumber', [DisController::class,'storePhoneNumber']);
+Route::post('/custom', [DisController::class,'sendCustomMessage']);

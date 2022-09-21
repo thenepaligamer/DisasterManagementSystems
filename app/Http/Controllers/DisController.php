@@ -26,7 +26,7 @@ class DisController extends Controller
         $user_phone_number_model = new UsersPhoneNumber($request->all());
         $user_phone_number_model->save();
         $this->sendMessage('User registration successful!!', $request->phone_number);
-        //return back()->with(['success' => "{$request->phone_number} registered"]);
+        return back()->with(['success' => "{$request->phone_number} registered"]);
     }
 
     /**
@@ -36,8 +36,9 @@ class DisController extends Controller
     */
     public function show()
     {
-        $showAllPhoneNumbers = UsersPhoneNumber::all(); //query db with model
-        return response()->json($showAllPhoneNumbers);
+        $showAllPhoneNumber = UsersPhoneNumber::all(); //query db with model
+        return response()->json($showAllPhoneNumber);
+        //return view('welcome', compact("showAllPhoneNumber"));
     }
 
     /**
@@ -60,13 +61,14 @@ class DisController extends Controller
     public function sendCustomMessage(Request $request)
     {
         $validatedData = $request->validate([
-            'users' => 'required|array',
+            'showAllPhoneNumber' => 'required|array',
             'body' => 'required',
         ]);
-        $recipients = $validatedData["users"];
+        $recipients = $validatedData["showAllPhoneNumber"];
         // iterate over the array of recipients and send a twilio request for each
         foreach ($recipients as $recipient) {
-            $this->sendMessage($validatedData["body"], $recipient);
+            //$this->sendMessage($validatedData["body"], $recipient);
+            return response()->json($recipient);
         }
         return back()->with(['success' => "Messages on their way!"]);
         }

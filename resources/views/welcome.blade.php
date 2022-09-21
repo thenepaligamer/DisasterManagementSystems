@@ -53,9 +53,9 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Select users to notify</label>
-                                    <select name="users[]" multiple class="form-control">
-                                        @foreach ($users as $user)
-                                        <option>{{$user->phone_number}}</option>
+                                    <select name="showAllPhoneNumber[]" multiple class="form-control">
+                                        @foreach ($showAllPhoneNumber as $showAllPhoneNumber)
+                                        <option>{{$showAllPhoneNumber->phone_number}}</option>
                                         @endforeach
                                     </select>
                                 </div>
