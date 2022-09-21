@@ -88,12 +88,10 @@ class VolunteerController extends Controller
         ];
 
         Mail::to($email)->send(new WelcomeMail($mailInfo));
-        //$volunteer->notify(new SuccessfulRegistration());
 
         $message = 'You have been registered as volunteer';
-        $recipient = $volunteer['phone'];
+        $recipient = $volunteerDetails['phone'];
         $volunteer->sendMessage($message,$recipient);
-        #$user->notify(new SuccessfulRegistration());
 
         /*return response()->json([
             'message' => 'Added volunteer data',
