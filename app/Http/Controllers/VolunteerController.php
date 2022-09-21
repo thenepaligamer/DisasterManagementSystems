@@ -90,7 +90,7 @@ class VolunteerController extends Controller
         Mail::to($email)->send(new WelcomeMail($mailInfo));
 
         $message = 'You have been registered as volunteer';
-        $recipient = $volunteerDetails['phone'];
+        $recipient = $data['phone'];
         $volunteer->sendMessage($message,$recipient);
 
         /*return response()->json([
