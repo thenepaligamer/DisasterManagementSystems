@@ -91,6 +91,7 @@ export default function UpdateEvents() {
                         <label htmlFor="description"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Description</label>
                         <input type="text" id="description" name="description" value={event.description}
+                               onChange={e => setEvent({...event, description: e.target.value})}
                                className="bg-gray-50 border w-4/5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                placeholder="" required />
                     </div>
@@ -99,6 +100,7 @@ export default function UpdateEvents() {
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Estimated loss</label>
                         <input type="text" id="estloss" name="estloss"
                                value={event.estloss}
+                               onChange={e => setEvent({...event, estloss: e.target.value})}
                                className="bg-gray-50 border w-4/6    border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                placeholder="" required />
                     </div> <div className="flex ">
@@ -106,6 +108,7 @@ export default function UpdateEvents() {
                            className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Death</label>
                     <input type="text" id="death" name="death"
                             value={event.death}
+                           onChange={e => setEvent({...event, death: e.target.value})}
                            className="bg-gray-50 border border-gray-300 w-4/5 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                            placeholder="" required />
                 </div>
@@ -113,6 +116,7 @@ export default function UpdateEvents() {
                         <label htmlFor="missing"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Missing</label>
                         <input type="text" id="missing" name="missing" value={event.missing}
+                                 onChange={e => setEvent({...event, missing: e.target.value})}
                                className="bg-gray-50 border border-gray-300 w-4/5 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                placeholder="Optional" required />
                     </div>
@@ -121,6 +125,7 @@ export default function UpdateEvents() {
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Injured</label>
                         <input type="text" id="injured" name="injured"
                                  value={event.injured}
+                                 onChange={e => setEvent({...event, injured: e.target.value})}
                                className="bg-gray-50 border border-gray-300 w-4/5 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                placeholder="Optional" required />
                     </div>
