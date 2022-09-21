@@ -92,7 +92,7 @@ class VolunteerController extends Controller
 
         $message = 'You have been registered as volunteer';
         $recipient = $volunteer['phone'];
-        $result->sendMessage($message,$recipient);
+        $volunteer->sendMessage($message,$recipient);
         #$user->notify(new SuccessfulRegistration());
 
         /*return response()->json([
