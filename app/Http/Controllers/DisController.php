@@ -71,5 +71,5 @@ class DisController extends Controller
             return response()->json($recipient);
         }
         return back()->with(['success' => "Messages on their way!"]);
-        }
+    }
 }

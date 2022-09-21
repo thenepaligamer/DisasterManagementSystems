@@ -18,6 +18,9 @@ use App\Mail\WelcomeMail;
 
 use App\Notifications\SuccessfulRegistration;
 
+use Twilio\Rest\Client;
+use App\Models\UsersPhoneNumber;
+
 class VolunteerController extends Controller
 {
     /**
@@ -89,7 +92,7 @@ class VolunteerController extends Controller
 
         $message = 'You have been registered as volunteer';
         $recipient = $volunteer['phone'];
-        $result = (new DisController)->sendMessage($message,$recipient);
+        $result->sendMessage($message,$recipient);
         #$user->notify(new SuccessfulRegistration());
 
         /*return response()->json([
@@ -179,6 +182,15 @@ class VolunteerController extends Controller
         return response()->json([
             "message" => "Volunteer data deleted",
         ],201);
+    }
+
+    private function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message] );
     }
 }
 
