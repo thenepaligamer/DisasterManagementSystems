@@ -85,7 +85,7 @@ class VolunteerController extends Controller
         ];
 
         Mail::to($email)->send(new WelcomeMail($mailInfo));
-        $volunteer->notify(new SuccessfulRegistration());
+        //$volunteer->notify(new SuccessfulRegistration());
 
         $message = 'You have been registered as volunteer';
         $recipient = $volunteer['phone'];
