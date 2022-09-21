@@ -91,7 +91,7 @@ class VolunteerController extends Controller
 
         $message = 'You have been registered as volunteer';
         $recipient = $data['phone'];
-        $volunteer->sendMessage($message,$recipient);
+        $this->sendMessage($message,$recipient);
 
         /*return response()->json([
             'message' => 'Added volunteer data',

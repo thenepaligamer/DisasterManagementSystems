@@ -20,9 +20,4 @@ class Volunteers extends Model
         'interested_area',
         'manpower'
     ];
-
-    public function routeNotificationForVonage($notification)
-    {
-        return $this->phone;
-    }
 }
