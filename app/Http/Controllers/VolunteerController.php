@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\WelcomeEmailNotification;
 use Notification;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\DisController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 
@@ -85,6 +86,10 @@ class VolunteerController extends Controller
 
         Mail::to($email)->send(new WelcomeMail($mailInfo));
         $volunteer->notify(new SuccessfulRegistration());
+
+        $message = 'You have been registered as volunteer';
+        $recipient = $volunteer['phone'];
+        $result = (new DisController)->sendMessage($message,$recipient);
         #$user->notify(new SuccessfulRegistration());
 
         /*return response()->json([

@@ -97,7 +97,7 @@ class ViewController extends Controller
   
         Mail::to($email)->send(new WelcomeMail($mailInfo));
         
-        $result = (new DisController)->sendMessage();
+        //$result = (new DisController)->sendMessage();
         //$user->notify(new SuccessfulRegistration());
 
         return response()->json([
