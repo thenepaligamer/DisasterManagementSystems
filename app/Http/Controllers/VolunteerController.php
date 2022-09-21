@@ -184,7 +184,7 @@ class VolunteerController extends Controller
         ],201);
     }
 
-    private function sendMessage($message, $recipients)
+    public function sendMessage($message, $recipients)
     {
         $account_sid = getenv("TWILIO_SID");
         $auth_token = getenv("TWILIO_AUTH_TOKEN");
@@ -192,6 +192,7 @@ class VolunteerController extends Controller
         $client = new Client($account_sid, $auth_token);
         $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message] );
     }
+
 }
 
 /*
