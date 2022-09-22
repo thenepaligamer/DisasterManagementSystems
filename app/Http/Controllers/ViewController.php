@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DisController;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeMail;
+use App\Mail\IncidentMail;
 
 /*
 $rules = [
@@ -95,7 +95,7 @@ class ViewController extends Controller
 
         //.' has occurred in '.$eventDetails['local'].', '$eventDetails['district']
   
-        Mail::to($email)->send(new WelcomeMail($mailInfo));
+        Mail::to($email)->send(new IncidentMail($mailInfo));
         
         //$result = (new DisController)->sendMessage();
         //$user->notify(new SuccessfulRegistration());

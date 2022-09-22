@@ -1,8 +1,7 @@
 @component('mail::message')
 {{ $mailInfo['title'] }}
 
-Congratulations! You have been registered as a volunteer.
-
-Thank you for being a volunteer,<br>
+Please evacuate to the nearest safe place.<br>
+Tune in into Radio Nepal 100Mhz for any updates.
 Admin @ {{ config('app.name') }}
 @endcomponent

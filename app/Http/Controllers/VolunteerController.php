@@ -93,10 +93,10 @@ class VolunteerController extends Controller
         $recipient = $data['phone'];
         $this->sendMessage($message,$recipient);
 
-        /*return response()->json([
+        return response()->json([
             'message' => 'Added volunteer data',
             'relief details' => $volunteer
-        ],201);*/
+        ],201);
 
     }
 
