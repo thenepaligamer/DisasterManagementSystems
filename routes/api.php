@@ -78,7 +78,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/volunteer/update/{id}', [VolunteerController::class, 'update']);
     Route::delete('/volunteer/delete/{id}', [VolunteerController::class, 'destroy']);
 
+    Route::get('/feedback/view', [FeedbackController::class, 'index']);
     Route::delete('/feedback/delete/{id}', [FeedbackController::class, 'destroy']);
-
+    
+    Route::get('/userdata/view', [UserConfigController::class, 'index']);
     Route::delete('/userdata/delete/{id}', [UserConfigController::class, 'destroy']);
 });
