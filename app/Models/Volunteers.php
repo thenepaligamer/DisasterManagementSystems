@@ -16,6 +16,7 @@ class Volunteers extends Model
         'local',
         'ward_no',
         'phone',
+        'name',
         'email',
         'interested_area',
         'manpower'

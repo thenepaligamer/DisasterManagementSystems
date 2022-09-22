@@ -99,6 +99,9 @@ class ViewController extends Controller
         Mail::to($email)->send(new IncidentMail($mailInfo));
         
         $message = $data['type'];
+
+        
+
         $recipient = "+9779807502629";
         $this->sendMessage($message,$recipient);
 
