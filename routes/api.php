@@ -50,6 +50,8 @@ Route::post('/custom', [DisController::class,'sendCustomMessage']);
 
 Route::post('/feedback/add', [FeedbackController::class, 'store']);
 Route::post('/userdata/add', [UserConfigController::class, 'store']);
+Route::post('/volunteer/add', [VolunteerController::class, 'store']);
+
 
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -72,7 +74,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/contact/delete/{id}', [ContactController::class, 'destroy']);
 
 
-    Route::post('/volunteer/add', [VolunteerController::class, 'store']);
     Route::get('/volunteer/update/{id}', [VolunteerController::class, 'show']);
     Route::put('/volunteer/update/{id}', [VolunteerController::class, 'update']);
     Route::delete('/volunteer/delete/{id}', [VolunteerController::class, 'destroy']);
