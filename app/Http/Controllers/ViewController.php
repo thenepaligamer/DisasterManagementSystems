@@ -100,14 +100,16 @@ class ViewController extends Controller
         
         $message = $data['type'];
 
-        
+        $getphonenumber->events()->volunteers()->show();
 
-        $recipient = "+9779807502629";
-        $this->sendMessage($message,$recipient);
+
+        //$recipient = "+9779807502629";
+        //$this->sendMessage($message,$recipient);
 
         return response()->json([
             'message' => 'Added event',
-            'event details' => $events
+            'event details' => $events,
+            'phone number' => $getphonenumber
         ], 201);
     }
 

@@ -21,4 +21,9 @@ class Volunteers extends Model
         'interested_area',
         'manpower'
     ];
+
+    public function events()
+    {
+        return $this->hasMany('App\Customer');
+    }
 }
