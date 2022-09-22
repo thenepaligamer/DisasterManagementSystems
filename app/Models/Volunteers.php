@@ -13,6 +13,7 @@ class Volunteers extends Model
     protected $fillable = [
         'type',
         'district',
+        'province',
         'local',
         'ward_no',
         'phone',

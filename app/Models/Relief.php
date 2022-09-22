@@ -10,6 +10,7 @@ class Relief extends Model
     use HasFactory;
     protected $fillable = [
         'district',
+        'province',
         'local',
         'date',
         'rice',

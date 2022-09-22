@@ -10,6 +10,7 @@ class Contact extends Model
     use HasFactory;
     protected $fillable = [
         'district',
+        'province',
         'local',
         'spokesman',
         'phone',
