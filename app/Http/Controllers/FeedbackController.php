@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserConfig;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
-class UserConfigController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class UserConfigController extends Controller
      */
     public function index()
     {
-        //
+        $showAllDetails = Feedback::all();
+        return response()->json($showAllDetails);
     }
 
     /**
@@ -24,8 +25,7 @@ class UserConfigController extends Controller
      */
     public function create()
     {
-        $showAllDetails = UserConfig::all();
-        return response()->json($showAllDetails);
+        //
     }
 
     /**
@@ -38,31 +38,29 @@ class UserConfigController extends Controller
     {
         $data = $request->validate([
             'phone' => 'required',
-            'email' => 'string',
-            'district' => 'required'
+            'message' => 'required'
         ]);
 
-        $userConfigDetails = [
+        $feedbackDetails = [
             'phone' => $data['phone'],
-            'email' => $data['email'],
             'message' => $data['message']
         ];
 
-        $userdata = UserConfgi::create($feedbackDetails);
+        $feedbacks = Feedback::create($feedbackDetails);
 
         return response()->json([
-            'message' => 'Added user data',
-            'relief details' => $userdata
+            'message' => 'Added feedback',
+            'relief details' => $feedbacks
         ],201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserConfig  $userConfig
+     * @param  \App\Models\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function show(UserConfig $userConfig)
+    public function show(Feedback $feedback)
     {
         //
     }
@@ -70,10 +68,10 @@ class UserConfigController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserConfig  $userConfig
+     * @param  \App\Models\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserConfig $userConfig)
+    public function edit(Feedback $feedback)
     {
         //
     }
@@ -82,10 +80,10 @@ class UserConfigController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UserConfig  $userConfig
+     * @param  \App\Models\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserConfig $userConfig)
+    public function update(Request $request, Feedback $feedback)
     {
         //
     }
@@ -93,16 +91,16 @@ class UserConfigController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserConfig  $userConfig
+     * @param  \App\Models\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserConfig $userConfig)
+    public function destroy(Feedback $feedback)
     {
-        $findUserDataToDelete = UserConfig::find($id);
-        $findUserDataToDelete->delete();
+        $findFeedbackToDelete = Feeback::find($id);
+        $findFeedbackToDelete->delete();
 
         return response()->json([
-            "message" => "User data deleted",
+            "message" => "Feedback deleted",
         ],201);
     }
 }
