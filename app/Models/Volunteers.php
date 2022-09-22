@@ -22,8 +22,8 @@ class Volunteers extends Model
         'manpower'
     ];
 
-    public function events()
+    /*public function events()
     {
-        return $this->hasMany('App\Customer');
-    }
+        return $this->hasMany('App\Model\Customer');
+    }*/
 }
