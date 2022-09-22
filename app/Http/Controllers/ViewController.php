@@ -99,7 +99,10 @@ class ViewController extends Controller
         Mail::to($email)->send(new IncidentMail($mailInfo));
         
         $message = $data['type'];
+        $location = $data['local'];
 
+        //$getphonenumber = p;
+     
         //$this->events()->volunteers()->show();
 
 

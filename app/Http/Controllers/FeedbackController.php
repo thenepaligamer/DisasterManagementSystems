@@ -14,7 +14,8 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        $showAllDetails = Feedback::all();
+        return response()->json($showAllDetails);
     }
 
     /**
@@ -35,7 +36,22 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'phone' => 'required',
+            'message' => 'required'
+        ]);
+
+        $feedbackDetails = [
+            'phone' => $data['phone'],
+            'message' => $data['message']
+        ];
+
+        $feedbacks = Feedback::create($feedbackDetails);
+
+        return response()->json([
+            'message' => 'Added feedback',
+            'relief details' => $feedbacks
+        ],201);
     }
 
     /**
@@ -80,6 +96,11 @@ class FeedbackController extends Controller
      */
     public function destroy(Feedback $feedback)
     {
-        //
+        $findFeedbackToDelete = Feeback::find($id);
+        $findFeedbackToDelete->delete();
+
+        return response()->json([
+            "message" => "Feedback deleted",
+        ],201);
     }
 }

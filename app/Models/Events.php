@@ -22,8 +22,8 @@ class Events extends Model
         'is_verified'
     ];
 
-    /*public function volunteers()
+    public function volunteers()
     {
         return $this->hasMany('App\Model\Volunteers');
-    }*/
+    }
 }
