@@ -1,14 +1,17 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-export default function ContactTable(){
+export default function ViewContact(){
 
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        (async () =>{
-            try{
+        getContact();
+    }, []);
+
+ async function getContact(){
+        try{
             const response = await fetch("https://dms-json-hosting.herokuapp.com/api/contact/view", {});
             const data = await response.json();
             setContacts(data);
@@ -18,8 +21,19 @@ export default function ContactTable(){
             catch(e){
                 console.log(e)
             }
-        })()
-    }, []);
+    }
+    async function deleteContact(id){
+        const res = await fetch(`https://dms-json-hosting.herokuapp.com/api/contact/delete/${id}`, {
+            method: "DELETE",
+            headers: {
+                authorization: `Bearer ${JSON.parse(localStorage.getItem('userInfo')).access_token}`,
+            }
+        });
+        const data = await res.json();
+        getContact();
+
+    }
+
     const row = contacts.map(contact => {
         return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={contact.id}>
             <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
@@ -36,6 +50,12 @@ export default function ContactTable(){
             </td>
             <td className="px-6 py-4">
                 {contact.phone}
+            </td>
+            <td className="px-6 py-4">
+                <Link to={`/admin/contact/edit/${contact.id}`} className="text-indigo-600 hover:text-indigo-900">Edit</Link>
+            </td>
+            <td className="px-6 py-4">
+                <button  onClick={() => deleteContact(contact.id)} className="text-red-600 hover:text-indigo-900">Delete</button>
             </td>
         </tr> )
     })

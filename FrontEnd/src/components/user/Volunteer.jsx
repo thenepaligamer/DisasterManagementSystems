@@ -1,23 +1,27 @@
 import useDistrictComponent from "../../hooks/districtComponent";
 
+import {useState} from "react";
 import VolunteerImg from "../../assets/volunteer.png";
 
 export default function Volunteer() {
 
-    const districtComponent = useDistrictComponent()
+    const districtComponent = useDistrictComponent();
+    const [loading, setLoading] = useState(true);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     async function submitted(e) {
         e.preventDefault();
         console.log(e.target);
-        const {type, full_name, phone,email, interested_area, district, local, manpower, ward_no} = e.target;
+        const {type, full_name, phone,email, interested_area,province, district, local, manpower, ward_no} = e.target;
         const formData = new URLSearchParams();
         formData.append("type", type.value);
-        formData.append("full_name", full_name.value);
+        formData.append("name", full_name.value);
         formData.append("phone", phone.value);
         formData.append("email", email.value);
         formData.append("interested_area", interested_area.value);
         formData.append("district", district.value);
         formData.append("local", local.value);
+        formData.append("province", province.value);
         formData.append("manpower", manpower.value);
         formData.append("ward_no", ward_no.value);
         console.log(formData);
@@ -27,12 +31,29 @@ export default function Volunteer() {
                 method: 'POST',
             });
             const data = await response.json();
+            setIsSubmitted(true);
+            setLoading(false);
             console.log(data);
         } catch (error) {
             console.log(error);
         }
     }
-
+if(isSubmitted){
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="card-body">
+                            <h1 className="text-center">Thank You!</h1>
+                            <p className="text-center">We will contact you soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
     return (
     <>
         <div className="flex align-middle gap-20 mt-4 p-2 md:mt-[50px] md:p-0">

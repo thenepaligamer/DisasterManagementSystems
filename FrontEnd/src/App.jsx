@@ -6,6 +6,8 @@ import './App.css';
 import {useDispatch, useSelector} from "react-redux";
 
 import UpdateEvents from "./components/admin/UpdateEvents";
+import AddContact from "./components/admin/AddContact";
+import PendingEvents from "./components/admin/PendingEvents";
 import AddEvent from "./components/events/AddEvent";
 import ViewEvents from "./components/events/ViewEvents";
 import Relief from "./components/Relief";
@@ -15,6 +17,10 @@ import Dashboard from "./components/Dashboard";
 import {login, setToken} from "./store/admin/adminAuthSlice"
 import Volunteer from "./components/user/Volunteer";
 import ContactTable from "./components/react-table/ContactTable";
+import ViewContact from './components/admin/ViewContact';
+import AddRelief from './components/admin/AddRelief';
+import VolunteerView from './components/admin/VolunteerView';
+import Feedback from './components/user/Feedback';
 
 const Admin = React.lazy(() => import('./views/admin/Admin'));
 const Login = React.lazy(() => import('./views/admin/Login'));
@@ -55,8 +61,13 @@ function App() {
             } />
             <Route path="add-event" element={<AddEvent />} />
             <Route path="view-events" element={<ViewEvents />} />
+            <Route path="pending-events" element={<PendingEvents />} />
             <Route path="relief" element={<Relief />} />
             <Route path='event/update/:id' element={<UpdateEvents />} />
+            <Route path="view-contact" element={<ViewContact/>}/>
+            <Route path="add-contact" element={<AddContact />} />
+            <Route path="add-relief" element={<AddRelief />} />
+            <Route path="volunteer" element={<VolunteerView />}/>
         </Route>
           <Route path="/*" element={<Home/>} >
 
@@ -66,6 +77,7 @@ function App() {
               <Route path="relief" element={<Relief/>}/>
               <Route path="volunteer" element={<Volunteer/>}/>
               <Route path="contact" element={<ContactTable />} />
+              <Route path="feedback" element={<Feedback/>} />
           </Route>
       </Routes>
     </div>

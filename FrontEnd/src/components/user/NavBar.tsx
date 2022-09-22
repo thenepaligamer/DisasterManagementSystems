@@ -91,6 +91,10 @@ const NavBar:React.FC = () => {
                                <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="volunteer"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Volunteer</NavLink>
                            </li>
+                           <li>
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="feedback"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Feedback</NavLink>
+                           </li>
                        </ul>
                    </div>
                </div>
