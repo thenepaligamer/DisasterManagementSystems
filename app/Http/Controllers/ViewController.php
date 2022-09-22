@@ -87,21 +87,19 @@ class ViewController extends Controller
         
         $events = Events::create($eventDetails);
 
+        $message = $data['type'];
+        $location = $data['local'];
+        $district = $data['district'];
+
         $email = 'admin@dms.com';
+        $emailMessage = $message . " has occurred in " . $location .",". $district;
    
         $mailInfo = [
-            'title' => $eventDetails['type'],
+            'title' => $emailMessage,
             'url' => 'localhost'
         ];
 
-        //.' has occurred in '.$eventDetails['local'].', '$eventDetails['district']
-  
         Mail::to($email)->send(new IncidentMail($mailInfo));
-        
-        $message = $data['type'];
-        $location = $data['local'];
-
-        //$getphonenumber = p;
      
         //$this->events()->volunteers()->show();
 
@@ -112,7 +110,7 @@ class ViewController extends Controller
         return response()->json([
             'message' => 'Added event',
             'event details' => $events,
-            'phone number' => $getphonenumber
+            'phone number' => $emailMessage
         ], 201);
     }
 

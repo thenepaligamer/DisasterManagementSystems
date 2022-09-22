@@ -96,7 +96,7 @@ class FeedbackController extends Controller
      */
     public function destroy(Feedback $feedback)
     {
-        $findFeedbackToDelete = Feeback::find($id);
+        $findFeedbackToDelete = Feedback::find($id);
         $findFeedbackToDelete->delete();
 
         return response()->json([
