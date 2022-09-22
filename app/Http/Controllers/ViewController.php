@@ -98,7 +98,7 @@ class ViewController extends Controller
   
         Mail::to($email)->send(new IncidentMail($mailInfo));
         
-        $message = $eventDetails[type].' has occured in '. $eventDetails['local'].','. $eventDetails['district'];
+        $message = $eventDetails[type];
         $recipient = $data['phone'];
         $this->sendMessage($message,$recipient);
 
