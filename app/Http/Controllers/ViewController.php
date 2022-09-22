@@ -100,7 +100,7 @@ class ViewController extends Controller
         
         $message = $data['type'];
 
-        $getphonenumber->events()->volunteers()->show();
+        $this->events()->volunteers()->show();
 
 
         //$recipient = "+9779807502629";
