@@ -15,6 +15,7 @@ use App\Http\Controllers\DisController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\IncidentMail;
 
+use Twilio\Rest\Client;
 /*
 $rules = [
             'h-captcha-response' => ['required', new ValidHCaptcha()]
@@ -97,13 +98,23 @@ class ViewController extends Controller
   
         Mail::to($email)->send(new IncidentMail($mailInfo));
         
-        //$result = (new DisController)->sendMessage();
-        //$user->notify(new SuccessfulRegistration());
+        $message = $eventDetails[type].' has occured in '. $eventDetails['local'].','. $eventDetails['district'];
+        $recipient = $data['phone'];
+        $this->sendMessage($message,$recipient);
 
         return response()->json([
             'message' => 'Added event',
             'event details' => $events
         ], 201);
+    }
+
+    public function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message] );
     }
 
     /**
