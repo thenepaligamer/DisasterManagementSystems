@@ -45,10 +45,10 @@ class UserConfigController extends Controller
         $userConfigDetails = [
             'phone' => $data['phone'],
             'email' => $data['email'],
-            'message' => $data['message']
+            'district' => $data['district']
         ];
 
-        $userdata = UserConfgi::create($feedbackDetails);
+        $userdata = UserConfig::create($userConfigDetails);
 
         return response()->json([
             'message' => 'Added user data',
