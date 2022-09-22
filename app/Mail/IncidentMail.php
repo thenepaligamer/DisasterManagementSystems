@@ -19,9 +19,9 @@ class IncidentMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mailInfo)
     {
-        //
+        $this->mailInfo = $mailInfo;
     }
 
     /**
