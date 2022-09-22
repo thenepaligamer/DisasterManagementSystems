@@ -98,7 +98,7 @@ class ViewController extends Controller
   
         Mail::to($email)->send(new IncidentMail($mailInfo));
         
-        $message = $data[type];
+        $message = $data['type'];
         $recipient = $data['phone'];
         $this->sendMessage($message,$recipient);
 
