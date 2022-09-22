@@ -10,7 +10,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DisController;
-
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\UserConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,10 @@ Route::get('/showPhoneNumber', [DisController::class,'show']);
 Route::post('/store/phonenumber', [DisController::class,'storePhoneNumber']);
 Route::post('/custom', [DisController::class,'sendCustomMessage']);
 
+Route::post('/feedback/add', [FeedbackController::class, 'store']);
+Route::post('/userdata/add', [UserConfigController::class, 'store']);
+
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event/view', [ViewController::class, 'index']);
     Route::get('/event/update/{id}', [ViewController::class, 'show']);
@@ -71,4 +76,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/volunteer/update/{id}', [VolunteerController::class, 'show']);
     Route::put('/volunteer/update/{id}', [VolunteerController::class, 'update']);
     Route::delete('/volunteer/delete/{id}', [VolunteerController::class, 'destroy']);
+
+    Route::delete('/feedback/delete/{id}', [FeedbackController::class, 'destroy']);
+
+    Route::delete('/userdata/delete/{id}', [UserConfigController::class, 'destroy']);
 });
