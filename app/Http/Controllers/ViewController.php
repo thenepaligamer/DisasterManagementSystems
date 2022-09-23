@@ -106,14 +106,14 @@ class ViewController extends Controller
 
         Mail::to($email)->send(new IncidentMail($mailInfo));
 
-        $recipients = ['+9779807502629','+9779864589575'];
+        $recipients = ['+9779806686084','+9779846856082','+9779824182715'];
         
         foreach($recipients as $recipient){
             $this->sendMessage($emailMessage,$recipient);
         }
 
         $volunteerMessage = $message . " has occurred in " . $location .",". $district.". Please contact with relevant authority about any rescue operations";
-        $volunteerNumbers = ['+9779807502629','+9779864589575'];
+        $volunteerNumbers = ['+9779806686084','+977 984 6907090'];
         
         foreach($volunteerNumbers as $volunteerNumber){
             $this->sendMessage($volunteerMessage,$volunteerNumber);
