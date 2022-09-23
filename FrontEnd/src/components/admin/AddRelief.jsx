@@ -58,48 +58,48 @@ export default function AddRelief() {
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Rice</label>
                         <input type="text" id="rice" name="rice"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="" />
+                               placeholder="Ton" />
                     </div>
                     <div className="flex ">
                         <label htmlFor="sugar"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Sugar</label>
                         <input type="text" id="sugar" name="sugar"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="" required />
+                               placeholder="Ton" required />
                     </div> <div className="flex ">
                     <label htmlFor="salt"
                            className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Salt</label>
                     <input type="text" id="salt" name="salt"
                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                           placeholder="" required />
+                           placeholder="Ton" required />
                 </div>
                     <div className="flex ">
                         <label htmlFor="readymade"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Readymade</label>
                         <input type="text" id="readymade" name="readymade"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="Optional" required />
+                               placeholder="packs" required />
                     </div>
                     <div className="flex ">
                         <label htmlFor="water"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Water</label>
                         <input type="text" id="water" name="water"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="Optional" required />
+                               placeholder="Ltr" required />
                     </div>
                     <div className="flex ">
                         <label htmlFor="otherfood"
-                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">otherfood</label>
+                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Otherfood</label>
                         <input type="text" id="otherfood" name="otherfood"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="Optional" required />
+                               placeholder="Name" required />
                     </div>
                     <div className="flex ">
-                        <label htmlFor="housing"
+                        <label htmlFor=""
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Housing</label>
                         <input type="text" id="housing" name="housing"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="Optional" required />
+                               placeholder="" required />
                     </div>
                     <button type="submit" className=" bg-purple-600 text-white w-full h-10 rounded">Submit</button>
                 </form>

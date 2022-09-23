@@ -16,7 +16,7 @@ export default function Volunteer() {
         const formData = new URLSearchParams();
         formData.append("type", type.value);
         formData.append("name", full_name.value);
-        formData.append("phone", phone.value);
+        formData.append("phone", `+977${phone.value}`);
         formData.append("email", email.value);
         formData.append("interested_area", interested_area.value);
         formData.append("district", district.value);
@@ -40,7 +40,7 @@ export default function Volunteer() {
     }
 if(isSubmitted){
     return (
-        <div className="container">
+        <div className="container mt-20">
             <div className="row">
                 <div className="col-md-12">
                     <div className="card">
@@ -97,7 +97,7 @@ if(isSubmitted){
                     </div>
                     <div className="flex ">
                         <label htmlFor="email"
-                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Email(Optional):</label>
+                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Email:</label>
                         <input type="text" id="email"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
                                placeholder="Email" />
@@ -114,7 +114,7 @@ if(isSubmitted){
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Manpower:</label>
                         <input type="text" id="manpower"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
-                               placeholder="Time to be commited" required />
+                               placeholder="Manpower in numbers" required />
                     </div>
 
                     <button type="submit" className=" bg-purple-600 text-white w-full h-10 rounded">Submit</button>

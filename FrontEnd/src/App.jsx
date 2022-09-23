@@ -21,6 +21,9 @@ import ViewContact from './components/admin/ViewContact';
 import AddRelief from './components/admin/AddRelief';
 import VolunteerView from './components/admin/VolunteerView';
 import Feedback from './components/user/Feedback';
+import FeedbackAdmin from './components/admin/FeedbackAdmin';
+import UpdateContacts from './components/admin/UpdateContacts';
+import ReliefUpdate from './components/admin/ReliefUpdate';
 
 const Admin = React.lazy(() => import('./views/admin/Admin'));
 const Login = React.lazy(() => import('./views/admin/Login'));
@@ -65,9 +68,12 @@ function App() {
             <Route path="relief" element={<Relief />} />
             <Route path='event/update/:id' element={<UpdateEvents />} />
             <Route path="view-contact" element={<ViewContact/>}/>
+            <Route path="contact/update/:id"  element={<UpdateContacts />}/>
             <Route path="add-contact" element={<AddContact />} />
             <Route path="add-relief" element={<AddRelief />} />
+            <Route path="relief/update/:id" element={<ReliefUpdate />}/>
             <Route path="volunteer" element={<VolunteerView />}/>
+            <Route path="feedback"  element={<FeedbackAdmin />}    />
         </Route>
           <Route path="/*" element={<Home/>} >
 

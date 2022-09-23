@@ -39,6 +39,12 @@ export default function AddEvent() {
         const response = await fetch(url + '?' + formData, {method: 'POST'});
         const data = await response.json();
         console.log(data);
+        if(location.pathname === "/admin/add-event"){
+            navigate('/admin/event', {replace: true});
+        }
+        else{
+            navigate('/view-events', {replace: true});
+        }
         
     }
     return (<>
@@ -83,7 +89,7 @@ export default function AddEvent() {
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Estimated loss</label>
                         <input type="text" id="estloss" name="estloss"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="" required />
+                               placeholder="Rs." required />
                     </div> <div className="flex ">
                     <label htmlFor="death"
                            className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Death</label>

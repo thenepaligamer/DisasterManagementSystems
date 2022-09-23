@@ -27,7 +27,7 @@ export default function AddEvent() {
                 authorization: `Bearer `+ JSON.parse(localStorage.getItem('userInfo')).access_token,
             }});
         console.log(response)
-       
+        navigate('/admin/view-contact', {replace: true});
         
     }
     return (<>

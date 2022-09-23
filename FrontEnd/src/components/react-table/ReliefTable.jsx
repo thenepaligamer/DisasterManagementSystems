@@ -1,6 +1,6 @@
 
 import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, Link} from "react-router-dom";
 
 export default function ReliefTable(){
     const [isUser, setIsUser] = useState(false);
@@ -71,7 +71,7 @@ export default function ReliefTable(){
             </td>
             { !isUser &&
                 <td className="px-6 py-4 text-right">
-                    <a href="#" className="font-medium text-blue-600  hover:underline">Edit</a>
+                    <Link to={"/admin/relief/update/"+event.id} className="font-medium text-blue-600  hover:underline">Edit</Link>
                 </td>}
                 { !isUser &&
                 <td className="px-6 py-4 text-right">

@@ -24,7 +24,7 @@ const NavBar:React.FC = () => {
                <div className="container flex  items-center justify-between mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
                    <a href="/" className="flex items-center">
                         <span
-                            className=" self-center text-5xl font-semibold whitespace-nowrap">DMS</span>
+                            className=" self-center text-3xl font-semibold whitespace-nowrap">Disaster Management System</span>
                    </a>
                    <button data-collapse-toggle="mobile-menu" type="button"
                            className="inline-flex items-center justify-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 "

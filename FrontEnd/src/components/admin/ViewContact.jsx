@@ -52,7 +52,7 @@ export default function ViewContact(){
                 {contact.phone}
             </td>
             <td className="px-6 py-4">
-                <Link to={`/admin/contact/edit/${contact.id}`} className="text-indigo-600 hover:text-indigo-900">Edit</Link>
+                <Link to={`/admin/contact/update/${contact.id}`} className="text-indigo-600 hover:text-indigo-900">Edit</Link>
             </td>
             <td className="px-6 py-4">
                 <button  onClick={() => deleteContact(contact.id)} className="text-red-600 hover:text-indigo-900">Delete</button>
