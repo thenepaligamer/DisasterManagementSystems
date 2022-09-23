@@ -113,7 +113,7 @@ class ViewController extends Controller
         }
 
         $volunteerMessage = $message . " has occurred in " . $location .",". $district.". Please contact with relevant authority about any rescue operations";
-        $volunteerNumbers = ['+9779806686084','+977 984 6907090'];
+        $volunteerNumbers = ['+9779806686084','+9779846907090'];
         
         foreach($volunteerNumbers as $volunteerNumber){
             $this->sendMessage($volunteerMessage,$volunteerNumber);
