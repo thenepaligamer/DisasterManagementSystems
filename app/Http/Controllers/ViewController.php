@@ -109,13 +109,17 @@ class ViewController extends Controller
         //$this->events()->volunteers()->show();
 
 
-        //$recipient = "+9779807502629";
-        //$this->sendMessage($message,$recipient);
+        $recipients = ['+9779807502629','+9779864589575'];
+        
+        foreach($recipients as $recipient){
+            $this->sendMessage($message,$recipient);
+        }
 
         return response()->json([
             'message' => 'Added event',
             'event details' => $events,
-            'phone number' => $emailMessage
+            'phone number' => $recipient,
+            'message' => $message
         ], 201);
     }
 
@@ -226,7 +230,7 @@ class ViewController extends Controller
     }
 
     public function summary(){
-        $ph_no = Volunteers::where("email","sachinshilwal62@gmail.com");
+        $ph_no = Volunteers::all();
 
         /*foreach($ph_no as $phone_number){
             return response()->json($phone_number);
