@@ -43,14 +43,15 @@ Route::get('/contact/view', [ContactController::class, 'index']);
 
 Route::get('/volunteer/view', [VolunteerController::class, 'index']);
 
-Route::get('/showPhoneNumber', [Discontroller::class,'show']);
-Route::post('/store/phonenumber', [Discontroller::class,'storePhoneNumber']);
-Route::post('/custom', [Discontroller::class,'sendCustomMessage']);
+Route::get('/showPhoneNumber', [DisController::class,'show']);
+Route::post('/store/phonenumber', [DisController::class,'storePhoneNumber']);
+Route::post('/custom', [DisController::class,'sendCustomMessage']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event/view', [ViewController::class, 'index']);
     Route::get('/event/update/{id}', [ViewController::class, 'show']);
     Route::put('/event/update/{id}', [ViewController::class, 'update']);
+    Route::put('/event/update/status/{id}', [ViewController::class, 'edit']);
     Route::delete('/event/delete/{id}', [ViewController::class, 'destroy']);
     
     

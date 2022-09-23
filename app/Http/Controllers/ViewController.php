@@ -11,6 +11,7 @@ use App\Rules\ValidHCaptcha;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\DisController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 
@@ -95,7 +96,9 @@ class ViewController extends Controller
         //.' has occurred in '.$eventDetails['local'].', '$eventDetails['district']
   
         Mail::to($email)->send(new WelcomeMail($mailInfo));
-        $user->notify(new SuccessfulRegistration());
+        
+        //$result = (new DisController)->sendMessage();
+        //$user->notify(new SuccessfulRegistration());
 
         return response()->json([
             'message' => 'Added event',
@@ -121,9 +124,22 @@ class ViewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        
+        $data = $request->validate([
+            'is_verified' => 'required'
+        ]);
+
+        $getUnverifiedEvents = Events::find($id);
+
+        $getUnverifiedEvents->is_verified = $request->input('is_verified');
+
+        $getUnverifiedEvents->save();
+
+        return response()->json([
+            'message' => 'Status updated',
+            'edited Details' => $getUnverifiedEvents
+        ],201);
     }
 
     /**

@@ -12,10 +12,14 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\WelcomeEmailNotification;
 use Notification;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\DisController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 
 use App\Notifications\SuccessfulRegistration;
+
+use Twilio\Rest\Client;
+use App\Models\UsersPhoneNumber;
 
 class VolunteerController extends Controller
 {
@@ -84,8 +88,10 @@ class VolunteerController extends Controller
         ];
 
         Mail::to($email)->send(new WelcomeMail($mailInfo));
-        $volunteer->notify(new SuccessfulRegistration());
-        #$user->notify(new SuccessfulRegistration());
+
+        $message = 'You have been registered as volunteer';
+        $recipient = $data['phone'];
+        $this->sendMessage($message,$recipient);
 
         /*return response()->json([
             'message' => 'Added volunteer data',
@@ -175,6 +181,16 @@ class VolunteerController extends Controller
             "message" => "Volunteer data deleted",
         ],201);
     }
+
+    public function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message] );
+    }
+
 }
 
 /*
