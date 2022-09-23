@@ -24,8 +24,8 @@ class CreateReliefsTable extends Migration
             $table->decimal('salt', $precision = 8, $scale = 3);
             $table->decimal('readymade', $precision = 8, $scale = 3);
             $table->decimal('water', $precision = 8, $scale = 3);
-            $table->decimal('otherfood', $precision = 8, $scale = 3);
-            $table->string('housing');
+            $table->longtext('otherfood');
+            $table->longText('housing');
             $table->timestamps();
         });
     }

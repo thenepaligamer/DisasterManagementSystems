@@ -105,25 +105,38 @@ class ViewController extends Controller
         ];
 
         Mail::to($email)->send(new IncidentMail($mailInfo));
-     
-        //$this->events()->volunteers()->show();
-
 
         $recipients = ['+9779807502629','+9779864589575'];
         
         foreach($recipients as $recipient){
-            $this->sendMessage($message,$recipient);
+            $this->sendMessage($emailMessage,$recipient);
         }
 
+        $volunteerMessage = $message . " has occurred in " . $location .",". $district.". Please contact with relevant authority about any rescue operations";
+        $volunteerNumbers = ['+9779807502629','+9779864589575'];
+        
+        foreach($volunteerNumbers as $volunteerNumber){
+            $this->sendMessage($volunteerMessage,$volunteerNumber);
+        }
+        
         return response()->json([
             'message' => 'Added event',
             'event details' => $events,
             'phone number' => $recipient,
-            'message' => $message
+            'message' => $message   
         ], 201);
     }
 
     public function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message] );
+    }
+
+    public function sendVolunteerMessage($message, $recipients)
     {
         $account_sid = getenv("TWILIO_SID");
         $auth_token = getenv("TWILIO_AUTH_TOKEN");
