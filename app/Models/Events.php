@@ -24,6 +24,6 @@ class Events extends Model
 
     public function volunteers()
     {
-        return $this->hasMany('App\Model\Volunteers');
+        return $this->hasMany(Volunteers::class);
     }
 }

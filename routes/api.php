@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:sanctum']],function () {
 });
 
 Route::get('event/viewUser', [ViewController::class, 'indexUser']);
+Route::get('event/summary', [ViewController::class, 'summary']);
 Route::post('/event/add', [ViewController::class, 'store']);
 
 Route::get('/relief/view', [ReliefController::class, 'index']);

@@ -25,6 +25,6 @@ class Volunteers extends Model
 
     public function events()
     {
-        return $this->hasMany('App\Model\Customer');
+        return $this->hasMany(Events::class);
     }
 }

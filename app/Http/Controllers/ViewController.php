@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Rules\ValidHCaptcha;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
+
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DisController;
@@ -16,6 +18,9 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\IncidentMail;
 
 use Twilio\Rest\Client;
+
+use App\Models\Events;
+use App\Models\Volunteers;
 /*
 $rules = [
             'h-captcha-response' => ['required', new ValidHCaptcha()]
@@ -218,6 +223,16 @@ class ViewController extends Controller
         return response()->json([
             "message" => "Event deleted",
         ],201);
+    }
+
+    public function summary(){
+        $ph_no = Volunteers::where("email","sachinshilwal62@gmail.com");
+
+        /*foreach($ph_no as $phone_number){
+            return response()->json($phone_number);
+        }*/
+
+        return response()->json($ph_no);
     }
 
 }
