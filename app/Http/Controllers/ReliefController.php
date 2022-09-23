@@ -51,7 +51,7 @@ class ReliefController extends Controller
             'salt' => 'numeric',
             'readymade' => 'numeric',
             'water' => 'numeric',
-            'otherfood' => 'numeric',
+            'otherfood' => 'required',
             'housing' => 'alpha_num',
         ]);
 
