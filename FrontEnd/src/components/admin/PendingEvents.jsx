@@ -6,8 +6,9 @@ export default function EventTable() {
     const [isUser, setIsUser] = useState(false);
     const {isLoggedIn} = useSelector( store => store.adminAuth);
     const [eventData, setEventData] = useState([]);
+    const [verifying, setVerifying] = useState(false);
     const location = useLocation();
-    const [deleting, setDeleting] = useState(false);
+    let verifyMessage = "Verifying";
 
     useEffect(() => {
         if(location.pathname === "/view-events"){
@@ -21,7 +22,20 @@ export default function EventTable() {
 
     }, [location]);
 
-
+    async function verify(id){
+        setVerifying(true);
+        const verify = await fetch(`https://dms-json-hosting.herokuapp.com/api/event/update/status/${id}?is_verified=1`, {
+            method: "PUT",
+            headers: {
+                authorization:  'Bearer ' + JSON.parse(localStorage.getItem('userInfo')).access_token
+            }
+        });
+        verifyMessage = "Verified";
+        const verifyJson = await verify.json();
+        setVerifying(false);
+        console.log(verifyJson);
+        getAdminData();
+    }
 
     async  function getData(){
         try {
@@ -44,39 +58,27 @@ export default function EventTable() {
                 }
             });
             const eventsJson = await events.json();
-            console.log(eventsJson[0].is_verified);
-            setEventData(eventsJson);
+            const filteredEvents = eventsJson.filter(event => event.is_verified === false );
+            console.log(filteredEvents);
+            setEventData(filteredEvents);
         }
         catch (error){
             console.log(error);
         }
     }
 
-    async function deleteEvent(id){
-        setDeleting(true);
-        const deleted = await fetch(`https://dms-json-hosting.herokuapp.com/api/event/delete/${id}`, {
-            method: "DELETE",
-            headers: {
-                authorization:  'Bearer ' + JSON.parse(localStorage.getItem('userInfo')).access_token
-            }
-        });
-        const deletedJson = await deleted.json();
-        setDeleting(false);
-        getAdminData()
-    }
-
     const row = eventData.map(event => {
-       return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
+        return ( <tr className="bg-white border-b  hover:bg-gray-50 " key={event.id}>
             <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
                 {event.title}
             </th>
             <td className="px-6 py-4">
                 {event.province}
             </td>
-           <td className="px-6 py-4">
+            <td className="px-6 py-4">
                 {event.district}
             </td>
-           <td className="px-6 py-4">
+            <td className="px-6 py-4">
                 {event.local}
             </td>
             <td className="px-6 py-4">
@@ -91,30 +93,20 @@ export default function EventTable() {
             <td className="px-6 py-4">
                 {event.death}
             </td>
-            <td className="px-6 py-4">
-                {event.injured}
-            </td>
-            <td className="px-6 py-4">
-                {event.missing}
-            </td>
-           {!isUser && <td className="px-6 py-4">
-               {event.is_verified ? <span className="text-green-500">Verified</span> : <span className="text-red-500">Not Verified</span>}
-           </td> }
-           {!isUser &&
-            <td className="px-6 py-4 text-right">
-                <Link to={"/admin/event/update/"+event.id} className="font-medium text-blue-600  hover:underline">Edit</Link>
+            {!isUser && <td className="px-6 py-4">
+                {event.is_verified ? <span className="text-green-500">Verified</span> : <span className="text-red-500">Not Verified</span>}
             </td> }
-           {!isUser &&
-               <td className="px-6 py-4 text-right">
-                   <button onClick={() => deleteEvent(event.id)} className="font-medium text-red-600  hover:underline">Delete</button>
-               </td> }
+            {!isUser &&
+                <td className="px-6 py-4 text-right">
+                    <button onClick={() => verify(event.id)} className="font-medium text-blue-600  hover:underline">Verify</button>
+                </td> }
         </tr> )
     })
     return (
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             {
-                deleting && <div className="absolute text-3xl top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex justify-center items-center">Deleting</div>
+                verifying && <div className="absolute text-3xl top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-50 flex justify-center items-center">{verifyMessage}</div>
             }
             <table className="w-full text-sm text-left text-gray-500 ">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
@@ -143,19 +135,13 @@ export default function EventTable() {
                     <th scope="col" className="px-6 py-3">
                         Death
                     </th>
-                    <th scope="col" className="px-6 py-3">
-                        Injured
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Missing
-                    </th>
                     {!isUser && <th scope="col" className="px-6 py-3">
                         is Verified?
                     </th> }
                     {!isUser &&
-                    <th scope="col" className="px-6 py-3">
-                        <span className="sr-only">Edit</span>
-                    </th> }
+                        <th scope="col" className="px-6 py-3">
+                            <span className="sr-only">Edit</span>
+                        </th> }
                 </tr>
                 </thead>
                 <tbody>

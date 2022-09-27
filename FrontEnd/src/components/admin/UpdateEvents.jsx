@@ -19,7 +19,7 @@ export default function UpdateEvents() {
 
         console.log(token);
         (async () => {
-            const response = await fetch(`http://localhost:8000/api/event/update/${id}`, {
+            const response = await fetch(`https://dms-json-hosting.herokuapp.com/api/event/update/${id}`, {
                 method: "GET",
                 headers: {
                     authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ export default function UpdateEvents() {
         formData.append("missing", missing.value);
         formData.append("is_verified", 1);
         console.log(formData);
-        const response = await fetch((`http://localhost:8000/api/event/update/${id}?` + formData), {
+        const response = await fetch((`https://dms-json-hosting.herokuapp.com/api/event/update/${id}?` + formData), {
             method: "PUT",
             headers: {
                 authorization: `Bearer ${token}`,

@@ -24,7 +24,7 @@ const NavBar:React.FC = () => {
                <div className="container flex  items-center justify-between mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
                    <a href="/" className="flex items-center">
                         <span
-                            className=" self-center text-5xl font-semibold whitespace-nowrap">DMS</span>
+                            className=" self-center text-3xl font-semibold whitespace-nowrap">Disaster Management System</span>
                    </a>
                    <button data-collapse-toggle="mobile-menu" type="button"
                            className="inline-flex items-center justify-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 "
@@ -83,13 +83,17 @@ const NavBar:React.FC = () => {
                                <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})}  to="relief"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Relief</NavLink>
                            </li>
-                           <li>
-                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="Weather"
-                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Weather</NavLink>
-                           </li>
+                           {/*<li>*/}
+                           {/*    <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="Weather"*/}
+                           {/*       className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Weather</NavLink>*/}
+                           {/*</li>*/}
                            <li>
                                <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="volunteer"
                                   className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Volunteer</NavLink>
+                           </li>
+                           <li>
+                               <NavLink style={({isActive}) => ({color: isActive ? "red" : ''})} to="feedback"
+                                  className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 text-xl hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Feedback</NavLink>
                            </li>
                        </ul>
                    </div>

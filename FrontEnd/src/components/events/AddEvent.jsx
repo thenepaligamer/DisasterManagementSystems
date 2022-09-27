@@ -2,16 +2,21 @@ import {useRef, useState} from "react";
 import useFetch from "../../hooks/useFetch";
 
 import useDistrictComponent from "../../hooks/districtComponent";
+import {useSelector} from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import DisasterImage from "../../assets/disaster.png";
 
 export default function AddEvent() {
     const districtComponent = useDistrictComponent();
+    const {isLoggedIn} = useSelector( store => store.adminAuth);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     async function submitted (e) {
         e.preventDefault();
         const {title, province, district, local, type, description, estloss, death, injured, missing} = e.target;
-        const formData = new FormData();
+        const formData = new URLSearchParams();
         formData.append('title', title.value);
         formData.append("province", province.value);
         formData.append("district", district.value);
@@ -22,19 +27,25 @@ export default function AddEvent() {
         formData.append("death", death.value);
         formData.append("injured", injured.value);
         formData.append("missing", missing.value);
-        formData.append("is_verified", 1);
+        if(isLoggedIn && location.pathname === "/admin/add-event"){
+            formData.append("is_verified", 1);
+        }
+        else{
+            formData.append("is_verified", 0);
+        }
         console.log(formData);
-        const url = "http://localhost:8000/api/event/add";
+        const url = "https://dms-json-hosting.herokuapp.com/api/event/add";
         const options = {};
-        try{
-        const response = await fetch(url, {method: 'POST',
-            body: formData,});
+        const response = await fetch(url + '?' + formData, {method: 'POST'});
         const data = await response.json();
         console.log(data);
+        if(location.pathname === "/admin/add-event"){
+            navigate('/admin/event', {replace: true});
         }
-        catch(error){
-            console.log(error);
+        else{
+            navigate('/view-events', {replace: true});
         }
+        
     }
     return (<>
 
@@ -78,7 +89,7 @@ export default function AddEvent() {
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Estimated loss</label>
                         <input type="text" id="estloss" name="estloss"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-                               placeholder="" required />
+                               placeholder="Rs." required />
                     </div> <div className="flex ">
                     <label htmlFor="death"
                            className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Death</label>

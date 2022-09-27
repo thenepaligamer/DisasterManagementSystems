@@ -21,7 +21,7 @@ export default function Login (){
         formData.append('email', email);
         formData.append('password', password);
         try{
-            const res = await fetch("http://localhost:8000/api/login", {
+            const res = await fetch("https://dms-json-hosting.herokuapp.com/api/login", {
                 method: 'POST',
                 body: formData,
             });

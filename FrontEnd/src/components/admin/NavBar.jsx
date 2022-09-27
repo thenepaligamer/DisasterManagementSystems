@@ -4,6 +4,9 @@ import {NavLink} from "react-router-dom";
 export default function NavBar(){
 const [isProfileOpen, setIsProfileOpen] = useState(false);
 const [isEventOpen, setIsEventOpen] = useState(false);
+const [isContactOpen, setIsContactOpen] = useState(false);
+const [isReliefOpen, setIsReliefOpen] = useState(false);
+
     function dropdownProfile(){
         console.log("dropdownProfile");
         setIsProfileOpen(!isProfileOpen);
@@ -18,7 +21,26 @@ const [isEventOpen, setIsEventOpen] = useState(false);
         if (isEventOpen){
             setIsEventOpen(false)
         }
+        if (isContactOpen){
+            setIsContactOpen(false)
+        }
+        if(isReliefOpen){
+            setIsReliefOpen(false)
+        }
     }
+    function dropdownContact(){
+        setIsContactOpen(!isContactOpen);
+    }
+    function dropdownRelief(){
+        console.log("relief")
+        setIsReliefOpen(!isReliefOpen);
+    }
+
+    function signOut(){
+        localStorage.removeItem('userInfo');
+        window.location.reload();
+    }
+
     return(
         <>
         <div>
@@ -79,12 +101,65 @@ const [isEventOpen, setIsEventOpen] = useState(false);
                                         </div>
                                         }
                                     </div>
-                                    <NavLink to="contact" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                        <span >Contact</span>
-                                    </NavLink>
-                                    <NavLink to="relief" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                    <span>Relief</span>
-                                    </NavLink>
+                                    <div  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <button id="dropdownNavbarLink" onClick={dropdownContact}
+                                                className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium   border-b border-gray-100  md:hover:bg-transparent md:border-0  md:p-0 md:w-auto">Contacts <svg
+                                            className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd"
+                                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                  clipRule="evenodd"></path>
+                                        </svg></button>
+                                        { isContactOpen && <div id="dropdownRightStart"
+                                                         className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 ">
+                                            <ul className="py-1 text-sm text-black dark:text-gray-200"
+                                                aria-labelledby="dropdownRightStartButton">
+                                                <li>
+                                                    <NavLink to="add-contact"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Contacts</NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="view-contact"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">View Contact</NavLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        }
+                                    </div>
+                                    <div  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                        <button id="dropdownNavbarLink" onClick={dropdownRelief}
+                                                className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium   border-b border-gray-100  md:hover:bg-transparent md:border-0  md:p-0 md:w-auto">Relief <svg
+                                            className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd"
+                                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                  clipRule="evenodd"></path>
+                                        </svg></button>
+                                        { isReliefOpen && <div id="dropdownRightStart"
+                                                         className="z-10 absolute bg-white divide-y divide-gray-100 rounded shadow w-44 ">
+                                            <ul className="py-1 text-sm text-black dark:text-gray-200"
+                                                aria-labelledby="dropdownRightStartButton">
+                                                <li>
+                                                    <NavLink to="add-relief"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">Add Relief Data</NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to="relief"
+                                                             className="block px-4 py-2 text-black hover:bg-gray-100 ">View Relief Table</NavLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        }
+                                    </div>
+                                    <div>
+                                    <NavLink to="volunteer"
+                                                             className=" block px-5 text-center py-2 text-gray-200 hover:bg-gray-100 hover:text-black rounded shadow w-5/6 ">Volunteer</NavLink>
+                                    </div>
+                                    <div>
+                                    <NavLink to="feedback"
+                                                             className=" block px-5 text-center py-2 text-gray-200 hover:bg-gray-100 hover:text-black rounded shadow w-5/6 ">Feedback</NavLink>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -106,9 +181,9 @@ const [isEventOpen, setIsEventOpen] = useState(false);
                                     </button>
                                 </div>
                                 {isProfileOpen && <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1" >Settings</a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
+                                    {/* <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
+                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1" >Settings</a> */}
+                                    <button onClick={() => signOut()} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</button>
                                 </div>}
                             </div>
                         </div>

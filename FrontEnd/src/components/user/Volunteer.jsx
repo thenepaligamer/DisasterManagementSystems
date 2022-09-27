@@ -1,38 +1,59 @@
 import useDistrictComponent from "../../hooks/districtComponent";
 
+import {useState} from "react";
 import VolunteerImg from "../../assets/volunteer.png";
 
 export default function Volunteer() {
 
-    const districtComponent = useDistrictComponent()
+    const districtComponent = useDistrictComponent();
+    const [loading, setLoading] = useState(true);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     async function submitted(e) {
         e.preventDefault();
         console.log(e.target);
-        const {type, full_name, phone,email, interested_area, district, local, manpower, ward_no} = e.target;
+        const {type, full_name, phone,email, interested_area,province, district, local, manpower, ward_no} = e.target;
         const formData = new URLSearchParams();
         formData.append("type", type.value);
-        formData.append("full_name", full_name.value);
-        formData.append("phone", phone.value);
+        formData.append("name", full_name.value);
+        formData.append("phone", `+977${phone.value}`);
         formData.append("email", email.value);
         formData.append("interested_area", interested_area.value);
         formData.append("district", district.value);
         formData.append("local", local.value);
+        formData.append("province", province.value);
         formData.append("manpower", manpower.value);
         formData.append("ward_no", ward_no.value);
         console.log(formData);
-        const url = "http://localhost:8000/api/volunteer/add";
+        const url = "https://dms-json-hosting.herokuapp.com/api/volunteer/add";
         try {
             const response = await fetch(url +'?'+ formData, {
                 method: 'POST',
             });
             const data = await response.json();
+            setIsSubmitted(true);
+            setLoading(false);
             console.log(data);
         } catch (error) {
             console.log(error);
         }
     }
-
+if(isSubmitted){
+    return (
+        <div className="container mt-20">
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="card-body">
+                            <h1 className="text-center">Thank You!</h1>
+                            <p className="text-center">We will contact you soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
     return (
     <>
         <div className="flex align-middle gap-20 mt-4 p-2 md:mt-[50px] md:p-0">
@@ -76,7 +97,7 @@ export default function Volunteer() {
                     </div>
                     <div className="flex ">
                         <label htmlFor="email"
-                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Email(Optional):</label>
+                               className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Email:</label>
                         <input type="text" id="email"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
                                placeholder="Email" />
@@ -93,7 +114,7 @@ export default function Volunteer() {
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Manpower:</label>
                         <input type="text" id="manpower"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 "
-                               placeholder="Time to be commited" required />
+                               placeholder="Manpower in numbers" required />
                     </div>
 
                     <button type="submit" className=" bg-purple-600 text-white w-full h-10 rounded">Submit</button>
