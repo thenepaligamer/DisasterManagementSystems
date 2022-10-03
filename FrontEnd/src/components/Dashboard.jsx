@@ -1,7 +1,7 @@
 import SevenDaysSummary from "./summary/sevendaysummary";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-
+import ok from "../assets/ok.png"
 
 const alert = () => {
     Swal.fire({
@@ -91,15 +91,13 @@ export default function Dashboard (){
     return (
         <>
             <div className="grid grid-cols-12 px-6 gap-3 mt-8 ">
-                {/*/!*<div>Incident summary </div> Todo: most recent incident summary*!/*/}
-                {/*<div>*/}
-                {/*    <SevenDaysSummary />*/}
-                {/*</div>*/}
-                {/*<div>Relief (Last week)</div>*/}
-
+                
                 <div className="col-span-8 md:col-span-8">
+                    <div className="text-2xl mb-2">Recent Incidents</div>
                     {/* <div className="text-3xl px-8 ">Introduction</div>
                     <p className="px-8 font-serif">Disaster Management system is a community run information management system where user are allowed to enter any incident related information, get information about incidents and reliefs; and are able to provide feedback for current information</p> */}
+                    <img src={ok} alt="" height="600px" />
+
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 mt-10">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
@@ -149,8 +147,8 @@ export default function Dashboard (){
                         Get Incidents updates in your area at instant. 
                     </p>
                     <button onClick={alert} className="mt-3 py-2 px-4 text-sm font-bold text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Get Notified</button>
-
                 </div>
+
 
             </div>
         </>
