@@ -1,6 +1,7 @@
 import "leaflet/dist/leaflet.css";
 import { MapContainer, GeoJSON, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
 import localJson from "../../assets/geojson/local.min.json";
+import latLong from "./latLong";
 
 import IncidentMarker from "./IncidentMarker";
 
@@ -23,24 +24,15 @@ import { useState } from "react";
 //     )
 //   }
 
-const localLatLong = {
-    "Pancheshwor Rural Municipality": [27.5, 83.5],
-    "Annapurna Rural Municipality": [26.5, 87.5],
-}
+
 
 
 const LocalMap = (props) => {
-    // let localMark = [];
-    // for(let data of props.eventData){
-    //     console.log(data.local)
-    //     if(data.local in localLatLong){
-    //      localMark.push(<IncidentMarker position={localLatLong[`${data.local}`]} key={data.local} />)
-    //     }
-    // }
+   
     const localMark = props.eventData.map(data => {
         console.log(data.local)
-        if(data.local in localLatLong){
-            return (<IncidentMarker position={localLatLong[`${data.local}`]} key={data.local} />)
+        if(data.local in latLong){
+            return (<IncidentMarker position={latLong[`${data.local}`]} key={data.id} eventData={data}/>)
         } 
     })
     console.log(localMark)
@@ -50,7 +42,7 @@ const LocalMap = (props) => {
         <>
             <MapContainer style={{height: "60vh"}}
                 center={[28, 84]}
-                zoom={5}
+                zoom={7}
                 scrollWheelZoom={true}
             >
                 <TileLayer

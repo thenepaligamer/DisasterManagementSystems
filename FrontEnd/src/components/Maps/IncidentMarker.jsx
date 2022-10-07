@@ -5,7 +5,12 @@ const IncidentMarker = (props) => {
     return (
         <>
         <Marker position={props.position}>
-            <Popup>hello</Popup>
+            <Popup>
+                <ul>
+                    <li>{props.eventData.title}</li>
+                    <li>{props.eventData.local}</li>
+                </ul>
+            </Popup>
         </Marker>
         </>
     )
