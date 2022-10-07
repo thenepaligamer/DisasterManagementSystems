@@ -1,4 +1,5 @@
 import SevenDaysSummary from "./summary/sevendaysummary";
+import LocalMap from "./Maps/LocalMap";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import ok from "../assets/ok.png"
@@ -47,7 +48,6 @@ export default function Dashboard (){
         (async() => {
             const res =await fetch('https://dms-json-hosting.herokuapp.com/api/event/viewUser');
             const data = await res.json();
-            console.log(data);
             setEventData(data);
         })()
     }, []);
@@ -96,7 +96,10 @@ export default function Dashboard (){
                     <div className="text-2xl mb-2">Recent Incidents</div>
                     {/* <div className="text-3xl px-8 ">Introduction</div>
                     <p className="px-8 font-serif">Disaster Management system is a community run information management system where user are allowed to enter any incident related information, get information about incidents and reliefs; and are able to provide feedback for current information</p> */}
-                    <img src={ok} alt="" height="600px" />
+                    {/* <img src={ok} alt="" height="600px" /> */}
+                    <div >
+                    <LocalMap eventData={eventData}/>
+                    </div>
 
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 mt-10">
