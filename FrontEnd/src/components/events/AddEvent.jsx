@@ -40,7 +40,7 @@ export default function AddEvent() {
         const data = await response.json();
         console.log(data);
         if(location.pathname === "/admin/add-event"){
-            navigate('/admin/event', {replace: true});
+            navigate('/admin/view-events', {replace: true});
         }
         else{
             navigate('/view-events', {replace: true});

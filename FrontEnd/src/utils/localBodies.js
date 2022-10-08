@@ -395,7 +395,7 @@ const localBodies = {
         "Annapurna Rural Municipality",
         "Macchapucchre Rural Municipality",
         "Madi Rural Municipality",
-        "Pokhara Lekhnath Metropolitan City",
+        "Pokhara Municipality",
         "Rupa Rural Municipality"
     ],
     Kathmandu: [
