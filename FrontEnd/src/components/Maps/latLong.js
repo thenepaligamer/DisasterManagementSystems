@@ -420,7 +420,7 @@ const latLong = {
     'Annapurna Rural Municipality': [ 28.69, 83.796 ],
     'Machhapuchchhre Rural Municipality': [ 28.605, 83.966 ],
     'Madi Rural Municipality': [ 28.456, 82.492 ],
-    'Pokhara   Municipality': [ 28.328, 84.021 ],
+    'Pokhara Municipality': [ 28.328, 84.021 ],
     'Rupa Rural Municipality': [ 28.191, 84.189 ],
     'Chame Rural Municipality': [ 28.565, 84.257 ],
     'Narpa Bhumi Rural Municipality': [ 28.899, 84.189 ],
