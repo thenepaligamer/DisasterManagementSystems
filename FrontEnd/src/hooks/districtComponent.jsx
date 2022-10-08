@@ -2,13 +2,14 @@ import {useEffect, useRef, useState} from "react";
 
 import allDistricts from "../utils/districts";
 import localBodies from "../utils/localBodies";
+import districtUtil from "../utils/districts";
 
 const useDistrictComponent = (props = {province: null, district: null, local: null,}) => {
     const districtSelected = useRef();
+    const provinceSelected = useRef();
     const [localBodyAvailable, setLocalBodyAvailable] = useState(null);
-    const district = allDistricts.map( district => {
-        return <option key={district} value={district}>{district}</option>;
-    });
+    const [provinceAvailable, setProvinceAvailable] = useState(null);
+   
 
     useEffect(() =>{
     changeDistrict()
@@ -16,10 +17,16 @@ const useDistrictComponent = (props = {province: null, district: null, local: nu
 
     function changeDistrict(){
         const selectedDistrict = districtSelected.current.value;
+        const selectedProvince = provinceSelected.current.value;
+        console.log(selectedProvince);
+        console.log(selectedDistrict);
+        const district = Object.getOwnPropertyDescriptor(districtUtil, selectedProvince);
+        setProvinceAvailable(district ? district.value : null);
+        console.log(provinceAvailable)
 
         const local = Object.getOwnPropertyDescriptor(localBodies, selectedDistrict); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor
         setLocalBodyAvailable(local ? local.value : null);
-
+        console.log(localBodyAvailable)
     };
 
    return (<>
@@ -28,13 +35,13 @@ const useDistrictComponent = (props = {province: null, district: null, local: nu
                   className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Province</label>
 
            <select id="province" onChange={changeDistrict} name="province"
-                   ref={districtSelected} defaultValue={ props.province || 'default'} value={props.province}
+                   ref={provinceSelected} defaultValue={ props.province || 'default'} value={props.province}
                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                <option value={props.province || "default"}>Choose a Province</option>
-               <option value="Province 1">Province 1</option>
-               <option value="Madhesh_Pradesh">Madesh Pradesh</option>
+               <option value="Province_1">Province 1</option>
+               <option value="Madhesh">Madesh Pradesh</option>
                <option value="Bagmati">Bagmati</option>
-               <option value="Gnadaki">Gandaki</option>
+               <option value="Gandaki">Gandaki</option>
                <option value="Lumbini">Lumbini</option>
                <option value="Karnali">Karnali</option>
                <option value="Sudurpaschim">SudurPaschim</option>
@@ -48,7 +55,7 @@ const useDistrictComponent = (props = {province: null, district: null, local: nu
                 ref={districtSelected}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
             <option value={props.district || "default"}>Choose a District</option>
-            {district}
+            {provinceAvailable && provinceAvailable.map((district) => <option value={district} key={district}>{district}</option>)}
         </select>
     </div>
     <div className="flex ">
