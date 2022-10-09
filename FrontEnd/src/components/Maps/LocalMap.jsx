@@ -1,6 +1,6 @@
 import "leaflet/dist/leaflet.css";
 import { MapContainer, GeoJSON, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
-import localJson from "../../assets/geojson/local.min.json";
+// import localJson from "../../assets/geojson/local.min.json";
 import latLong from "./latLong";
 
 import IncidentMarker from "./IncidentMarker";
@@ -49,7 +49,7 @@ const LocalMap = (props) => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <GeoJSON data={localJson}  />
+                {/* <GeoJSON data={localJson}  /> */}
 
               { localMark}
             </MapContainer>
