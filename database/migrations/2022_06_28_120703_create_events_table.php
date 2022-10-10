@@ -20,6 +20,8 @@ class CreateEventsTable extends Migration
             $table->string('district');
             $table->string('local');
             $table->string('type');
+            $table->decimal('lat',$precision = 8, $scale = 5);
+            $table->decimal('long',$precision = 8, $scale = 5);
             $table->string('description');
             $table->integer('estloss');
             $table->integer('death');

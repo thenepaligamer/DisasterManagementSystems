@@ -69,6 +69,8 @@ class ViewController extends Controller
             'local' => 'required',
             'type' => 'required',
             'description' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
             'estloss' => 'numeric',
             'death' => 'numeric',
             'missing' => 'numeric',
@@ -82,6 +84,8 @@ class ViewController extends Controller
             'district' => $data['district'],
             'local' => $data['local'],
             'type' => $data['type'],
+            'lat' => $data['lat'],
+            'long' => $data['long'],
             'description' => $data['description'],
             'estloss' => $data['estloss'],
             'death' => $data['death'],
@@ -106,14 +110,14 @@ class ViewController extends Controller
 
         Mail::to($email)->send(new IncidentMail($mailInfo));
 
-        $recipients = ['+9779806686084','+9779846856082','+9779824182715'];
+        $recipients = ['+9779846907090'];
         
         foreach($recipients as $recipient){
             $this->sendMessage($emailMessage,$recipient);
         }
 
         $volunteerMessage = $message . " has occurred in " . $location .",". $district.". Please contact with relevant authority about any rescue operations";
-        $volunteerNumbers = ['+9779806686084','+9779846907090'];
+        $volunteerNumbers = ['+9779846907090'];
         
         foreach($volunteerNumbers as $volunteerNumber){
             $this->sendMessage($volunteerMessage,$volunteerNumber);
@@ -195,6 +199,8 @@ class ViewController extends Controller
             'province' => 'required',
             'district' => 'required',
             'local' => 'required',
+            'lat' => 'required',
+            'long' => 'required',
             'type' => 'required',
             'description' => 'required',
             'estloss' => 'numeric',
@@ -210,6 +216,8 @@ class ViewController extends Controller
         $editedData->district = $request->input('district');
         $editedData->local = $request->input('local');
         $editedData->type = $request->input('type');
+        $editedData->lat = $request->input('lat');
+        $editedData->long = $request->input('long');
         $editedData->description = $request->input('description');
         $editedData->estloss = $request->input('estloss');
         $editedData->death = $request->input('death');
