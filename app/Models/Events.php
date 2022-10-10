@@ -13,6 +13,8 @@ class Events extends Model
         'province',
         'district',
         'local',
+        'lat',
+        'long',
         'type',
         'description',
         'estloss',
