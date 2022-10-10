@@ -1,10 +1,10 @@
 import { Marker, Popup } from "react-leaflet";
 
 const IncidentMarker = (props) => {
-    // console.log(props);
+    console.log(props);
     return (
         <>
-        <Marker position={props.position}>
+        <Marker position={[props.eventData.lat, props.eventData.long]}>
             <Popup>
                 <ul>
                     <li>{props.eventData.title}</li>
