@@ -7,7 +7,7 @@ const IncidentMarker = (props) => {
         <Marker position={[props.eventData.lat, props.eventData.long]}>
             <Popup>
                 <ul>
-                    <li>{props.eventData.title}</li>
+                    <li> <a href="/view-events">{props.eventData.title}</a></li>
                     <li>{props.eventData.local}</li>
                 </ul>
             </Popup>
