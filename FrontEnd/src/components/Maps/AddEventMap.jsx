@@ -8,7 +8,6 @@ import { MapContainer, GeoJSON, TileLayer, Marker, Popup, useMap, useMapEvents }
 import latLong from "./latLong";
 
 function LocationMarker(props) {
-  console.log(props)
     const [position, setPosition] = useState(null);
     const [mapData, setMapData] = useState(null);
     const map = useMapEvents({
@@ -19,7 +18,7 @@ function LocationMarker(props) {
         console.log(e.latlng);
         fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`)
         .then(res => res.json())
-        .then(data => { setMapData(data); props.fillLocation(data); })
+        .then(data => { setMapData(data); props.fillLocation(data); props.latLong(e.latlng) })
         map.flyTo(e.latlng, map.getZoom());
         
       },
@@ -51,7 +50,7 @@ const LocalMap = (props) => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-            <LocationMarker fillLocation={props.fillLocation} />
+            <LocationMarker fillLocation={props.fillLocation} latLong={props.latLong}/>
             </MapContainer>
         </>
     );

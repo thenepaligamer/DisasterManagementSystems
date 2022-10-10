@@ -31,9 +31,9 @@ const LocalMap = (props) => {
    
     const localMark = props.eventData.map(data => {
         console.log(data.local)
-        if(data.local in latLong){
-            return (<IncidentMarker position={latLong[`${data.local}`]} key={data.id} eventData={data}/>)
-        } 
+    
+        return (<IncidentMarker key={data.id} eventData={data}/>)
+        
     })
     console.log(localMark)
     

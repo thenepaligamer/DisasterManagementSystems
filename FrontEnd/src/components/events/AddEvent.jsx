@@ -26,13 +26,19 @@ import DisasterImage from "../../assets/disaster.png";
 export default function AddEvent() {
     // const districtComponent = useDistrictComponent();
     const { isLoggedIn } = useSelector((store) => store.adminAuth);
+    const [latlng, setLatlng] = useState({ lat: 28, lng: 84 });
     const [ eventLocation, setEventLocation] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
 
     function fillLocation( location){
-        console.log(location.address);
+        console.log(location);
         setEventLocation(location.address);
+    }
+
+    function latLong(latlong){
+        setLatlng(latlong);
+        console.log(latlong);
     }
 
     async function submitted(e) {
@@ -48,6 +54,8 @@ export default function AddEvent() {
             death,
             injured,
             missing,
+            lat,
+            long
         } = e.target;
         const formData = new URLSearchParams();
         formData.append("title", title.value);
@@ -60,6 +68,9 @@ export default function AddEvent() {
         formData.append("death", death.value);
         formData.append("injured", injured.value);
         formData.append("missing", missing.value);
+        formData.append("lat", lat.value);
+        formData.append("long", long.value);
+        console.log(formData);
         if (isLoggedIn && location.pathname === "/admin/add-event") {
             formData.append("is_verified", 1);
         } else {
@@ -84,7 +95,7 @@ export default function AddEvent() {
                     className="h-10"
                     style={{ height: "100vh", width: "60vw" }}
                 >
-                    <AddEventMap style={{ height: "60vh" }} fillLocation={ (l) => fillLocation(l)}/>
+                    <AddEventMap style={{ height: "60vh" }} fillLocation={ (l) => fillLocation(l)} latLong={ (l) => latLong(l)}/>
                 </div>
                 <div>
                     <div className="text-2xl my-2">Add an Incident</div>
@@ -121,7 +132,7 @@ export default function AddEvent() {
                                 name="province"
                                 required
                                 defaultValue="default"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
                             { eventLocation ? <option value={eventLocation.region}>{eventLocation.region}</option> : <option>Select Province</option>}
                             
@@ -140,7 +151,7 @@ export default function AddEvent() {
                                 name="district"
                                 defaultValue="default"
                                 required
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
                             { eventLocation ? <option value={eventLocation.county}>{eventLocation.county}</option> : <option>Select Province</option>}
                             
@@ -159,7 +170,7 @@ export default function AddEvent() {
                                 name="local"
                                 required
                                 defaultValue="default"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
                               { eventLocation ? <option value={eventLocation.municipality}>{eventLocation.municipality}</option> : <option>Select Province</option>}
                             
@@ -175,7 +186,7 @@ export default function AddEvent() {
                             <select
                                 id="event"
                                 name="type"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
                                 <option selected>Other</option>
                                 <option value="earthquake">Earthquake</option>
@@ -264,6 +275,38 @@ export default function AddEvent() {
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                 placeholder="Optional"
                                 required
+                            />
+                        </div>
+                        <div className="flex">
+                        <label
+                                htmlFor="lat"
+                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 "
+                            >
+                                Latitude
+                            </label>
+                            <input
+                                type="text"
+                                id="lat"
+                                name="lat"
+                                value={latlng.lat}
+                                disabled
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                                placeholder="Optional"
+                            />
+                        <label
+                                htmlFor="lng"
+                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 "
+                            >
+                                Longitude
+                            </label>
+                            <input
+                                type="text"
+                                id="lng"
+                                name="long"
+                                value={latlng.lng}
+                                disabled
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                                placeholder="Optional"
                             />
                         </div>
                         <button
