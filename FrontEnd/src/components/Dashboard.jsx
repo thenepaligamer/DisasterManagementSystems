@@ -90,7 +90,7 @@ export default function Dashboard (){
 
     return (
         <>
-            <div className="grid grid-cols-12 px-6 gap-3 mt-8 ">
+            <div className="grid grid-cols-12 px-6 gap-3 mt-12 ">
                 
                 <div className="col-span-8 md:col-span-8">
                     <div className="text-2xl mb-2">Recent Incidents</div>
