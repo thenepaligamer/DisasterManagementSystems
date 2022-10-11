@@ -110,9 +110,9 @@ class ViewController extends Controller
             'details' => $events,
         ];
            
-        /*$pdf = PDF::loadView('Reports/incidentreport', $data);
+        $pdf = PDF::loadView('Reports/incidentreport', $data);
      
-        return $pdf->download('report.pdf');*/
+        return $pdf->download('report.pdf');
    
         $mailInfo = [
             'title' => $emailMessage,
@@ -261,13 +261,11 @@ class ViewController extends Controller
     }
 
     public function summary(){
-        $ph_no = Volunteers::all();
+        $ph_no = Events::all();
 
-        /*foreach($ph_no as $phone_number){
-            return response()->json($phone_number);
-        }*/
-
-        return response()->json($ph_no);
+        $collection = $ph_no->countBy('type');
+        //$collectio = $collection->count();
+        return response()->json($collection);
     }
 
 }
