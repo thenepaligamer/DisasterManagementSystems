@@ -112,7 +112,7 @@ class ViewController extends Controller
            
         $pdf = PDF::loadView('Reports/incidentreport', $data);
      
-        return $pdf->stream('report.pdf');
+        return $pdf->download('report.pdf');
    
         $mailInfo = [
             'title' => $emailMessage,
