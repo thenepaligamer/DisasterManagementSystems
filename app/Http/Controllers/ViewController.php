@@ -21,6 +21,8 @@ use Twilio\Rest\Client;
 
 use App\Models\Events;
 use App\Models\Volunteers;
+
+use PDF;
 /*
 $rules = [
             'h-captcha-response' => ['required', new ValidHCaptcha()]
@@ -102,6 +104,15 @@ class ViewController extends Controller
 
         $email = 'admin@dms.com';
         $emailMessage = $message . " has occurred in " . $location .",". $district;
+
+        $data = [
+            'title' => $emailMessage,
+            'details' => $events,
+        ];
+           
+        $pdf = PDF::loadView('Reports/incidentreport', $data);
+     
+        return $pdf->stream('report.pdf');
    
         $mailInfo = [
             'title' => $emailMessage,
@@ -110,7 +121,7 @@ class ViewController extends Controller
 
         Mail::to($email)->send(new IncidentMail($mailInfo));
 
-        $recipients = ['+9779846907090'];
+        /*$recipients = ['+9779846907090'];
         
         foreach($recipients as $recipient){
             $this->sendMessage($emailMessage,$recipient);
@@ -121,12 +132,11 @@ class ViewController extends Controller
         
         foreach($volunteerNumbers as $volunteerNumber){
             $this->sendMessage($volunteerMessage,$volunteerNumber);
-        }
+        }*/
         
         return response()->json([
             'message' => 'Added event',
             'event details' => $events,
-            'phone number' => $recipient,
             'message' => $message   
         ], 201);
     }
