@@ -110,9 +110,9 @@ class ViewController extends Controller
             'details' => $events,
         ];
            
-        $pdf = PDF::loadView('Reports/incidentreport', $data);
+        /*$pdf = PDF::loadView('Reports/incidentreport', $data);
      
-        return $pdf->download('report.pdf');
+        return $pdf->download('report.pdf');*/
    
         $mailInfo = [
             'title' => $emailMessage,
