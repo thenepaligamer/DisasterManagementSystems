@@ -229,7 +229,7 @@ export default function AddEvent() {
                                 required
                             />
                         </div>{" "}
-                        <div className="flex ">
+                        <div className="flex " >
                             <label
                                 htmlFor="death"
                                 className="flex align-middle mr-3  text-sm font-medium text-gray-900 "
@@ -277,7 +277,7 @@ export default function AddEvent() {
                                 required
                             />
                         </div>
-                        <div className="flex">
+                        <div className="flex" style={{ display: "none"}}>
                         <label
                                 htmlFor="lat"
                                 className="flex align-middle mr-3  text-sm font-medium text-gray-900 "

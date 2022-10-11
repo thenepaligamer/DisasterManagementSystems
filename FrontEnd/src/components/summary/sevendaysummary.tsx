@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FireIcon from "../../assets/disaster-icons/FireIcon";
 import './sevendayssummary.module.css'
 import Icon from '@mdi/react'
-import {mdiFire, mdiHomeFlood, mdiLandslide, mdiLightningBolt, mdiZodiacTaurus} from '@mdi/js'
+import {mdiFire, mdiHomeFlood, mdiLandslide, mdiLightningBolt, mdiZodiacTaurus, mdiEarthBox} from '@mdi/js'
 const SevenDaysSummary = () => {
 
     const [summary, setSummary] = useState({
@@ -11,7 +11,7 @@ const SevenDaysSummary = () => {
         flood: 0,
         lightning: 0,
         earthquake: 0,
-        other: 0
+        Other: 0
 
     });
 
@@ -47,7 +47,7 @@ const SevenDaysSummary = () => {
                         
                         <span className="text-md text-nowrap">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                            <Icon path={mdiLightningBolt} size={2} color="red" /> ThunderBolt : { summary.lightning ? summary.lightning : 0} Incidents
+                            <Icon path={mdiEarthBox} size={2} color="red" /> Earthquake : { summary.earthquake ? summary.earthquake : 0} Incidents
                         </span>
                        
                         <span className="text-md ">
@@ -56,7 +56,7 @@ const SevenDaysSummary = () => {
                         </span>
                         <span className="text-md pt-2">
                         {/*<FireIcon color="red" height="60px" width="60px" />*/}
-                            <Icon path={mdiZodiacTaurus} size={2} color="red" /> Others : { summary.other ? summary.other : 0} Incidents
+                            <Icon path={mdiZodiacTaurus} size={2} color="red" /> Others : { summary.Other ? summary.Other : 0} Incidents
                         </span>
                     </div>
 
