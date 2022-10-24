@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-test('test', async ({ page }) => {
+test('Add Incident as User', async ({ page }) => {
   await page.goto('http://localhost:3000/');
   await page.getByRole('button', { name: 'Incidents' }).click();
   await page.getByRole('link', { name: 'View Incidents' }).click();
