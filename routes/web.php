@@ -16,7 +16,7 @@ use App\Http\Controllers\PDFTest;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "Not found";
 });
 
 Route::get('/mail-send', [WelcomeController::class, 'mailSend']);
