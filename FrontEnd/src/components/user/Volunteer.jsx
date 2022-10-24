@@ -30,7 +30,7 @@ export default function Volunteer() {
             const response = await fetch(url +'?'+ formData, {
                 method: 'POST',
             });
-            const data = await response.json();
+            // const data = await response.json();
             setIsSubmitted(true);
             setLoading(false);
             console.log(data);
