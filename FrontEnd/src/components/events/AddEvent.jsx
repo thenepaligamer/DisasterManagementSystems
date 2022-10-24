@@ -80,8 +80,8 @@ export default function AddEvent() {
         const url = "https://dms-json-hosting.herokuapp.com/api/event/add";
         const options = {};
         const response = await fetch(url + "?" + formData, { method: "POST" });
-        const data = await response.json();
-        console.log(data);
+        // const data = await response.json();
+        // console.log(data);
         if (location.pathname === "/admin/add-event") {
             navigate("/admin/view-events", { replace: true });
         } else {
