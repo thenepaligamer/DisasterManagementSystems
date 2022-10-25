@@ -20,3 +20,4 @@ test('Login as Admin', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/admin');
 
 });
+
