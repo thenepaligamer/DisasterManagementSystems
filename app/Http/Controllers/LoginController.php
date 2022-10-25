@@ -35,7 +35,7 @@ class LoginController extends Controller
             'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer',
-        ]);
+        ],200);
     }
 
     function login (Request $request){
