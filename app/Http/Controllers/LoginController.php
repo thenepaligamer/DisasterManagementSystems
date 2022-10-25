@@ -49,13 +49,17 @@ class LoginController extends Controller
 
         $token = $user->createToken('auth_token');
 
+        $email = $request['email'];
+        $password = $request['password'];
+
         Auth::login($user);
 
         return response()->json([
+            'email' => $email,
+            'password' => $password,
             'message' => 'Successfully logged in',
             'access_token' => $token->plainTextToken,
-            'token_type' => 'Bearer',
-            'user' => $user->id
+            'token_type' => 'Bearer'
         ],200);
     }
 
