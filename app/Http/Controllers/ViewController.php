@@ -23,11 +23,7 @@ use App\Models\Events;
 use App\Models\Volunteers;
 
 use PDF;
-/*
-$rules = [
-            'h-captcha-response' => ['required', new ValidHCaptcha()]
-        ];
-        */
+
 class ViewController extends Controller
 {
     /**
@@ -110,9 +106,9 @@ class ViewController extends Controller
             'details' => $events,
         ];
            
-        $pdf = PDF::loadView('Reports/incidentreport', $data);
+        /*$pdf = PDF::loadView('Reports/incidentreport', $data);
      
-        return $pdf->download('report.pdf');
+        return $pdf->download('report.pdf');*/
    
         $mailInfo = [
             'title' => $emailMessage,
@@ -121,14 +117,14 @@ class ViewController extends Controller
 
         Mail::to($email)->send(new IncidentMail($mailInfo));
 
-        /*$recipients = ['+9779846907090'];
+        /*$recipients = ['+'];
         
         foreach($recipients as $recipient){
             $this->sendMessage($emailMessage,$recipient);
         }
 
         $volunteerMessage = $message . " has occurred in " . $location .",". $district.". Please contact with relevant authority about any rescue operations";
-        $volunteerNumbers = ['+9779846907090'];
+        $volunteerNumbers = ['+'];
         
         foreach($volunteerNumbers as $volunteerNumber){
             $this->sendMessage($volunteerMessage,$volunteerNumber);
