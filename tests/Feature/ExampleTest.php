@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -14,8 +15,13 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        $response = $this->postJson('https://dms-json-hosting.herokuapp.com/api/login',['email'=>'fxdx@gmail.com', 'password'=>'1@asdfasdA']);
 
-        $response->assertStatus(200);
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'created' => true,
+            ]);
+
     }
 }
