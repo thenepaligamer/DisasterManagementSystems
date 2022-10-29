@@ -105,10 +105,6 @@ class ViewController extends Controller
             'title' => $emailMessage,
             'details' => $events,
         ];
-           
-        /*$pdf = PDF::loadView('Reports/incidentreport', $data);
-     
-        return $pdf->download('report.pdf');*/
    
         $mailInfo = [
             'title' => $emailMessage,
@@ -132,8 +128,7 @@ class ViewController extends Controller
         
         return response()->json([
             'message' => 'Added event',
-            'event details' => $events,
-            'message' => $message   
+            'event' => $events,
         ], 201);
     }
 
