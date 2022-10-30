@@ -232,7 +232,7 @@ class ViewController extends Controller
             'editedDetails' => $editedData
         ],201);
 
-        $user->notify(new SuccessfulRegistration());
+        //$user->notify(new SuccessfulRegistration());
     }
 
     /**
