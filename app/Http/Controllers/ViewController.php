@@ -195,7 +195,7 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $a = Events::find($id)->update($request->all());
+        $a = Events::where('id',$id)->update($request->except(['_method', '_token']));
         return response()->json([
              "editedIncidentData" => $a
         ], 200);
