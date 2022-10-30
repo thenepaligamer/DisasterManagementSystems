@@ -197,7 +197,8 @@ class ViewController extends Controller
     {
         if (Events::where('id', $id)->exists()) {
             $editedIncidentData = Events::find($id);
-           $editedIncidentData->province = is_null($request->province) ? $editedIncidentData->province : $request->input['province'];
+            $editedIncidentData->title = is_null($request->title) ? $editedIncidentData->title : $request->title;
+            $editedIncidentData->province = is_null($request->province) ? $editedIncidentData->province : $request->input['province'];
             $editedIncidentData->district = is_null($request->district) ? $editedIncidentData->district : $request->district;
             $editedIncidentData->local = is_null($request->local) ? $editedIncidentData->local : $request->local;
             $editedIncidentData->type = is_null($request->type) ? $editedIncidentData->type : $request->type;
