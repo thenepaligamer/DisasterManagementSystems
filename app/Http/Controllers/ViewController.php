@@ -229,7 +229,7 @@ class ViewController extends Controller
 
         return response()->json([
             'message' => 'Event edited',
-            'edited Details' => $editedData
+            'editedDetails' => $editedData
         ],201);
 
         $user->notify(new SuccessfulRegistration());
