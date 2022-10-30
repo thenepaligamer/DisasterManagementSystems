@@ -207,7 +207,8 @@ class ViewController extends Controller
             $editedIncidentData->missing = is_null($request->missing) ? $editedIncidentData->missing : $request->missing;
             $editedIncidentData->injured = is_null($request->injured) ? $editedIncidentData->injured : $request->injured;
 
-            $editedIncidentData->save();
+            //$editedIncidentData->save();
+            
             return response()->json([
                 "message" => "Incident Updated successfully",
                 "editedIncidentData" => $editedIncidentData
