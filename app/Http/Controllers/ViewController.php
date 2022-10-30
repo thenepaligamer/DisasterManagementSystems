@@ -195,7 +195,30 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if (Events::where('id', $id)->exists()) {
+            $editedIncidentData = Events::find($id);
+            $editedIncidentData->province = is_null($request->province) ? $editedIncidentData->province : $request->province;
+            $editedIncidentData->district = is_null($request->district) ? $editedIncidentData->district : $request->district;
+            $editedIncidentData->local = is_null($request->local) ? $editedIncidentData->local : $request->local;
+            $editedIncidentData->type = is_null($request->type) ? $editedIncidentData->type : $request->type;
+            $editedIncidentData->description = is_null($request->description) ? $editedIncidentData->description : $request->description;
+            $editedIncidentData->estloss = is_null($request->estloss) ? $editedIncidentData->estloss : $request->estloss;
+            $editedIncidentData->death = is_null($request->death) ? $editedIncidentData->death : $request->death;
+            $editedIncidentData->missing = is_null($request->missing) ? $editedIncidentData->missing : $request->missing;
+            $editedIncidentData->injured = is_null($request->injured) ? $editedIncidentData->injured : $request->injured;
+
+            $editedIncidentData->save();
+            return response()->json([
+                "message" => "Incident Updated successfully"
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Incident Not Found."
+            ], 404);
+        }
+
+
+/*
         $data = $request->validate([
             'title' => 'required',
             'province' => 'required',
@@ -226,7 +249,7 @@ class ViewController extends Controller
         $editedData->missing = $request->input('missing');
         $editedData->injured = $request->input('injured');
 
-        $editedData->save();*/
+        $editedData->save();
         $editedIncidentData->update($request->all());
 
         return response()->json([
@@ -234,7 +257,7 @@ class ViewController extends Controller
             'editedDetails' => $editedIncidentData
         ],201);
 
-        //$user->notify(new SuccessfulRegistration());
+        //$user->notify(new SuccessfulRegistration());*/
     }
 
     /**
