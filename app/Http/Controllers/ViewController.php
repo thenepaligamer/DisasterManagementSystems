@@ -196,7 +196,9 @@ class ViewController extends Controller
     public function update(Request $request, $id)
     {
         $a = Events::find($id)->fill($request->all())->save();
-        return response()->json($a, 200);
+        return response()->json([
+             "editedData" => $a
+        ], 200);
         /*if (Events::where('id', $id)->exists()) {
             $editedIncidentData = Events::find($id);
             $editedIncidentData->title = is_null($request->title) ? $editedIncidentData->title : $request->title;
