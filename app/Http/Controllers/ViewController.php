@@ -211,7 +211,7 @@ class ViewController extends Controller
             'injured' => 'numeric',
         ]);
 
-        $editedData = Events::find($id);
+        $editedIncidentData = Events::find($id);
 
         /*$editedData->title = $request->input('title');
         $editedData->province = $request->input('province');
@@ -227,11 +227,11 @@ class ViewController extends Controller
         $editedData->injured = $request->input('injured');
 
         $editedData->save();*/
-        $editedData->update($request->all());
+        $editedIncidentData->update($request->all());
 
         return response()->json([
             'message' => 'Event edited successfully',
-            'editedDetails' => $editedData
+            'editedDetails' => $editedIncidentData
         ],201);
 
         //$user->notify(new SuccessfulRegistration());
