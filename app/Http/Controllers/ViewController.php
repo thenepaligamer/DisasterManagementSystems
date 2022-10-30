@@ -209,7 +209,8 @@ class ViewController extends Controller
 
             $editedIncidentData->save();
             return response()->json([
-                "message" => "Incident Updated successfully"
+                "message" => "Incident Updated successfully",
+                "editedIncidentData" => $editedIncidentData
             ], 201);
         }else{
             return response()->json([
