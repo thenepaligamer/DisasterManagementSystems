@@ -195,11 +195,7 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $a = Events::where('id',$id)->update($request->except(['_method', '_token']));
-        return response()->json([
-             "editedIncidentData" => $a
-        ], 200);
-        /*if (Events::where('id', $id)->exists()) {
+        if (Events::where('id', $id)->exists()) {
             $editedIncidentData = Events::find($id);
             $editedIncidentData->title = is_null($request->title) ? $editedIncidentData->title : $request->title;
             $editedIncidentData->province = is_null($request->province) ? $editedIncidentData->province : $request->input['province'];
@@ -224,7 +220,7 @@ class ViewController extends Controller
             return response()->json([
                 "message" => "Incident Not Found."
             ], 404);
-        }*/
+        }
 
 
 /*
