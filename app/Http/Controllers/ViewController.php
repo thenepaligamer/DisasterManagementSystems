@@ -195,6 +195,7 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $data = $request->validate([
             'title' => 'required',
             'province' => 'required',
@@ -212,7 +213,7 @@ class ViewController extends Controller
 
         $editedData = Events::find($id);
 
-        $editedData->title = $request->input('title');
+        /*$editedData->title = $request->input('title');
         $editedData->province = $request->input('province');
         $editedData->district = $request->input('district');
         $editedData->local = $request->input('local');
@@ -225,10 +226,11 @@ class ViewController extends Controller
         $editedData->missing = $request->input('missing');
         $editedData->injured = $request->input('injured');
 
-        $editedData->save();
+        $editedData->save();*/
+        $editedData->update($request->all());
 
         return response()->json([
-            'message' => 'Event edited',
+            'message' => 'Event edited successfully',
             'editedDetails' => $editedData
         ],201);
 
