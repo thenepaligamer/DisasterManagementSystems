@@ -195,7 +195,7 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $a = Events::find($id)->fill($request->all())->save();
+        $a = Events::find($id)->update($request->all());
         return response()->json([
              "editedData" => $a
         ], 200);
