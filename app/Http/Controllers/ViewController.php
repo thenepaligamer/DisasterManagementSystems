@@ -182,7 +182,7 @@ class ViewController extends Controller
 
         return response()->json([
             'message' => 'Status updated',
-            'edited Details' => $getUnverifiedEvents
+            'editedDetails' => $getUnverifiedEvents
         ],201);
     }
 
