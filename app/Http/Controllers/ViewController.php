@@ -182,7 +182,7 @@ class ViewController extends Controller
 
         return response()->json([
             'message' => 'Status updated',
-            'edited Details' => $getUnverifiedEvents
+            'editedDetails' => $getUnverifiedEvents
         ],201);
     }
 
@@ -195,6 +195,7 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $data = $request->validate([
             'title' => 'required',
             'province' => 'required',
@@ -210,9 +211,9 @@ class ViewController extends Controller
             'injured' => 'numeric',
         ]);
 
-        $editedData = Events::find($id);
+        $editedIncidentData = Events::find($id);
 
-        $editedData->title = $request->input('title');
+        /*$editedData->title = $request->input('title');
         $editedData->province = $request->input('province');
         $editedData->district = $request->input('district');
         $editedData->local = $request->input('local');
@@ -225,14 +226,15 @@ class ViewController extends Controller
         $editedData->missing = $request->input('missing');
         $editedData->injured = $request->input('injured');
 
-        $editedData->save();
+        $editedData->save();*/
+        $editedIncidentData->update($request->all());
 
         return response()->json([
-            'message' => 'Event edited',
-            'edited Details' => $editedData
+            'message' => 'Event edited successfully',
+            'editedDetails' => $editedIncidentData
         ],201);
 
-        $user->notify(new SuccessfulRegistration());
+        //$user->notify(new SuccessfulRegistration());
     }
 
     /**

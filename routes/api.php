@@ -53,8 +53,6 @@ Route::post('/feedback/add', [FeedbackController::class, 'store']);
 Route::post('/userdata/add', [UserConfigController::class, 'store']);
 Route::post('/volunteer/add', [VolunteerController::class, 'store']);
 
-
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event/view', [ViewController::class, 'index']);
     Route::get('/event/update/{id}', [ViewController::class, 'show']);
