@@ -45,14 +45,14 @@ class ReliefController extends Controller
             'province' => 'required',
             'district' => 'required',
             'local' => 'required',
-            'date'=> 'required|date',
+            'date'=> 'required',
             'rice' => 'numeric',
             'sugar' => 'numeric',
             'salt' => 'numeric',
             'readymade' => 'numeric',
             'water' => 'numeric',
             'otherfood' => 'required',
-            'housing' => 'alpha_num',
+            'housing' => 'required',
         ]);
 
         $reliefDetails = [
