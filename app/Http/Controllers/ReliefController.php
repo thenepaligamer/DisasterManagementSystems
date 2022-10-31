@@ -72,7 +72,7 @@ class ReliefController extends Controller
         $reliefs = Relief::create($reliefDetails);
 
         return response()->json([
-            'message' => 'Added relief',
+            'message' => 'Added relief details',
             'reliefDetails' => $reliefs
         ],201);
     }
@@ -111,7 +111,7 @@ class ReliefController extends Controller
     {
         if (Relief::where('id', $id)->exists()) {
             $editedReliefData = Relief::find($id);
-            $editedReliefData->province = is_null($request->province) ? $editedReliefData->province : $request->input['province'];
+            $editedReliefData->province = is_null($request->province) ? $editedReliefData->province : $request->province;
             $editedReliefData->district = is_null($request->district) ? $editedReliefData->district : $request->district;
             $editedReliefData->local = is_null($request->local) ? $editedReliefData->local : $request->local;
             $editedReliefData->date = is_null($request->date) ? $editedReliefData->date : $request->date;

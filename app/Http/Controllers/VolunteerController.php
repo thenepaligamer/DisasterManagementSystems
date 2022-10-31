@@ -135,7 +135,7 @@ class VolunteerController extends Controller
         if (Volunteers::where('id', $id)->exists()) {
             $editedVolunteerData = Volunteers::find($id);
             $editedVolunteerData->type = is_null($request->type) ? $editedVolunteerData->type : $request->type;
-            $editedVolunteerData->province = is_null($request->province) ? $editedVolunteerData->province : $request->input['province'];
+            $editedVolunteerData->province = is_null($request->province) ? $editedVolunteerData->province : $request->province;
             $editedVolunteerData->district = is_null($request->district) ? $editedVolunteerData->district : $request->district;
             $editedVolunteerData->local = is_null($request->local) ? $editedVolunteerData->local : $request->local;
             $editedVolunteerData->ward_no = is_null($request->ward_no) ? $editedVolunteerData->ward_no : $request->ward_no;

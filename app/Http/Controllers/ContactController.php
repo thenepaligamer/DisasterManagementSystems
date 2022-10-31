@@ -102,7 +102,7 @@ class ContactController extends Controller
     {
         if (Contact::where('id', $id)->exists()) {
             $editedContactData = Contact::find($id);
-            $editedContactData->province = is_null($request->province) ? $editedContactData->province : $request->input['province'];
+            $editedContactData->province = is_null($request->province) ? $editedContactData->province : $request->province;
             $editedContactData->district = is_null($request->district) ? $editedContactData->district : $request->district;
             $editedContactData->local = is_null($request->local) ? $editedContactData->local : $request->local;
             $editedContactData->spokesman = is_null($request->spokesman) ? $editedContactData->spokesman : $request->spokesman;
