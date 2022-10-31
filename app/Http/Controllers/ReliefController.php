@@ -109,8 +109,8 @@ class ReliefController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Events::where('id', $id)->exists()) {
-            $editedReliefData = Events::find($id);
+        if (Relief::where('id', $id)->exists()) {
+            $editedReliefData = Relief::find($id);
             $editedReliefData->province = is_null($request->province) ? $editedReliefData->province : $request->input['province'];
             $editedReliefData->district = is_null($request->district) ? $editedReliefData->district : $request->district;
             $editedReliefData->local = is_null($request->local) ? $editedReliefData->local : $request->local;
