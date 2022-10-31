@@ -95,7 +95,7 @@ class VolunteerController extends Controller
 
         return response()->json([
             'message' => 'Added volunteer data',
-            'relief details' => $volunteer
+            'volunteerDetails' => $volunteer
         ],201);
 
     }
