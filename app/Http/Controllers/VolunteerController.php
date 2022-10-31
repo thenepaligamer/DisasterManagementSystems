@@ -132,38 +132,30 @@ class VolunteerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'type' => 'required',
-            'province' => 'required',
-            'district' => 'required',
-            'local'=> 'required',
-            'ward_no' => 'required|numeric',
-            'name' => 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required',
-            'interested_area' => 'required',
-            'manpower' => 'alpha_num'
-        ]);
+        if (Volunteers::where('id', $id)->exists()) {
+            $editedVolunteerData = Volunteers::find($id);
+            $editedVolunteerData->type = is_null($request->type) ? $editedVolunteerData->type : $request->type;
+            $editedVolunteerData->province = is_null($request->province) ? $editedVolunteerData->province : $request->input['province'];
+            $editedVolunteerData->district = is_null($request->district) ? $editedVolunteerData->district : $request->district;
+            $editedVolunteerData->local = is_null($request->local) ? $editedVolunteerData->local : $request->local;
+            $editedVolunteerData->ward_no = is_null($request->ward_no) ? $editedVolunteerData->ward_no : $request->ward_no;
+            $editedVolunteerData->name = is_null($request->name) ? $editedVolunteerData->name : $request->name;
+            $editedVolunteerData->phone = is_null($request->phone) ? $editedVolunteerData->phone : $request->phone;
+            $editedVolunteerData->email = is_null($request->email) ? $editedVolunteerData->email : $request->email;
+            $editedVolunteerData->interested_area = is_null($request->interested_area) ? $editedVolunteerData->interested_area : $request->interested_area;
+            $editedVolunteerData->manpower = is_null($request->manpower) ? $editedVolunteerData->manpower : $request->manpower;
 
-        $editedVolunteerData = Volunteers::find($id);
-
-        $editedVolunteerData->type = $request->input('type');
-        $editedVolunteerData->province = $request->input('province');
-        $editedVolunteerData->district = $request->input('district');
-        $editedVolunteerData->local = $request->input('local');
-        $editedVolunteerData->ward_no = $request->input('ward_no');
-        $editedVolunteerData->name = $request->input('name');
-        $editedVolunteerData->phone = $request->input('phone');
-        $editedVolunteerData->email = $request->input('email');
-        $editedVolunteerData->interested_area = $request->input('interested_area');
-        $editedVolunteerData->manpower = $request->input('manpower');
-
-        $editedVolunteerData->save();
-
-        return response()->json([
-            'message' => 'Volunteer data edited',
-            'edited Details' => $editedVolunteerData
-        ],201);
+            $editedVolunteerData->save();
+            
+            return response()->json([
+                "message" => "Volunteer Detail Updated successfully",
+                "editedVolunteerData" => $editedVolunteerData
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Volunteer Detail Not Found."
+            ], 404);
+        }
     }
 
     /**

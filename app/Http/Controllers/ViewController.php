@@ -170,20 +170,21 @@ class ViewController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $data = $request->validate([
-            'is_verified' => 'required'
-        ]);
+        if (Events::where('id', $id)->exists()) {
+            $findIncidentData = Events::find($id);
+            $findIncidentData->is_verified = is_null($request->is_verified) ? $editedIncidentData->is_verified : $request->is_verified;
 
-        $getUnverifiedEvents = Events::find($id);
-
-        $getUnverifiedEvents->is_verified = $request->input('is_verified');
-
-        $getUnverifiedEvents->save();
-
-        return response()->json([
-            'message' => 'Status updated',
-            'editedDetails' => $getUnverifiedEvents
-        ],201);
+            $findIncidentData->save();
+            
+            return response()->json([
+                "message" => "Incident Updated successfully",
+                "editedIncidentData" => $findIncidentData
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Incident Not Found."
+            ], 404);
+        }
     }
 
     /**
@@ -221,48 +222,6 @@ class ViewController extends Controller
                 "message" => "Incident Not Found."
             ], 404);
         }
-
-
-/*
-        $data = $request->validate([
-            'title' => 'required',
-            'province' => 'required',
-            'district' => 'required',
-            'local' => 'required',
-            'lat' => 'required',
-            'long' => 'required',
-            'type' => 'required',
-            'description' => 'required',
-            'estloss' => 'numeric',
-            'death' => 'numeric',
-            'missing' => 'numeric',
-            'injured' => 'numeric',
-        ]);
-
-        $editedIncidentData = Events::find($id);
-
-        /*$editedData->title = $request->input('title');
-        $editedData->province = $request->input('province');
-        $editedData->district = $request->input('district');
-        $editedData->local = $request->input('local');
-        $editedData->type = $request->input('type');
-        $editedData->lat = $request->input('lat');
-        $editedData->long = $request->input('long');
-        $editedData->description = $request->input('description');
-        $editedData->estloss = $request->input('estloss');
-        $editedData->death = $request->input('death');
-        $editedData->missing = $request->input('missing');
-        $editedData->injured = $request->input('injured');
-
-        $editedData->save();
-        $editedIncidentData->update($request->all());
-
-        return response()->json([
-            'message' => 'Event edited successfully',
-            'editedDetails' => $editedIncidentData
-        ],201);
-
-        //$user->notify(new SuccessfulRegistration());*/
     }
 
     /**
