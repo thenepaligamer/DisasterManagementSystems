@@ -73,7 +73,7 @@ class ReliefController extends Controller
 
         return response()->json([
             'message' => 'Added relief',
-            'relief details' => $reliefs
+            'reliefDetails' => $reliefs
         ],201);
     }
 
