@@ -64,7 +64,7 @@ class ContactController extends Controller
 
         return response()->json([
             'message' => 'Added contacts',
-            'relief details' => $contacts
+            'contactDetail' => $contacts
         ],201);
     }
 
