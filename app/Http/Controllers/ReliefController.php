@@ -41,6 +41,26 @@ class ReliefController extends Controller
      */
     public function store(Request $request)
     {
+        $reliefDetails->province = is_null($request->province) ? $reliefDetails->province : $request->input['province'];
+        $reliefDetails->district = is_null($request->district) ? $reliefDetails->district : $request->district;
+        $reliefDetails->local = is_null($request->local) ? $reliefDetails->local : $request->local;
+        $reliefDetails->date = is_null($request->date) ? $reliefDetails->date : $request->date;
+        $reliefDetails->rice = is_null($request->rice) ? $reliefDetails->rice : $request->rice;
+        $reliefDetails->sugar = is_null($request->sugar) ? $reliefDetails->sugar : $request->sugar;
+        $reliefDetails->salt = is_null($request->salt) ? $reliefDetails->salt : $request->salt;
+        $reliefDetails->readymade = is_null($request->readymade) ? $reliefDetails->readymade : $request->readymade;
+        $reliefDetails->water = is_null($request->water) ? $reliefDetails->water : $request->water;
+        $reliefDetails->otherfood = is_null($request->otherfood) ? $reliefDetails->otherfood : $request->otherfood;
+        $reliefDetails->housing = is_null($request->housing) ? $reliefDetails->housing : $request->housing;
+
+        $reliefs = Relief::create($reliefDetails);
+            
+        return response()->json([
+            "message" => "Relief Details Updated successfully",
+            "reliefDetails" => $reliefs
+        ], 201);
+        
+        /*
         $data = $request->validate([
             'province' => 'required',
             'district' => 'required',
@@ -74,7 +94,7 @@ class ReliefController extends Controller
         return response()->json([
             'message' => 'Added relief',
             'reliefDetails' => $reliefs
-        ],201);
+        ],201);*/
     }
 
     /**
