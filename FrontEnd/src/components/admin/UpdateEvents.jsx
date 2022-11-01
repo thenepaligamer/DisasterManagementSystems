@@ -35,7 +35,7 @@ export default function UpdateEvents() {
     async function submit(e){
         e.preventDefault();
         const {title, type, description, estloss, death, injured, missing} = e.target;
-        const formData = new URLSearchParams();
+        const formData = new FormData();
         formData.append('title', title.value);
         formData.append("province", event.province);
         formData.append("district", event.district);
@@ -48,13 +48,14 @@ export default function UpdateEvents() {
         formData.append("missing", missing.value);
         formData.append("is_verified", 1);
         console.log(formData);
-        const response = await fetch((`https://dms-json-hosting.herokuapp.com/api/event/update/${id}?` + formData), {
-            method: "PUT",
+        const response = await fetch((`https://dms-json-hosting.herokuapp.com/api/event/update/${id}?_method=PUT`), {
+            method: "POST",
             headers: {
                 authorization: `Bearer ${token}`,
-            }
+            },
+            body: formData
         });
-        // navigate('/admin/view-events', {replace: true});
+        navigate('/admin/view-events', {replace: true});
     }
 
     return (<>
