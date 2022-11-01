@@ -26,6 +26,9 @@ class LoginController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ];
+        $email = $request['email'];
+        $password = $request['password'];
+        $name = $request['name'];
 
         $user = User::create($userDetails);
 
@@ -33,9 +36,12 @@ class LoginController extends Controller
 
         return response()->json([
             'user' => $user,
+            'name' => $name,
+            'email' => $email,
+            'password' => $password,
             'access_token' => $token,
             'token_type' => 'Bearer',
-        ]);
+        ],200);
     }
 
     function login (Request $request){
@@ -49,13 +55,17 @@ class LoginController extends Controller
 
         $token = $user->createToken('auth_token');
 
+        $email = $request['email'];
+        $password = $request['password'];
+
         Auth::login($user);
 
         return response()->json([
+            'email' => $email,
+            'password' => $password,
             'message' => 'Successfully logged in',
             'access_token' => $token->plainTextToken,
-            'token_type' => 'Bearer',
-            'user' => $user->id
+            'token_type' => 'Bearer'
         ],200);
     }
 

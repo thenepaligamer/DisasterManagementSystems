@@ -23,11 +23,7 @@ use App\Models\Events;
 use App\Models\Volunteers;
 
 use PDF;
-/*
-$rules = [
-            'h-captcha-response' => ['required', new ValidHCaptcha()]
-        ];
-        */
+
 class ViewController extends Controller
 {
     /**
@@ -109,10 +105,6 @@ class ViewController extends Controller
             'title' => $emailMessage,
             'details' => $events,
         ];
-           
-        $pdf = PDF::loadView('Reports/incidentreport', $data);
-     
-        return $pdf->download('report.pdf');
    
         $mailInfo = [
             'title' => $emailMessage,
@@ -121,14 +113,14 @@ class ViewController extends Controller
 
         Mail::to($email)->send(new IncidentMail($mailInfo));
 
-        /*$recipients = ['+9779846907090'];
+        /*$recipients = ['+'];
         
         foreach($recipients as $recipient){
             $this->sendMessage($emailMessage,$recipient);
         }
 
         $volunteerMessage = $message . " has occurred in " . $location .",". $district.". Please contact with relevant authority about any rescue operations";
-        $volunteerNumbers = ['+9779846907090'];
+        $volunteerNumbers = ['+'];
         
         foreach($volunteerNumbers as $volunteerNumber){
             $this->sendMessage($volunteerMessage,$volunteerNumber);
@@ -136,8 +128,7 @@ class ViewController extends Controller
         
         return response()->json([
             'message' => 'Added event',
-            'event details' => $events,
-            'message' => $message   
+            'event' => $events,
         ], 201);
     }
 
@@ -179,20 +170,21 @@ class ViewController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $data = $request->validate([
-            'is_verified' => 'required'
-        ]);
+        if (Events::where('id', $id)->exists()) {
+            $findIncidentData = Events::find($id);
+            $findIncidentData->is_verified = is_null($request->is_verified) ? $editedIncidentData->is_verified : $request->is_verified;
 
-        $getUnverifiedEvents = Events::find($id);
-
-        $getUnverifiedEvents->is_verified = $request->input('is_verified');
-
-        $getUnverifiedEvents->save();
-
-        return response()->json([
-            'message' => 'Status updated',
-            'edited Details' => $getUnverifiedEvents
-        ],201);
+            $findIncidentData->save();
+            
+            return response()->json([
+                "message" => "Incident Updated successfully",
+                "editedIncidentData" => $findIncidentData
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Incident Not Found."
+            ], 404);
+        }
     }
 
     /**
@@ -204,44 +196,32 @@ class ViewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'province' => 'required',
-            'district' => 'required',
-            'local' => 'required',
-            'lat' => 'required',
-            'long' => 'required',
-            'type' => 'required',
-            'description' => 'required',
-            'estloss' => 'numeric',
-            'death' => 'numeric',
-            'missing' => 'numeric',
-            'injured' => 'numeric',
-        ]);
+        if (Events::where('id', $id)->exists()) {
+            $editedIncidentData = Events::find($id);
+            $editedIncidentData->title = is_null($request->title) ? $editedIncidentData->title : $request->title;
+            $editedIncidentData->province = is_null($request->province) ? $editedIncidentData->province : $request->input['province'];
+            $editedIncidentData->district = is_null($request->district) ? $editedIncidentData->district : $request->district;
+            $editedIncidentData->local = is_null($request->local) ? $editedIncidentData->local : $request->local;
+            $editedIncidentData->type = is_null($request->type) ? $editedIncidentData->type : $request->type;
+            $editedIncidentData->description = is_null($request->description) ? $editedIncidentData->description : $request->description;
+            $editedIncidentData->estloss = is_null($request->estloss) ? $editedIncidentData->estloss : $request->estloss;
+            $editedIncidentData->death = is_null($request->death) ? $editedIncidentData->death : $request->death;
+            $editedIncidentData->missing = is_null($request->missing) ? $editedIncidentData->missing : $request->missing;
+            $editedIncidentData->injured = is_null($request->injured) ? $editedIncidentData->injured : $request->injured;
+            $editedIncidentData->lat = is_null($request->lat) ? $editedIncidentData->lat : $request->lat;
+            $editedIncidentData->long = is_null($request->long) ? $editedIncidentData->long : $request->long;
 
-        $editedData = Events::find($id);
-
-        $editedData->title = $request->input('title');
-        $editedData->province = $request->input('province');
-        $editedData->district = $request->input('district');
-        $editedData->local = $request->input('local');
-        $editedData->type = $request->input('type');
-        $editedData->lat = $request->input('lat');
-        $editedData->long = $request->input('long');
-        $editedData->description = $request->input('description');
-        $editedData->estloss = $request->input('estloss');
-        $editedData->death = $request->input('death');
-        $editedData->missing = $request->input('missing');
-        $editedData->injured = $request->input('injured');
-
-        $editedData->save();
-
-        return response()->json([
-            'message' => 'Event edited',
-            'edited Details' => $editedData
-        ],201);
-
-        $user->notify(new SuccessfulRegistration());
+            $editedIncidentData->save();
+            
+            return response()->json([
+                "message" => "Incident Updated successfully",
+                "editedIncidentData" => $editedIncidentData
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Incident Not Found."
+            ], 404);
+        }
     }
 
     /**
