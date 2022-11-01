@@ -45,14 +45,14 @@ class ReliefController extends Controller
             'province' => 'required',
             'district' => 'required',
             'local' => 'required',
-            'date'=> 'required|date',
+            'date'=> 'required',
             'rice' => 'numeric',
             'sugar' => 'numeric',
             'salt' => 'numeric',
             'readymade' => 'numeric',
             'water' => 'numeric',
             'otherfood' => 'required',
-            'housing' => 'alpha_num',
+            'housing' => 'required',
         ]);
 
         $reliefDetails = [
@@ -72,8 +72,8 @@ class ReliefController extends Controller
         $reliefs = Relief::create($reliefDetails);
 
         return response()->json([
-            'message' => 'Added relief',
-            'relief details' => $reliefs
+            'message' => 'Added relief details',
+            'reliefDetails' => $reliefs
         ],201);
     }
 
@@ -109,40 +109,31 @@ class ReliefController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'province' => 'required',
-            'district' => 'required',
-            'local' => 'required',
-            'date'=> 'required|date',
-            'rice' => 'numeric',
-            'sugar' => 'numeric',
-            'salt' => 'numeric',
-            'readymade' => 'numeric',
-            'water' => 'numeric',
-            'otherfood' => 'numeric',
-            'housing' => 'alpha_num',
-        ]);
+        if (Relief::where('id', $id)->exists()) {
+            $editedReliefData = Relief::find($id);
+            $editedReliefData->province = is_null($request->province) ? $editedReliefData->province : $request->province;
+            $editedReliefData->district = is_null($request->district) ? $editedReliefData->district : $request->district;
+            $editedReliefData->local = is_null($request->local) ? $editedReliefData->local : $request->local;
+            $editedReliefData->date = is_null($request->date) ? $editedReliefData->date : $request->date;
+            $editedReliefData->rice = is_null($request->rice) ? $editedReliefData->rice : $request->rice;
+            $editedReliefData->sugar = is_null($request->sugar) ? $editedReliefData->sugar : $request->sugar;
+            $editedReliefData->salt = is_null($request->salt) ? $editedReliefData->salt : $request->salt;
+            $editedReliefData->readymade = is_null($request->readymade) ? $editedReliefData->readymade : $request->readymade;
+            $editedReliefData->water = is_null($request->water) ? $editedReliefData->water : $request->water;
+            $editedReliefData->otherfood = is_null($request->otherfood) ? $editedReliefData->otherfood : $request->otherfood;
+            $editedReliefData->housing = is_null($request->housing) ? $editedReliefData->housing : $request->housing;
 
-        $editedReliefData = Relief::find($id);
-
-        $editedReliefData->province = $request->input('province');
-        $editedReliefData->district = $request->input('district');
-        $editedReliefData->local = $request->input('local');
-        $editedReliefData->date = $request->input('date');
-        $editedReliefData->rice = $request->input('rice');
-        $editedReliefData->sugar = $request->input('sugar');
-        $editedReliefData->salt = $request->input('salt');
-        $editedReliefData->readymade = $request->input('readymade');
-        $editedReliefData->water = $request->input('water');
-        $editedReliefData->otherfood = $request->input('otherfood');
-        $editedReliefData->housing = $request->input('housing');
-
-        $editedReliefData->save();
-
-        return response()->json([
-            'message' => 'Relief edited',
-            'edited Details' => $editedReliefData
-        ],201);
+            $editedReliefData->save();
+            
+            return response()->json([
+                "message" => "Relief Details Updated successfully",
+                "editedReliefData" => $editedReliefData
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Relief Detail Not Found."
+            ], 404);
+        }
     }
 
     /**

@@ -64,7 +64,7 @@ class ContactController extends Controller
 
         return response()->json([
             'message' => 'Added contacts',
-            'relief details' => $contacts
+            'contactDetail' => $contacts
         ],201);
     }
 
@@ -100,30 +100,26 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'province' => 'required',
-            'district' => 'required',
-            'local' => 'required',
-            'spokesman'=> 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required'
-        ]);
+        if (Contact::where('id', $id)->exists()) {
+            $editedContactData = Contact::find($id);
+            $editedContactData->province = is_null($request->province) ? $editedContactData->province : $request->province;
+            $editedContactData->district = is_null($request->district) ? $editedContactData->district : $request->district;
+            $editedContactData->local = is_null($request->local) ? $editedContactData->local : $request->local;
+            $editedContactData->spokesman = is_null($request->spokesman) ? $editedContactData->spokesman : $request->spokesman;
+            $editedContactData->phone = is_null($request->phone) ? $editedContactData->phone : $request->phone;
+            $editedContactData->email = is_null($request->email) ? $editedContactData->email : $request->email;
 
-        $editedContactData = Contact::find($id);
-
-        $editedContactData->province = $request->input('province');
-        $editedContactData->district = $request->input('district');
-        $editedContactData->local = $request->input('local');
-        $editedContactData->spokesman = $request->input('spokesman');
-        $editedContactData->phone = $request->input('phone');
-        $editedContactData->email = $request->input('email');
-
-        $editedContactData->save();
-
-        return response()->json([
-            'message' => 'Contacts edited',
-            'edited Details' => $editedContactData
-        ],201);
+            $editedContactData->save();
+            
+            return response()->json([
+                "message" => "Contact Updated successfully",
+                "editedContactData" => $editedContactData
+            ], 201);
+        }else{
+            return response()->json([
+                "message" => "Contact Not Found."
+            ], 404);
+        }
     }
 
     /**

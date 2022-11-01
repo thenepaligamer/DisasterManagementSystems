@@ -52,7 +52,7 @@ class UserConfigController extends Controller
 
         return response()->json([
             'message' => 'Added user data',
-            'relief details' => $userdata
+            'userData' => $userdata
         ],201);
     }
 
