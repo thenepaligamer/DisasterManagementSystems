@@ -40,7 +40,7 @@ const alert = () => {
 }
 
 
-export default function Dashboard (){
+const  Dashboard = () => {
 
     const [eventData, setEventData] = useState([]);
 
@@ -158,4 +158,4 @@ export default function Dashboard (){
     )
 }
 
-
+export default Dashboard;

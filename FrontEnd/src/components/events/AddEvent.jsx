@@ -27,6 +27,7 @@ export default function AddEvent() {
     // const districtComponent = useDistrictComponent();
     const { isLoggedIn } = useSelector((store) => store.adminAuth);
     const [latlng, setLatlng] = useState({ lat: 28, lng: 84 });
+    const [isLocationSet, setIsLocationSet] = useState(true);
     const [ eventLocation, setEventLocation] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
@@ -57,6 +58,8 @@ export default function AddEvent() {
             lat,
             long
         } = e.target;
+        if((province.value || district.value || local.value) !== "Select on Map"){
+        setIsLocationSet(true);
         const formData = new URLSearchParams();
         formData.append("title", title.value);
         formData.append("province", province.value);
@@ -80,13 +83,17 @@ export default function AddEvent() {
         const url = "https://dms-json-hosting.herokuapp.com/api/event/add";
         const options = {};
         const response = await fetch(url + "?" + formData, { method: "POST" });
-        const data = await response.json();
-        console.log(data);
+        // const data = await response.json();
+        // console.log(data);
         if (location.pathname === "/admin/add-event") {
             navigate("/admin/view-events", { replace: true });
         } else {
             navigate("/view-events", { replace: true });
         }
+        return
+        }
+        setIsLocationSet(false);
+       
     }
     return (
         <>
@@ -134,7 +141,7 @@ export default function AddEvent() {
                                 defaultValue="default"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
-                            { eventLocation ? <option value={eventLocation.region}>{eventLocation.region}</option> : <option>Select Province</option>}
+                            { eventLocation ? <option value={eventLocation.region}>{eventLocation.region}</option> : <option>Select on Map</option>}
                             
                             </select>
                         </div>
@@ -153,7 +160,7 @@ export default function AddEvent() {
                                 required
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
-                            { eventLocation ? <option value={eventLocation.county}>{eventLocation.county}</option> : <option>Select Province</option>}
+                            { eventLocation ? <option value={eventLocation.county}>{eventLocation.county}</option> : <option>Select on Map</option>}
                             
                             </select>
                         </div>
@@ -172,7 +179,7 @@ export default function AddEvent() {
                                 defaultValue="default"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
-                              { eventLocation ? <option value={eventLocation.municipality}>{eventLocation.municipality}</option> : <option>Select Province</option>}
+                              { eventLocation ? <option value={eventLocation.municipality}>{eventLocation.municipality}</option> : <option>Select on Map</option>}
                             
                             </select>
                         </div>
@@ -309,6 +316,7 @@ export default function AddEvent() {
                                 placeholder="Optional"
                             />
                         </div>
+                        { !isLocationSet && <div style={{color: "red"}}>*Provide Province, District and Local by clicking on Map</div>}
                         <button
                             type="submit"
                             className=" bg-purple-600 text-white w-full h-10 rounded"
