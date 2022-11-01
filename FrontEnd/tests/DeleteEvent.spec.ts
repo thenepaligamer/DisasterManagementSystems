@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('Delete Event', async ({ page }) => {
 
   await page.goto('about:blank');
 

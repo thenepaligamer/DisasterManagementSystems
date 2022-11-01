@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+
+test('Login as Admin', async ({ page }) => {
 
   await page.goto('http://localhost:3000/');
 
@@ -20,3 +21,17 @@ test('test', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/admin');
 
 });
+
+test('test with invalid data', async ({ page }) => {
+  
+  await page.goto('http://localhost:3000/admin/login');
+  await page.locator('input[name="email"]').click();
+  await page.locator('input[name="email"]').fill('sachin@gmail.com');
+  await page.locator('input[name="email"]').press('Tab');
+  await page.locator('input[name="password"]').fill('@Sachin');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByText('* Invalid login details').click();
+  
+});
+
+
