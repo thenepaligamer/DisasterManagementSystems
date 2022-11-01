@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-import useDistrictComponent from "../../hooks/districtComponent";
+// import useDistrictComponent from "../../hooks/districtComponent";
 
 import {useNavigate} from "react-router-dom";
 import * as Url from "url";
@@ -11,7 +11,7 @@ export default function UpdateEvents() {
     const {id} = useParams();
     const navigate = useNavigate();
     const [event, setEvent] = useState({});
-    const districtComponent = useDistrictComponent({province: event.province, district: event.district, local: event.local});
+    // const districtComponent = useDistrictComponent({province: event.province, district: event.district, local: event.local});
     const [loading, setLoading] = useState(true);
     const token =  JSON.parse(localStorage.getItem('userInfo')).access_token
 
@@ -34,12 +34,12 @@ export default function UpdateEvents() {
 
     async function submit(e){
         e.preventDefault();
-        const {title, province, district, local, type, description, estloss, death, injured, missing} = e.target;
+        const {title, type, description, estloss, death, injured, missing} = e.target;
         const formData = new URLSearchParams();
         formData.append('title', title.value);
-        formData.append("province", province.value);
-        formData.append("district", district.value);
-        formData.append("local", local.value);
+        formData.append("province", event.province);
+        formData.append("district", event.district);
+        formData.append("local", event.local);
         formData.append("type", type.value);
         formData.append("description", description.value);
         formData.append("estloss", estloss.value);
@@ -54,7 +54,7 @@ export default function UpdateEvents() {
                 authorization: `Bearer ${token}`,
             }
         });
-        navigate('/admin/view-events', {replace: true});
+        // navigate('/admin/view-events', {replace: true});
     }
 
     return (<>
@@ -71,7 +71,7 @@ export default function UpdateEvents() {
                                className="bg-gray-50 border w-4/5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                placeholder="1 or 2 words" required />
                     </div>
-                    {districtComponent}
+                    {/* {districtComponent} */}
                     <div className="flex ">
                         <label htmlFor="Type"
                                className="flex align-middle mr-3  text-sm font-medium text-gray-900 ">Type</label>
