@@ -35,8 +35,6 @@ test('Add Volunteer', async ({ page }) => {
 
   await page.getByPlaceholder('Location').click();
 
-  await page.getByPlaceholder('Location').click();
-
   await page.getByPlaceholder('Location').fill('Jagarnathapur area');
 
   await page.getByPlaceholder('Manpower in numbers').click();
@@ -45,6 +43,5 @@ test('Add Volunteer', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Submit' }).click();
 
-  await page.getByRole('button', { name: 'Submit' }).click();
 
 });

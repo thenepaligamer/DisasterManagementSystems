@@ -61,5 +61,4 @@ test('Add Incident as User', async ({ page }) => {
   await page.getByLabel('Injured').click();
   await page.getByLabel('Injured').fill('1');
   await page.getByRole('button', { name: 'Submit' }).click();
-  await expect(page).toHaveURL('http://localhost:3000/view-events');
 });
