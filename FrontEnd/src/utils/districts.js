@@ -90,6 +90,6 @@ const allDistricts = {
         "Kailali",
         "Kanchanpur",
     ],
-}
+};
 
-export default  allDistricts;
+export default allDistricts;

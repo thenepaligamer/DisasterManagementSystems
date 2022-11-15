@@ -5,5 +5,5 @@ export default function Relief() {
         <div className="mt-3 mx-8">
             <ReliefTable />
         </div>
-    )
+    );
 }

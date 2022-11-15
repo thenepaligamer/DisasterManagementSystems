@@ -9,7 +9,7 @@ const localBodies = {
         "Panchadeval Binayak Municipality",
         "Ramaroshan Rural Municipality",
         "Sanphebagar Municipality",
-        "Turmakhand Rural Municipality"
+        "Turmakhand Rural Municipality",
     ],
     Arghakhanchi: [
         "Bhumikasthan Municipality",
@@ -17,7 +17,7 @@ const localBodies = {
         "Malarani Rural Municipality",
         "Paadini Rural Municipality",
         "Sandhikharka Municipality",
-        "Sitganga Municipality"
+        "Sitganga Municipality",
     ],
     Baglung: [
         "Badigaadh Rural Municipality",
@@ -29,7 +29,7 @@ const localBodies = {
         "Kathekhola Rural Municipality",
         "Nishikhola Rural Municipality",
         "Taman Khola Rural Municipality",
-        "Tarakhola Rural Municipality"
+        "Tarakhola Rural Municipality",
     ],
     Baitadi: [
         "Dasharath Chand Municipality",
@@ -41,7 +41,7 @@ const localBodies = {
         "Purchaudi Municipality",
         "Shivanath Rural Municipality",
         "Sigash Rural Municipality",
-        "Surnaya Rural Municipality"
+        "Surnaya Rural Municipality",
     ],
     Bajhang: [
         "Bitthadachir Minicipality",
@@ -55,7 +55,7 @@ const localBodies = {
         "Masta Rural Municipality",
         "Surma Rural Municipality",
         "Talkot Rural Municipality",
-        "Thalara Rural Municipality"
+        "Thalara Rural Municipality",
     ],
     Bajura: [
         "Badimalika Municipality",
@@ -66,7 +66,7 @@ const localBodies = {
         "Himali Rural Municipality",
         "Pandavgufa Rural Municipality",
         "Swami Kartik Rural Municipality",
-        "Triveni Municipality"
+        "Triveni Municipality",
     ],
     Banke: [
         "Bajainath Rural Municipality",
@@ -76,7 +76,7 @@ const localBodies = {
         "Kohalpur Municipality",
         "Narainapur Rural Municipality",
         "Nepalgunj Sub Metropolitan City",
-        "Rapti Sonari Rural Municipality"
+        "Rapti Sonari Rural Municipality",
     ],
     Bara: [
         "Aadarshkotwal Rural Municipality",
@@ -94,7 +94,7 @@ const localBodies = {
         "Parwanipur Rural Municipality",
         "Prasauni Rural Municipality",
         "Simraungadh Municipality",
-        "Suwarna Rural Municipality"
+        "Suwarna Rural Municipality",
     ],
     Bardiya: [
         "Baashgadhi Municipality",
@@ -104,13 +104,13 @@ const localBodies = {
         "Gulariya Municipality",
         "Madhuwan Municipality",
         "Rajapur Municipality",
-        "Thakurbaba Municipality"
+        "Thakurbaba Municipality",
     ],
     Bhaktapur: [
         "Bhaktapur Municipality",
         "Changunarayan Municipality",
         "Madhyapur Thimi Municipality",
-        "Suryabinayak Municipality"
+        "Suryabinayak Municipality",
     ],
     Bhojpur: [
         "Aamchwok Rural Municipality",
@@ -121,7 +121,7 @@ const localBodies = {
         "Ramprasad Rai Rural Municipality",
         "Sadananda Municipality",
         "Salpasillicho Rural Municipality",
-        "Tyamke-Maiyunm Rural Municipality"
+        "Tyamke-Maiyunm Rural Municipality",
     ],
     Chitwan: [
         "Bharatpur Metropolitan City",
@@ -130,7 +130,7 @@ const localBodies = {
         "Khairahani Municipality",
         "Madi Municipality",
         "Rapti Municipality",
-        "Ratnanagar Municipality"
+        "Ratnanagar Municipality",
     ],
     Dadeldhura: [
         "Aalital Rural Municipality",
@@ -139,7 +139,7 @@ const localBodies = {
         "Bhageshwor Rural Municipality",
         "Ganyapadhura Rural Municipality",
         "Navadurga Rural Municipality",
-        "Parshuram Municipality"
+        "Parshuram Municipality",
     ],
     Dailekh: [
         "Aathbis Municipality",
@@ -152,7 +152,7 @@ const localBodies = {
         "Mahabu Rural Municipality",
         "Narayan Municipality",
         "Naumule Rural Municipality",
-        "Thantikandh Rural Municipality"
+        "Thantikandh Rural Municipality",
     ],
     Dang: [
         "Babai Rural Municipality",
@@ -164,7 +164,7 @@ const localBodies = {
         "Rajpur Rural Municipality",
         "Rapti Rural Municipality",
         "Shantinagar Rural Municipality",
-        "Tulsipur Sub Metropolitan City"
+        "Tulsipur Sub Metropolitan City",
     ],
     Darchula: [
         "Api Himal Rural Municipality",
@@ -175,7 +175,7 @@ const localBodies = {
         "Malirjun Rural Municipality",
         "Marma Rural Municipality",
         "Naugadh Rural Municipality",
-        "Sailyashikhar Municipality"
+        "Sailyashikhar Municipality",
     ],
     Dhading: [
         "Benighat-Rorang Rural Municipality",
@@ -190,7 +190,7 @@ const localBodies = {
         "Ruby Valley Rural Municipality",
         "Siddha Khola Rural Municipality",
         "Tharke Rural Municipality",
-        "Tripura Sundari Rural Municipality"
+        "Tripura Sundari Rural Municipality",
     ],
     Dhankuta: [
         "Chathar Jorpati Rural Municipality",
@@ -199,7 +199,7 @@ const localBodies = {
         "Khalsha Chhintang Sahidbhumi Rural Municipality",
         "Mahalakshmi Municipality",
         "Pakhribash Municipality",
-        "Sangurigadhigadhi Rural Municipality"
+        "Sangurigadhigadhi Rural Municipality",
     ],
     Dhanusa: [
         "Aurahi Municipality",
@@ -219,7 +219,7 @@ const localBodies = {
         "Mukhiyapatti Musaharmiya Rural Municipality",
         "Nagarain Municipality",
         "Sahidnagar Municipality",
-        "Sawaila Municipality"
+        "Sawaila Municipality",
     ],
     Dolakha: [
         "Baiteshwor Rural Municipality",
@@ -230,7 +230,7 @@ const localBodies = {
         "Kalinchok Rural Municipality",
         "Melung Rural Municipality",
         "Sailung Rural Municipality",
-        "Tamakoshi Rural Municipality"
+        "Tamakoshi Rural Municipality",
     ],
     Dolpa: [
         "Chharka Tangsong Rural Municipality",
@@ -240,7 +240,7 @@ const localBodies = {
         "Mudkechula Rural Municipality",
         "She Phoksundo Rural Municipality",
         "Thuli Bheri Municipality",
-        "Tripurasundari Municipality"
+        "Tripurasundari Municipality",
     ],
     Doti: [
         "Aadarsh Rural Municipality",
@@ -251,12 +251,12 @@ const localBodies = {
         "K.I.Singh Rural Municipality",
         "Purvichauki Rural Municipality",
         "Sayal Rural Municipality",
-        "Shikhar Municipality"
+        "Shikhar Municipality",
     ],
     EasternRukum: [
         "Bhume Rural Municipality",
         "Putha Uttarganga Rural Municipality",
-        "Sisne Rural Municipality"
+        "Sisne Rural Municipality",
     ],
     Gorkha: [
         "Aarughat Rural Municipality",
@@ -269,7 +269,7 @@ const localBodies = {
         "Palungtar Municipality",
         "Sahid Lakhan Rural Municipality",
         "Siranchwok Rural Municipality",
-        "Sulikot Rural Municipality"
+        "Sulikot Rural Municipality",
     ],
     Gulmi: [
         "Chandrakot Rural Municipality",
@@ -283,7 +283,7 @@ const localBodies = {
         "Musikot Municipality",
         "Resunga Municipality",
         "Ruru Rural Municipality",
-        "Satyawati Rural Municipality"
+        "Satyawati Rural Municipality",
     ],
     Humla: [
         "Adanchuli Rural Municipality",
@@ -292,7 +292,7 @@ const localBodies = {
         "Namkha Rural Municipality",
         "Sarkegad Rural Municipality",
         "Simkot Rural Municipality",
-        "Tajakot Rural Municipality"
+        "Tajakot Rural Municipality",
     ],
     Ilam: [
         "Chulachuli Rural Municipality",
@@ -304,7 +304,7 @@ const localBodies = {
         "Mangseung Rural Municipality",
         "Rong Rural Municipality",
         "Sandakpur Rural Municipality",
-        "Suryodaya Municipality"
+        "Suryodaya Municipality",
     ],
     Jajarkot: [
         "Barekot Rural Municipality",
@@ -313,7 +313,7 @@ const localBodies = {
         "Junichande Rural Municipality",
         "Kushe Rural Municipality",
         "Shivalaya Rural Municipality",
-        "Tribeni Nalgad Municipality"
+        "Tribeni Nalgad Municipality",
     ],
     Jhapa: [
         "Arjundhara Municipality",
@@ -330,7 +330,7 @@ const localBodies = {
         "Kamal Rural Municipality",
         "Kankai Municipality",
         "Mechinagar Municipality",
-        "Shivasatakshi Municipality"
+        "Shivasatakshi Municipality",
     ],
     Jumla: [
         "Chandannath Municipality",
@@ -340,7 +340,7 @@ const localBodies = {
         "Patarasi Rural Municipality",
         "Sinja Rural Municipality",
         "Tatopani Rural Municipality",
-        "Tila Rural Municipality"
+        "Tila Rural Municipality",
     ],
     Kailali: [
         "Bargagoriya Rural Municipality",
@@ -355,7 +355,7 @@ const localBodies = {
         "Kailari Rural Municipality",
         "Lamki Chuha Municipality",
         "Mohanyal Rural Municipality",
-        "Tikapur Municipality"
+        "Tikapur Municipality",
     ],
     Kalikot: [
         "Khandachakra Municipality",
@@ -366,7 +366,7 @@ const localBodies = {
         "Raskot Municipality",
         "Sanni Triveni Rural Municipality",
         "Shubha Kalika Rural Municipality",
-        "Tilagufa Municipality"
+        "Tilagufa Municipality",
     ],
     Kanchanpur: [
         "Baldaadi Rural Municipality",
@@ -377,7 +377,7 @@ const localBodies = {
         "Mahakali Municipality",
         "Punarwash Municipality",
         "Shuklaphata Municipality",
-        "Vedkot Municipality"
+        "Vedkot Municipality",
     ],
     Kapilvastu: [
         "Baadranga Municipality",
@@ -389,14 +389,14 @@ const localBodies = {
         "Mayadevi Rural Municipality",
         "Shivaraj Municipality",
         "Suddhodhan Rural Municipality",
-        "Yashodhara Rural Municipality"
+        "Yashodhara Rural Municipality",
     ],
     Kaski: [
         "Annapurna Rural Municipality",
         "Macchapucchre Rural Municipality",
         "Madi Rural Municipality",
         "Pokhara Municipality",
-        "Rupa Rural Municipality"
+        "Rupa Rural Municipality",
     ],
     Kathmandu: [
         "Budhanilkantha Municipality",
@@ -409,7 +409,7 @@ const localBodies = {
         "Nagarjun Municipality",
         "Shankhapur Municipality",
         "Tarakeshwor Municipality",
-        "Tokha Municipality"
+        "Tokha Municipality",
     ],
     Kavrepalanchowk: [
         "Banepa Municipality",
@@ -424,7 +424,7 @@ const localBodies = {
         "Panchkhal Municipality",
         "Roshi Rural Municipality",
         "Temal Rural Municipality",
-        "Vullu Rural Municipality"
+        "Vullu Rural Municipality",
     ],
     Khotang: [
         "Aishelukharka Rural Municipality",
@@ -436,7 +436,7 @@ const localBodies = {
         "Kopilashgadhi Rural Municipality",
         "Lamidanda Rural Municipality",
         "Rupakot-Majhuwagadhi Municipality",
-        "Saakelaa Rural Municipality"
+        "Saakelaa Rural Municipality",
     ],
     Lalitpur: [
         "Bagmati Rural Municipality",
@@ -444,7 +444,7 @@ const localBodies = {
         "Konjayoshom Rural Municipality",
         "Lalitpur Metropolitan City",
         "Mahalakshmi Municipality",
-        "Mahankal Rural Municipality"
+        "Mahankal Rural Municipality",
     ],
     Lamjung: [
         "Besisahar Municipality",
@@ -454,7 +454,7 @@ const localBodies = {
         "Madhya Nepal Municipality",
         "Marshyangdi Rural Municipality",
         "Rainash Municipality",
-        "Sundarbazar Rural Municipality"
+        "Sundarbazar Rural Municipality",
     ],
     Mahottari: [
         "Aurahi Municipality",
@@ -471,7 +471,7 @@ const localBodies = {
         "Pipara Rural Municipality",
         "Ramgopalpur Municipality",
         "Samshi Rural Municipality",
-        "Sonam Rural Municipality"
+        "Sonam Rural Municipality",
     ],
     Makwanpur: [
         "Bagmati Rural Municipality",
@@ -483,13 +483,13 @@ const localBodies = {
         "Makwanpur Gadhi Rural Municipality",
         "Manhari Rural Municipality",
         "Rakshirang Rural Municipality",
-        "Thaha Municipality"
+        "Thaha Municipality",
     ],
     Manang: [
         "Chame Rural Municipality",
         "Narfu Rural Municipality",
         "Nasong Rural Municipality",
-        "Neshyang Rural Municipality"
+        "Neshyang Rural Municipality",
     ],
     Morang: [
         "Belwari Municipality",
@@ -508,20 +508,20 @@ const localBodies = {
         "Ratuwamai Municipality",
         "Sundar Haraicha Municipality",
         "Sunwarsa Municipality",
-        "Urlabari Municipality"
+        "Urlabari Municipality",
     ],
     Mugu: [
         "Chhayanath Rara Municipality",
         "Khatyad Rural Municipality",
         "Mugum Karmarong Rural Municipality",
-        "Soru Rural Municipality"
+        "Soru Rural Municipality",
     ],
     Mustang: [
         "Bharagau-Muktikshetra Rural Municipality",
         "Dalome Rural Municipality",
         "Gharapjhong Rural Municipality",
         "Lhomanthang Rural Municipality",
-        "Thasang Rural Municipality"
+        "Thasang Rural Municipality",
     ],
     Myagdi: [
         "Annapurna Rural Municipality",
@@ -529,7 +529,7 @@ const localBodies = {
         "Dhawalagiri Rural Municipality",
         "Malika Rural Municipality",
         "Mangala Rural Municipality",
-        "Raghuganga Rural Municipality"
+        "Raghuganga Rural Municipality",
     ],
     Nawalpur: [
         "Binayi Tribeni Rural Municipality",
@@ -539,7 +539,7 @@ const localBodies = {
         "Gaindakot Municipality",
         "Hupsekot Rural Municipality",
         "Kawasoti Municipality",
-        "Madhyabindu Municipality"
+        "Madhyabindu Municipality",
     ],
     Nuwakot: [
         "Belkot Gadhi Municipality",
@@ -553,7 +553,7 @@ const localBodies = {
         "Shivapuri Rural Municipality",
         "Suryagadhi Rural Municipality",
         "Tadi Rural Municipality",
-        "Tarakeshwor Rural Municipality"
+        "Tarakeshwor Rural Municipality",
     ],
     Okhaldhunga: [
         "Champadevi Rural Municipality",
@@ -563,7 +563,7 @@ const localBodies = {
         "Mane Bhanjyang Rural Municipality",
         "Molung Rural Municipality",
         "Siddhicharan Municipality",
-        "Sunkoshi Rural Municipality"
+        "Sunkoshi Rural Municipality",
     ],
     Palpa: [
         "Bagnashkali Rural Municipality",
@@ -575,7 +575,7 @@ const localBodies = {
         "Rampur Municipality",
         "Ribdikot Rural Municipality",
         "Tansen Municipality",
-        "Tinau Rural Municipality"
+        "Tinau Rural Municipality",
     ],
     Panchthar: [
         "Falelung Rural Municipality",
@@ -585,7 +585,7 @@ const localBodies = {
         "Kummayak Rural Municipality",
         "Miklajung Rural Municipality",
         "Tumbewa Rural Municipality",
-        "yangwarak Rural Municipality"
+        "yangwarak Rural Municipality",
     ],
     Parasi: [
         "Bardghat Municipality",
@@ -594,7 +594,7 @@ const localBodies = {
         "Ramgram Municipality",
         "Sarawal Rural Municipality",
         "Sunwal Municipality",
-        "Susta Rural Municipality"
+        "Susta Rural Municipality",
     ],
     Parbat: [
         "Bihadi Rural Municipality",
@@ -603,7 +603,7 @@ const localBodies = {
         "Mahashila Rural Municipality",
         "Modi Rural Municipality",
         "Paiyun Rural Municipality",
-        "Phalewas Municipality"
+        "Phalewas Municipality",
     ],
     Parsa: [
         "Bahudarmai Municipality",
@@ -619,7 +619,7 @@ const localBodies = {
         "Pokhariya Municipality",
         "Praterwa Sugauli Rural Municipality",
         "Sakhuwa Prasaini Rural Municipality",
-        "Thori Rural Municipality"
+        "Thori Rural Municipality",
     ],
     Pyuthan: [
         "Eiyawati Rural Municipality",
@@ -630,7 +630,7 @@ const localBodies = {
         "Nauwahini Rural Municipality",
         "Pyuthan Municipality",
         "Sarumarani Rural Municipality",
-        "Sworgadwari Municipality"
+        "Sworgadwari Municipality",
     ],
     Ramechhap: [
         "Doramba Rural Municipality",
@@ -640,14 +640,14 @@ const localBodies = {
         "Manthali Municipality",
         "Ramechhap Municipality",
         "Sunpati Rural Municipality",
-        "Umakunda Rural Municipality"
+        "Umakunda Rural Municipality",
     ],
     Rasuwa: [
         "Gosaikunda Rural Municipality",
         "Kalika Rural Municipality",
         "Naukunda Rural Municipality",
         "Parwatikunda Rural Municipality",
-        "Uttargaya Rural Municipality"
+        "Uttargaya Rural Municipality",
     ],
     Rautahat: [
         "Baudhimai Municipality",
@@ -667,7 +667,7 @@ const localBodies = {
         "Paroha Municipality",
         "Rajdevi Municipality",
         "Rajpur Municipality",
-        "Yamunamai Rural Municipality"
+        "Yamunamai Rural Municipality",
     ],
     Rolpa: [
         "Duikhola Rural Municipality",
@@ -679,7 +679,7 @@ const localBodies = {
         "Sunchahari Rural Municipality",
         "SurwadwatiRural Municipality",
         "Thawang Rural Municipality",
-        "Triveni Rural Municipality"
+        "Triveni Rural Municipality",
     ],
     Rupandehi: [
         "Butwal Sub-Metropolitan City",
@@ -698,7 +698,7 @@ const localBodies = {
         "Siyari Rural Municipality",
         "Siyari Rural Municipality",
         "Suddhodhan Rural Municipality",
-        "Tilottama Municipality"
+        "Tilottama Municipality",
     ],
     Salyan: [
         "Bagchaur Municipality",
@@ -710,7 +710,7 @@ const localBodies = {
         "Kapurkot Rural Municipality",
         "Kumakhmalika Rural Municipality",
         "Shaarda Municipality",
-        "Tribeni Rural Municipality"
+        "Tribeni Rural Municipality",
     ],
     Sankhuwasabha: [
         "Bhotkhola Rural Municipality",
@@ -722,7 +722,7 @@ const localBodies = {
         "Makalu Rural Municipality",
         "Panchkhapan Municipality",
         "Sabhaa Pokhari Rural Municipality",
-        "Silichong Rural Municipality"
+        "Silichong Rural Municipality",
     ],
     Saptari: [
         "Agnisain Krishnasawaran Rural Municipality",
@@ -741,7 +741,7 @@ const localBodies = {
         "Saptakoshi Municipality",
         "Tilathi-Koiladi Rural Municipality",
         "Tirhut Rural Municipality",
-        "Tirhut Rural Municipality"
+        "Tirhut Rural Municipality",
     ],
     Sarlahi: [
         "Bagmati Municipalty",
@@ -763,7 +763,7 @@ const localBodies = {
         "Lalbandhi Municipality",
         "Malangwa Municipality",
         "Parsa Rural Municipality",
-        "Ramnagar Rural Municipality"
+        "Ramnagar Rural Municipality",
     ],
     Sindhuli: [
         "Dudhauli Minicipality",
@@ -774,7 +774,7 @@ const localBodies = {
         "Kamalamai Municipality",
         "Maring Rural Municipality",
         "Sunkoshi Rural Municipality",
-        "Teenpatan Rural Municipality"
+        "Teenpatan Rural Municipality",
     ],
     Sindhupalchok: [
         "Barahbise Municipality",
@@ -788,7 +788,7 @@ const localBodies = {
         "Panchpokhari-Thangpaal Rural Municipality",
         "Sunkoshi Rural Municipality",
         "Tripura Sundari Rural Municipality",
-        "Walefi Rural Municipality"
+        "Walefi Rural Municipality",
     ],
     Siraha: [
         "Arnama Rural Municipality",
@@ -807,7 +807,7 @@ const localBodies = {
         "Nawarajpur Rural Municipality",
         "Sakhuwanankarkatti Rural Municipality",
         "Siraha Municipality",
-        "Sukhipur Municipality"
+        "Sukhipur Municipality",
     ],
     Solukhumbu: [
         "Dudh Kausika Rural Municipality",
@@ -817,7 +817,7 @@ const localBodies = {
         "Mahakulung Rural Municipality",
         "Necha Salyan Rural Municipality",
         "Solu-Dudhkunda Municipality",
-        "Sotang Rural Municipality"
+        "Sotang Rural Municipality",
     ],
     Sunsari: [
         "Baraha Municipality",
@@ -831,7 +831,7 @@ const localBodies = {
         "Inaruwa Municipality",
         "Itahari Sub-Metropolitan City",
         "Koshi Rural Municipality",
-        "Ramdhuni Municipality"
+        "Ramdhuni Municipality",
     ],
     Surkhet: [
         "Barahatal Rural Municipality",
@@ -842,7 +842,7 @@ const localBodies = {
         "Gurbha Kot Municipality",
         "Lekbesi Municipality",
         "Panchapuri Municipality",
-        "Simta Rural Municipality"
+        "Simta Rural Municipality",
     ],
     Syangja: [
         "Aandhikhola Rural Municipality",
@@ -855,7 +855,7 @@ const localBodies = {
         "Kaligandaki Rural Municipality",
         "Phedikhola Rural Municipality",
         "Putalibazar Municipality",
-        "Waling Municipality"
+        "Waling Municipality",
     ],
     Tanahu: [
         "Anbu Khaireni Rural Municipality",
@@ -867,7 +867,7 @@ const localBodies = {
         "Ghiring Rural Municipality",
         "Myagde Rural Municipality",
         "Rhishing Rural Municipality",
-        "Shuklagandaki Municipality"
+        "Shuklagandaki Municipality",
     ],
     Taplejung: [
         "Aathrai-Triveni Rural Municipality",
@@ -878,7 +878,7 @@ const localBodies = {
         "Mikwakhola Rural Municipality",
         "Sidingwa Rural Municipality",
         "Siringa Rural Municipality",
-        "Yangwarak Rural Municipality"
+        "Yangwarak Rural Municipality",
     ],
     Tehrathum: [
         "Aathrai Rural Municipality",
@@ -886,7 +886,7 @@ const localBodies = {
         "Fedam Rural Municipality",
         "Laligurans Municipality",
         "Menchhayamem Rural Municipality",
-        "Myanglung Municipality"
+        "Myanglung Municipality",
     ],
     Udayapur: [
         "Beliya Municipality",
@@ -896,7 +896,7 @@ const localBodies = {
         "Sunkoshi Rural Municipality",
         "Taapli Rural Municipality",
         "Triyuga Municipality",
-        "Udayapurgadhi Rural Municipality"
+        "Udayapurgadhi Rural Municipality",
     ],
     WesternRukum: [
         "Aathbiskot Municipality",
@@ -904,8 +904,8 @@ const localBodies = {
         "Chaurjahari Municipality",
         "Musikot Municipality",
         "Sani Bheri Rural Municipality",
-        "Tribeni Rural Municipality"
-    ]
+        "Tribeni Rural Municipality",
+    ],
 };
 
 export default localBodies;

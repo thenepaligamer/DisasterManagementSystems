@@ -28,16 +28,16 @@ export default function AddEvent() {
     const { isLoggedIn } = useSelector((store) => store.adminAuth);
     const [latlng, setLatlng] = useState({ lat: 28, lng: 84 });
     const [isLocationSet, setIsLocationSet] = useState(true);
-    const [ eventLocation, setEventLocation] = useState(null);
+    const [eventLocation, setEventLocation] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
 
-    function fillLocation( location){
+    function fillLocation(location) {
         console.log(location);
         setEventLocation(location.address);
     }
 
-    function latLong(latlong){
+    function latLong(latlong) {
         setLatlng(latlong);
         console.log(latlong);
     }
@@ -56,44 +56,48 @@ export default function AddEvent() {
             injured,
             missing,
             lat,
-            long
+            long,
         } = e.target;
-        if((province.value || district.value || local.value) !== "Select on Map"){
-        setIsLocationSet(true);
-        const formData = new URLSearchParams();
-        formData.append("title", title.value);
-        formData.append("province", province.value);
-        formData.append("district", district.value);
-        formData.append("local", local.value);
-        formData.append("type", type.value);
-        formData.append("description", description.value);
-        formData.append("estloss", estloss.value);
-        formData.append("death", death.value);
-        formData.append("injured", injured.value);
-        formData.append("missing", missing.value);
-        formData.append("lat", lat.value);
-        formData.append("long", long.value);
-        console.log(formData);
-        if (isLoggedIn && location.pathname === "/admin/add-event") {
-            formData.append("is_verified", 1);
-        } else {
-            formData.append("is_verified", 0);
-        }
-        console.log(formData);
-        const url = "https://dms-json-hosting.herokuapp.com/api/event/add";
-        const options = {};
-        const response = await fetch(url + "?" + formData, { method: "POST" });
-        // const data = await response.json();
-        // console.log(data);
-        if (location.pathname === "/admin/add-event") {
-            navigate("/admin/view-events", { replace: true });
-        } else {
-            navigate("/view-events", { replace: true });
-        }
-        return
+        if (
+            (province.value || district.value || local.value) !==
+            "Select on Map"
+        ) {
+            setIsLocationSet(true);
+            const formData = new URLSearchParams();
+            formData.append("title", title.value);
+            formData.append("province", province.value);
+            formData.append("district", district.value);
+            formData.append("local", local.value);
+            formData.append("type", type.value);
+            formData.append("description", description.value);
+            formData.append("estloss", estloss.value);
+            formData.append("death", death.value);
+            formData.append("injured", injured.value);
+            formData.append("missing", missing.value);
+            formData.append("lat", lat.value);
+            formData.append("long", long.value);
+            console.log(formData);
+            if (isLoggedIn && location.pathname === "/admin/add-event") {
+                formData.append("is_verified", 1);
+            } else {
+                formData.append("is_verified", 0);
+            }
+            console.log(formData);
+            const url = "https://dms-json-hosting.herokuapp.com/api/event/add";
+            const options = {};
+            const response = await fetch(url + "?" + formData, {
+                method: "POST",
+            });
+            // const data = await response.json();
+            // console.log(data);
+            if (location.pathname === "/admin/add-event") {
+                navigate("/admin/view-events", { replace: true });
+            } else {
+                navigate("/view-events", { replace: true });
+            }
+            return;
         }
         setIsLocationSet(false);
-       
     }
     return (
         <>
@@ -102,7 +106,11 @@ export default function AddEvent() {
                     className="h-10"
                     style={{ height: "100vh", width: "60vw" }}
                 >
-                    <AddEventMap style={{ height: "60vh" }} fillLocation={ (l) => fillLocation(l)} latLong={ (l) => latLong(l)}/>
+                    <AddEventMap
+                        style={{ height: "60vh" }}
+                        fillLocation={(l) => fillLocation(l)}
+                        latLong={(l) => latLong(l)}
+                    />
                 </div>
                 <div>
                     <div className="text-2xl my-2">Add an Incident</div>
@@ -141,8 +149,13 @@ export default function AddEvent() {
                                 defaultValue="default"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
-                            { eventLocation ? <option value={eventLocation.region}>{eventLocation.region}</option> : <option>Select on Map</option>}
-                            
+                                {eventLocation ? (
+                                    <option value={eventLocation.region}>
+                                        {eventLocation.region}
+                                    </option>
+                                ) : (
+                                    <option>Select on Map</option>
+                                )}
                             </select>
                         </div>
                         <div className="flex ">
@@ -160,8 +173,13 @@ export default function AddEvent() {
                                 required
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
-                            { eventLocation ? <option value={eventLocation.county}>{eventLocation.county}</option> : <option>Select on Map</option>}
-                            
+                                {eventLocation ? (
+                                    <option value={eventLocation.county}>
+                                        {eventLocation.county}
+                                    </option>
+                                ) : (
+                                    <option>Select on Map</option>
+                                )}
                             </select>
                         </div>
                         <div className="flex ">
@@ -179,8 +197,13 @@ export default function AddEvent() {
                                 defaultValue="default"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 "
                             >
-                              { eventLocation ? <option value={eventLocation.municipality}>{eventLocation.municipality}</option> : <option>Select on Map</option>}
-                            
+                                {eventLocation ? (
+                                    <option value={eventLocation.municipality}>
+                                        {eventLocation.municipality}
+                                    </option>
+                                ) : (
+                                    <option>Select on Map</option>
+                                )}
                             </select>
                         </div>
                         <div className="flex ">
@@ -236,7 +259,7 @@ export default function AddEvent() {
                                 required
                             />
                         </div>{" "}
-                        <div className="flex " >
+                        <div className="flex ">
                             <label
                                 htmlFor="death"
                                 className="flex align-middle mr-3  text-sm font-medium text-gray-900 "
@@ -284,8 +307,8 @@ export default function AddEvent() {
                                 required
                             />
                         </div>
-                        <div className="flex" style={{ display: "none"}}>
-                        <label
+                        <div className="flex" style={{ display: "none" }}>
+                            <label
                                 htmlFor="lat"
                                 className="flex align-middle mr-3  text-sm font-medium text-gray-900 "
                             >
@@ -300,7 +323,7 @@ export default function AddEvent() {
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                 placeholder="Optional"
                             />
-                        <label
+                            <label
                                 htmlFor="lng"
                                 className="flex align-middle mr-3  text-sm font-medium text-gray-900 "
                             >
@@ -316,7 +339,12 @@ export default function AddEvent() {
                                 placeholder="Optional"
                             />
                         </div>
-                        { !isLocationSet && <div style={{color: "red"}}>*Provide Province, District and Local by clicking on Map</div>}
+                        {!isLocationSet && (
+                            <div style={{ color: "red" }}>
+                                *Provide Province, District and Local by
+                                clicking on Map
+                            </div>
+                        )}
                         <button
                             type="submit"
                             className=" bg-purple-600 text-white w-full h-10 rounded"

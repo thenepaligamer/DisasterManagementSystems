@@ -1,22 +1,20 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-    isLoggedIn : false,
-    token: null
-}
+    isLoggedIn: false,
+    token: null,
+};
 const adminAuthSlice = createSlice({
-    name: 'adminAuthSlice',
+    name: "adminAuthSlice",
     initialState,
     reducers: {
-        login: (state, {payload}) => {
+        login: (state, { payload }) => {
             state.isLoggedIn = true;
-
         },
-        setToken: (state, {payload}) => {
-            state.token = payload
-        }
+        setToken: (state, { payload }) => {
+            state.token = payload;
+        },
     },
-
 });
-export const {login, setToken} = adminAuthSlice.actions;
+export const { login, setToken } = adminAuthSlice.actions;
 export default adminAuthSlice.reducer;

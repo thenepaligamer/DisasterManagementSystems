@@ -1,6 +1,13 @@
 import "leaflet/dist/leaflet.css";
-import { MapContainer, GeoJSON, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
-// import localJson from "../../assets/geojson/local.min.json";
+import {
+    MapContainer,
+    GeoJSON,
+    TileLayer,
+    Marker,
+    Popup,
+    useMap,
+    useMapEvents,
+} from "react-leaflet";
 import latLong from "./latLong";
 
 import IncidentMarker from "./IncidentMarker";
@@ -16,7 +23,7 @@ import { useState } from "react";
 //         map.flyTo(e.latlng, map.getZoom())
 //       },
 //     })
-  
+
 //     return position === null ? null : (
 //       <Marker position={position}>
 //         <Popup>You are here</Popup>
@@ -24,23 +31,18 @@ import { useState } from "react";
 //     )
 //   }
 
-
-
-
 const LocalMap = (props) => {
-   
-    const localMark = props.eventData.map(data => {
-        console.log(data.local)
-    
-        return (<IncidentMarker key={data.id} eventData={data}/>)
-        
-    })
-    console.log(localMark)
-    
+    const localMark = props.eventData.map((data) => {
+        console.log(data.local);
+
+        return <IncidentMarker key={data.id} eventData={data} />;
+    });
+    console.log(localMark);
 
     return (
         <>
-            <MapContainer style={{height: "60vh"}}
+            <MapContainer
+                style={{ height: "60vh" }}
                 center={[28, 84]}
                 zoom={7}
                 scrollWheelZoom={true}
@@ -51,7 +53,7 @@ const LocalMap = (props) => {
                 />
                 {/* <GeoJSON data={localJson}  /> */}
 
-              { localMark}
+                {localMark}
             </MapContainer>
         </>
     );
